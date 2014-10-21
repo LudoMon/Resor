@@ -76,6 +76,15 @@ Une fois qu'il est installé, utilisez-le pour installer toutes les dépendances
 
 Pour configurer le projet, vous devez copier-coller le fichier Eden/app/config/parameters.yml.dist et renomer la copie en parameters.yml
 
+Ouvrez-le, et modifiez les paramètres de connexion à une base de données que vous devez créer, par exemple :
+
+    database_driver:   pdo_mysql
+    database_host:     127.0.0.1
+    database_port:     ~
+    database_name:     eden
+    database_user:     root
+    database_password: ~
+
 **Attention** à ne pas supprimer le fichier parameters.yml.dist, sinon il sera supprimé du serveur !
 
 Vous pouvez maintenant lire le site en vous rendant sur votre serveur local : *http://localhost/Eden* dans un navigateur
