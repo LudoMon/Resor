@@ -1,170 +1,109 @@
-Symfony Standard Edition
+Eden : plateforme de réservation de voyages
 ========================
 
-Welcome to the Symfony Standard Edition - a fully-functional Symfony2
-application that you can use as the skeleton for your new applications.
+Ce projet est un petit projet d'études réalisé par des étudiants de l'Ecole Centrale de Lille. Le but est de réalises par petits groupes de 2 ou 3 un environnement composé de 4 acteurs :
 
-This document contains information on how to download, install, and start
-using Symfony. For a more detailed explanation, see the [Installation][1]
-chapter of the Symfony Documentation.
+  * Un site de camping qui propose des offres
 
-1) Installing the Standard Edition
+  * Un site de réservation qui collecte les offres des campings et permet de réserver en ligne
+
+  * Un site d'avis client
+
+  * Un site d'analytics
+
+Ce repository constitue la brique "plateforme de réservation en ligne"
+
+
+1) Installer ce projet en local
 ----------------------------------
 
-When it comes to installing the Symfony Standard Edition, you have the
-following options.
+### Environnement de développement
 
-### Use Composer (*recommended*)
+Pour pouvoir développer, installez un environnement de développement web sur votre machine. Sous windows, j'utilise WAMP : http://www.wampserver.com/
 
-As Symfony uses [Composer][2] to manage its dependencies, the recommended way
-to create a new project is to use it.
+Je vous laisse Googler si vous êtes sous Linux ou Mac, et vous pouvez bien sur utiliser une autre méthode : autre logiciel, installation d'Apache/MySql/Php manuellemenet :)
 
-If you don't have Composer yet, download it following the instructions on
-http://getcomposer.org/ or just run the following command:
+### S'inscrire dans GitHub
 
-    curl -s http://getcomposer.org/installer | php
+Créez un compte gratuit dans le site https://github.com. Il vous permettra de collaborer au projet à l'avenir.
 
-Then, use the `create-project` command to generate a new Symfony application:
+Une fois que c'est fait, envoyez-moi un e-mail en m'indiquant votre pseudo : je vous rajouterai en tant que collaborateur du projet.
 
-    php composer.phar create-project symfony/framework-standard-edition path/to/install
+### Installer git
 
-Composer will install Symfony and all its dependencies under the
-`path/to/install` directory.
+Git vous permettra de collaborer au projet, de faire des modifications et de les enregistrer. C'est un gestionnaire de version très connu et très puissant !
 
-### Download an Archive File
+Téléchargez le sur http://git-scm.com/ et installez-le. Vous aurez un nouveau programme appelé Git Bash, qui est (comme son nom l'indique) une console.
 
-To quickly test Symfony, you can also download an [archive][3] of the Standard
-Edition and unpack it somewhere under your web server root directory.
+### Utiliser Git
 
-If you downloaded an archive "without vendors", you also need to install all
-the necessary dependencies. Download composer (see above) and run the
-following command:
+Pour vous former rapidement à git, je vous laisse une fois encore Googler :) La ligne de commande est assez rapide à prendre en main (comptez 30min-1h pour avoir fait le tour des principales fonctions)
 
-    php composer.phar install
+N'oubliez pas de configurer git !
 
-2) Checking your System Configuration
+	git config --global user.name "Pseudo" (celui que vous voulez, essayez de prendre un pseudo qui me permette de vous reconnaitre)
+
+	git config --global user.email "email" (OBLIGATOIREMENT l'e-mail que vous avez indiqué lors de la création de votre compte GitHub)
+
+	git config --global http.proxy http://proxy.ec-lille.fr:3128 (si vous êtes derrière un proxy, celui donné est celui d'ECL)
+
+### Télécharger le code source
+
+On attaque enfin les étapes intéressantes :) Une fois que vous êtes associé au projet en tant que collaborateur, vous pouvez télécharger le code source.
+
+Tout d'abord, il faut indiquer à git que vous souhaitez qu'il se souvienne de vos identifiants GitHub (si vous tenez à les saisir à chaque fois, n'exécutez pas cette étape)
+
+	git config --global credential.helper wincred
+
+Ensuite, vous pouvez télécharger le code lui-même sur votre ordinateur :
+
+	cd /c/wamp/www (mettez-vous dans votre répertoire www, ici celui de WAMP)
+
+	git clone https://github.com/LudoZeGeek/Eden.git
+
+### Installer les dépendances
+
+Pour installer les librairies requises par le projet, il vous faut installer composer (gestionnaire de dépendances PHP). Téléchargez-le et installez-le en allant sur 
+	http://getcomposer.org/
+
+Une fois qu'il est installé, utilisez-le pour installer toutes les dépendances, en ouvrant une invite de commande Windows et en tapant les lignes suivantes :
+
+	cd C:\wamp\www\Eden (on se place dans le répertoire du projet)
+
+	composer install (télécharge les dépendances dans un dossier *vendor*)
+
+### Configurer le projet
+
+Pour configurer le projet, vous devez copier-coller le fichier Eden/app/config/parameters.yml.dist et renomer la copie en parameters.yml
+
+**Attention** à ne pas supprimer le fichier parameters.yml.dist, sinon il sera supprimé du serveur !
+
+Vous pouvez maintenant lire le site en vous rendant sur votre serveur local : *http://localhost/Eden* dans un navigateur
+
+
+2) Vérifier votre configuration système
 -------------------------------------
 
-Before starting coding, make sure that your local system is properly
-configured for Symfony.
+Avant de commencer à coder, vous pouvez vérifer que votre serveur local est bien cofiguré pour l'utilisation de Symfony2.
 
-Execute the `check.php` script from the command line:
+Ouvrez un terminal Windows et tapez les commandes suivantes :
 
-    php app/check.php
+	cd C:\wamp\www\Eden
 
-The script returns a status code of `0` if all mandatory requirements are met,
-`1` otherwise.
+	php app/check.php
 
-Access the `config.php` script from a browser:
+Le script php renvoie 0 si toutes les obligations sont remplies, 1 sinon.
 
-    http://localhost/path-to-project/web/config.php
+Depuis votre navigateur, accédez au script config.php pour savoir si vous avez des recommandations, afin de les appliquer :
+	
+	http://localhost/path-to-project/web/config.php
 
-If you get any warnings or recommendations, fix them before moving on.
 
-3) Browsing the Demo Application
---------------------------------
+3) Collaborez au projet !
+-------------------------------------
 
-Congratulations! You're now ready to use Symfony.
+Vous pouvez maintenant collaborer au projet, essayez au maximum de respecter les bonnes pratiques de git : faites des commits **courts** et **bien expliqués**.
+Ca peut parraitre inutile, mais dans 3 mois si on veut s'y retrouver, on en aura besoin :)
 
-From the `config.php` page, click the "Bypass configuration and go to the
-Welcome page" link to load up your first Symfony page.
+**Enjoy !**
 
-You can also use a web-based configurator by clicking on the "Configure your
-Symfony Application online" link of the `config.php` page.
-
-To see a real-live Symfony page in action, access the following page:
-
-    web/app_dev.php/demo/hello/Fabien
-
-4) Getting started with Symfony
--------------------------------
-
-This distribution is meant to be the starting point for your Symfony
-applications, but it also contains some sample code that you can learn from
-and play with.
-
-A great way to start learning Symfony is via the [Quick Tour][4], which will
-take you through all the basic features of Symfony2.
-
-Once you're feeling good, you can move onto reading the official
-[Symfony2 book][5].
-
-A default bundle, `AcmeDemoBundle`, shows you Symfony2 in action. After
-playing with it, you can remove it by following these steps:
-
-  * delete the `src/Acme` directory;
-
-  * remove the routing entry referencing AcmeDemoBundle in `app/config/routing_dev.yml`;
-
-  * remove the AcmeDemoBundle from the registered bundles in `app/AppKernel.php`;
-
-  * remove the `web/bundles/acmedemo` directory;
-
-  * empty the `security.yml` file or tweak the security configuration to fit
-    your needs.
-
-What's inside?
----------------
-
-The Symfony Standard Edition is configured with the following defaults:
-
-  * Twig is the only configured template engine;
-
-  * Doctrine ORM/DBAL is configured;
-
-  * Swiftmailer is configured;
-
-  * Annotations for everything are enabled.
-
-It comes pre-configured with the following bundles:
-
-  * **FrameworkBundle** - The core Symfony framework bundle
-
-  * [**SensioFrameworkExtraBundle**][6] - Adds several enhancements, including
-    template and routing annotation capability
-
-  * [**DoctrineBundle**][7] - Adds support for the Doctrine ORM
-
-  * [**TwigBundle**][8] - Adds support for the Twig templating engine
-
-  * [**SecurityBundle**][9] - Adds security by integrating Symfony's security
-    component
-
-  * [**SwiftmailerBundle**][10] - Adds support for Swiftmailer, a library for
-    sending emails
-
-  * [**MonologBundle**][11] - Adds support for Monolog, a logging library
-
-  * [**AsseticBundle**][12] - Adds support for Assetic, an asset processing
-    library
-
-  * **WebProfilerBundle** (in dev/test env) - Adds profiling functionality and
-    the web debug toolbar
-
-  * **SensioDistributionBundle** (in dev/test env) - Adds functionality for
-    configuring and working with Symfony distributions
-
-  * [**SensioGeneratorBundle**][13] (in dev/test env) - Adds code generation
-    capabilities
-
-  * **AcmeDemoBundle** (in dev/test env) - A demo bundle with some example
-    code
-
-All libraries and bundles included in the Symfony Standard Edition are
-released under the MIT or BSD license.
-
-Enjoy!
-
-[1]:  http://symfony.com/doc/2.5/book/installation.html
-[2]:  http://getcomposer.org/
-[3]:  http://symfony.com/download
-[4]:  http://symfony.com/doc/2.5/quick_tour/the_big_picture.html
-[5]:  http://symfony.com/doc/2.5/index.html
-[6]:  http://symfony.com/doc/2.5/bundles/SensioFrameworkExtraBundle/index.html
-[7]:  http://symfony.com/doc/2.5/book/doctrine.html
-[8]:  http://symfony.com/doc/2.5/book/templating.html
-[9]:  http://symfony.com/doc/2.5/book/security.html
-[10]: http://symfony.com/doc/2.5/cookbook/email.html
-[11]: http://symfony.com/doc/2.5/cookbook/logging/monolog.html
-[12]: http://symfony.com/doc/2.5/cookbook/assetic/asset_management.html
-[13]: http://symfony.com/doc/2.5/bundles/SensioGeneratorBundle/index.html
