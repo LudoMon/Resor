@@ -105,7 +105,7 @@ Le script php renvoie 0 si toutes les obligations sont remplies, 1 sinon.
 
 Depuis votre navigateur, accédez au script config.php pour savoir si vous avez des recommandations, afin de les appliquer :
 	
-	http://localhost/path-to-project/web/config.php
+	http://localhost/eden/web/config.php
 
 
 3) Collaborez au projet !
