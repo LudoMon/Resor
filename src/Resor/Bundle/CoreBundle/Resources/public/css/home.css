@@ -60,12 +60,12 @@ h1, h2, h3, h4, h5, h6 {
 
 .search-bar input {
     margin: 0;
-    padding: 10px 20px;
+    padding: 10px 35px;
     border: none;
     border-right: 1px #ddd solid;
     font-size: 1em;
     outline: none;
-    width: 40%;
+    width: 100%;
 }
 
 .search-bar input[type=submit] {
@@ -74,16 +74,30 @@ h1, h2, h3, h4, h5, h6 {
     font-weight: bold;
     background: #e74c3c;
     border-right: none;
-    width: 20%;
     cursor: pointer;
+    padding-top: 9px;
 }
 
 .search-bar input[type=submit]:hover {
     background: #E7766A;
 }
 
-input.date-input {
-    width: 20%;
+.search-item {
+    width: 21.6%;
+    display: inline-block;
+    position: relative;
+    float: left;
+}
+
+.search-item.search-place {
+    width: 35%;
+}
+
+.search-item i {
+    position: absolute;
+    color: #888;
+    top: 12px;
+    left: 10px;
 }
 
 .infos {
