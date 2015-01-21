@@ -1,6 +1,6 @@
 <?php
 
-namespace Acme\UserBundle\Entity;
+namespace Resor\Bundle\CoreBundle\Entity;
 
 use FOS\UserBundle\Model\User as BaseUser;
 use Doctrine\ORM\Mapping as ORM;
