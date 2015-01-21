@@ -17,4 +17,13 @@ class SearchController extends Controller
         return array();
     }
 
+    /**
+     * @Route("/results", name="results")
+     * @Template()
+     */
+    public function resultsAction()
+    {
+        return array();
+    }
+
 }
