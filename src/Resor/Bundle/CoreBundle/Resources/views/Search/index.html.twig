@@ -1,7 +1,27 @@
 {% extends "::base.html.twig" %}
 
-{% block title %}ResorCoreBundle:Search:index{% endblock %}
+{% block title %}Resor{% endblock %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('bundles/resorcore/css/home.css') }}">
+{% endblock %}
 
 {% block body %}
-<h1>Welcome to the Search:index page</h1>
+<div class="hero-unit">
+    <div class="hero-unit-bg-wrapper"></div>
+    <div class="hero-unit-content">
+        <h1 class="hero-unit__title">
+            Resor
+        </h1>
+        <p class="hero-unit__subtitle">
+            Recherchez. Réservez. Campez.
+        </p>
+        <div class="search-bar">
+            <input type="text" placeholder="Je cherche vers..."><!--
+            --><input type="text" class="date-input" placeholder="du..."><!--
+            --><input type="text" class="date-input" placeholder="au..."><!--
+            --><input type="submit" value="Rechercher!">
+        </div>
+    </div>
+</div>
 {% endblock %}

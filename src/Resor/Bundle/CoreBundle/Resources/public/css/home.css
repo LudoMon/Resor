@@ -1,0 +1,86 @@
+*, *:before, *:after {
+    box-sizing: border-box;
+}
+
+html, body {
+    margin: 0;
+    padding: 0;
+    background: #f5f5f5;
+}
+
+p {
+    font-family: 'Merriweather', 'Times New Roman', serif;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    margin: 0;
+    font-family: 'Lato', 'Helvetica', sans-serif;
+}
+
+.hero-unit {
+    text-align: center;
+    height: 550px;
+    background-size: 100%;
+    color: white;
+    font-family: 'Helvatica Neue';
+    position: relative;
+    z-index: 100;
+}
+
+.hero-unit-bg-wrapper {
+    background: url('/bundles/resorcore/images/bg.jpg') no-repeat bottom center;
+    background-size: 100%;
+    position: absolute;
+    z-index: -1;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+}
+
+.hero-unit__title {
+    padding-top: 1.4em;
+    font-weight: lighter;
+    font-size: 6em;
+}
+
+.hero-unit-content {
+    background: rgba(0,0,0,0.6);
+    height: 100%;
+    z-index: 101;
+}
+
+.search-bar {
+    border-radius: 2px;
+    overflow: hidden;
+    width: 60%;
+    margin: 25px auto;
+}
+
+.search-bar input {
+    margin: 0;
+    padding: 10px 20px;
+    border: none;
+    border-right: 1px #ddd solid;
+    font-size: 1em;
+    outline: none;
+    width: 40%;
+}
+
+.search-bar input[type=submit] {
+    color: white;
+    font-family: 'Lato';
+    font-weight: bold;
+    background: #2E6E7E;
+    border-right: none;
+    width: 20%;
+    cursor: pointer;
+}
+
+.search-bar input[type=submit]:hover {
+    background: #3D90A5;
+}
+
+input.date-input {
+    width: 20%;
+}
