@@ -1,4 +1,4 @@
-Eden : plateforme de réservation de voyages
+Resor : plateforme de réservation de voyages
 ========================
 
 Ce projet est un petit projet d'études réalisé par des étudiants de l'Ecole Centrale de Lille. Le but est de réalises par petits groupes de 2 ou 3 un environnement composé de 4 acteurs :
@@ -59,7 +59,7 @@ Ensuite, vous pouvez télécharger le code lui-même sur votre ordinateur :
 
 	cd /c/wamp/www (mettez-vous dans votre répertoire www, ici celui de WAMP)
 
-	git clone https://github.com/LudoZeGeek/Eden.git
+	git clone https://github.com/LudoZeGeek/Resor.git
 
 ### Installer les dépendances
 
@@ -68,26 +68,26 @@ Pour installer les librairies requises par le projet, il vous faut installer com
 
 Une fois qu'il est installé, utilisez-le pour installer toutes les dépendances, en ouvrant une invite de commande Windows et en tapant les lignes suivantes :
 
-	cd C:\wamp\www\Eden (on se place dans le répertoire du projet)
+	cd C:\wamp\www\Resor (on se place dans le répertoire du projet)
 
 	composer install (télécharge les dépendances dans un dossier *vendor*)
 
 ### Configurer le projet
 
-Pour configurer le projet, vous devez copier-coller le fichier Eden/app/config/parameters.yml.dist et renomer la copie en parameters.yml
+Pour configurer le projet, vous devez copier-coller le fichier Resor/app/config/parameters.yml.dist et renomer la copie en parameters.yml
 
 Ouvrez-le, et modifiez les paramètres de connexion à une base de données que vous devez créer, par exemple :
 
     database_driver:   pdo_mysql
     database_host:     127.0.0.1
     database_port:     ~
-    database_name:     eden
+    database_name:     resor
     database_user:     root
     database_password: ~
 
 **Attention** à ne pas supprimer le fichier parameters.yml.dist, sinon il sera supprimé du serveur !
 
-Vous pouvez maintenant lire le site en vous rendant sur votre serveur local : *http://localhost/Eden* dans un navigateur
+Vous pouvez maintenant lire le site en vous rendant sur votre serveur local : *http://localhost/Resor/web/app_dev.php* dans un navigateur
 
 
 2) Vérifier votre configuration système
@@ -97,7 +97,7 @@ Avant de commencer à coder, vous pouvez vérifer que votre serveur local est bi
 
 Ouvrez un terminal Windows et tapez les commandes suivantes :
 
-	cd C:\wamp\www\Eden
+	cd C:\wamp\www\Resor
 
 	php app/check.php
 
@@ -105,7 +105,7 @@ Le script php renvoie 0 si toutes les obligations sont remplies, 1 sinon.
 
 Depuis votre navigateur, accédez au script config.php pour savoir si vous avez des recommandations, afin de les appliquer :
 	
-	http://localhost/eden/web/config.php
+	http://localhost/Resor/web/config.php
 
 
 3) Collaborez au projet !
