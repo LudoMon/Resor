@@ -4,6 +4,7 @@
 
 {% block stylesheets %}
     <link rel="stylesheet" href="{{ asset('bundles/resorcore/css/home.css') }}">
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
 {% endblock %}
 
 {% block body %}
@@ -23,5 +24,37 @@
             --><input type="submit" value="Rechercher!">
         </div>
     </div>
+</div>
+<div class="infos">
+    <h2 class="infos-title">Resor facilite vos réservations de camping.</h2>
+    <ul class="infos-arguments">
+        <li class="infos-argument">
+            <i class="infos-argument-icon fa fa-search"></i>
+            <h3>
+                Recherchez
+            </h3>
+            <p>parmi des milliers de campings à travers le monde entier</p>
+        </li>
+        <li class="infos-argument">
+            <i class="infos-argument-icon fa fa-star"></i>
+            <i class="infos-argument-icon fa fa-star"></i>
+            <i class="infos-argument-icon fa fa-star"></i>
+            <i class="infos-argument-icon fa fa-star"></i>
+            <h3>
+                Consultez
+            </h3>
+            <p>les avis de centaines d'autres campeurs</p>
+        </li>
+        <li class="infos-argument">
+            <i class="infos-argument-icon fa fa-check"></i>
+            <h3>
+                Réservez
+            </h3>
+            <p>et partez en voyage en toute sécurité !</p>
+        </li>
+    </ul>
+</div>
+<div class="footer">
+    Fait avec <i class="fa fa-heart"></i> par <strong>Ludovic, Thibault & Arthur</strong> @ <strong>Centrale Lille</strong>
 </div>
 {% endblock %}
