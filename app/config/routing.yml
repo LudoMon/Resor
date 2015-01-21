@@ -1,0 +1,5 @@
+resor_core:
+    resource: "@ResorCoreBundle/Controller/"
+    type:     annotation
+    prefix:   /
+
