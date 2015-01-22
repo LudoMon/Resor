@@ -65,11 +65,11 @@ ul {
     position: fixed;
     top: 50px;
     background: rgb(40, 40, 40);
-    padding: 10px;
     font-family: Merriweather, Helvetica, sans-serif;
     color: white;
     height: 100%;
     font-weight: lighter;
+    box-shadow: inset -23px -20px 30px -20px black;
 }
 
 .results-body {
@@ -79,7 +79,7 @@ ul {
 }
 
 .result {
-    padding: 10px;
+    padding: 10px 25px;
     font-family: Merriweather, Helvetica, sans-serif;
     color: #333;
     font-weight: lighter;
@@ -168,4 +168,30 @@ ul {
     font-weight: lighter;
     font-size: 1.4em;
     margin-bottom: 10px;
+    padding-top: 20px;
+}
+
+.filters {
+    border-top: 1px #333 solid;
+    margin-top: 54px;
+}
+
+.filter {
+    font-family: Lato;
+    font-weight: normal;
+    color: #eee;
+    padding: 0 20px;
+    border-bottom: 1px #333 solid;
+    cursor: pointer;
+}
+
+.filter label {
+    display: inline-block;
+    width: 90%;
+    padding: 10px;
+    cursor: pointer;
+}
+
+.filter:hover {
+    background: #424242;
 }
