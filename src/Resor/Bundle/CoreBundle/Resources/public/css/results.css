@@ -52,6 +52,10 @@ ul {
     position: relative;
 }
 
+.map-wrapper img {
+    margin-top: -460px;
+}
+
 .map {
     max-width: 100%;
 }
