@@ -1,1 +1,36 @@
 {% extends '::base.html.twig' %}
+
+{% block title %}Resor{% endblock %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('bundles/resorcore/css/results.css') }}">
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+{% endblock %}
+
+{% block body %}
+    <div class="top-bar">
+        <h3 class="resor-title">Resor</h3>
+    </div>
+    <div class="content">
+        <div class="filters-bar">
+            <ul class="filters">
+                <li class="filter">Filtre</li>
+                <li class="filter">Filtre</li>
+                <li class="filter">Filtre</li>
+                <li class="filter">Filtre</li>
+                <li class="filter">Filtre</li>
+                <li class="filter">Filtre</li>
+            </ul>
+        </div>
+        <div class="results-body">
+            <ul class="results">
+                <li class="result">Result</li>
+                <li class="result">Result</li>
+                <li class="result">Result</li>
+                <li class="result">Result</li>
+                <li class="result">Result</li>
+                <li class="result">Result</li>
+            </ul>
+        </div>
+    </div>
+{% endblock %}
