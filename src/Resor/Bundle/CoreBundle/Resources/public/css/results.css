@@ -156,3 +156,10 @@ ul {
 .result-submit-button:active {
     border-width: 3px 1px 1px 1px;
 }
+
+.result-number {
+    text-align: center;
+    font-weight: lighter;
+    font-size: 1.4em;
+    margin-bottom: 10px;
+}
