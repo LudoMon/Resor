@@ -60,30 +60,44 @@ h1, h2, h3, h4, h5, h6 {
 
 .search-bar input {
     margin: 0;
-    padding: 10px 20px;
+    padding: 10px 35px;
     border: none;
     border-right: 1px #ddd solid;
     font-size: 1em;
     outline: none;
-    width: 40%;
+    width: 100%;
 }
 
 .search-bar input[type=submit] {
     color: white;
     font-family: 'Lato';
     font-weight: bold;
-    background: #e74c3c;
+    background: rgba(231, 76, 60, 0.81);
     border-right: none;
-    width: 20%;
     cursor: pointer;
+    padding-top: 9px;
 }
 
 .search-bar input[type=submit]:hover {
-    background: #E7766A;
+    background: rgba(231, 107, 94, 0.81);
 }
 
-input.date-input {
-    width: 20%;
+.search-item {
+    width: 21.6%;
+    display: inline-block;
+    position: relative;
+    float: left;
+}
+
+.search-item.search-place {
+    width: 35%;
+}
+
+.search-item i {
+    position: absolute;
+    color: #888;
+    top: 12px;
+    left: 10px;
 }
 
 .infos {
@@ -130,9 +144,39 @@ input.date-input {
     position: fixed;
     bottom: 0;
     padding: 5px 10px;
-    background: #E7766A;
+    background: rgba(231, 107, 94, 0.81);
     color: white;
     width: 100%;
     font-family: 'Lato';
     font-size: 0.8em;
+}
+
+.top-actions {
+    position: absolute;
+    right: 0;
+    top: 0;
+    padding: 20px;
+}
+
+.top-actions button {
+    outline: none;
+    background: rgba(231, 76, 60, 0.81);
+    color: white;
+    border-radius: 2px;
+    padding: 10px 20px;
+    font-size: 14px;
+    font-weight: bold;
+    font-family: "Lato";
+    border: rgba(119, 46, 39, 0.81) solid;
+    border-width: 1px 1px 3px 1px;
+    cursor: pointer;
+    border-radius: 3px;
+}
+
+.top-actions button:hover {
+    background: rgba(231, 107, 94, 0.81);
+}
+
+.top-actions button:active {
+    border-width: 3px 1px 1px 1px;
 }
