@@ -49,6 +49,7 @@ ul {
     margin-top: 50px;
     border-bottom: 1px #aaa solid;
     margin: 50px 0 0 auto;
+    position: relative;
 }
 
 .map {
@@ -194,4 +195,37 @@ ul {
 
 .filter:hover {
     background: #424242;
+}
+
+.map-position {
+    position: absolute;
+    left: 25px;
+    font-family: Lato;
+    color: white;
+    background: rgba(0, 0, 0, 0.52);
+    bottom: 0px;
+    padding: 5px 10px;
+    border-radius: 5px 5px 0 0;
+    font-weight: lighter;
+    cursor: pointer;
+    margin-bottom: -40px;
+    transition: 0.2s linear;
+}
+
+.map-position:hover {
+    background: rgba(0, 0, 0, 0.7);
+    margin-bottom: 0;
+}
+
+.map-position-place {
+    margin-left: 5px;
+}
+
+.change-position {
+    width: 70%;
+    margin: auto;
+    text-align: center;
+    font-size: 0.7em;
+    padding: 10px 0 5px 0;
+    font-weight: normal;
 }
