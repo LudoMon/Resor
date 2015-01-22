@@ -5,6 +5,7 @@ namespace Resor\Bundle\CoreBundle\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
+use Symfony\Component\HttpFoundation\Request;
 
 class SearchController extends Controller
 {
@@ -21,9 +22,10 @@ class SearchController extends Controller
      * @Route("/results", name="results")
      * @Template()
      */
-    public function resultsAction()
+    public function resultsAction(Request $request)
     {
-        return array();
+        $place = $request->query->get('place');
+        return array("place" => $place);
     }
 
 }
