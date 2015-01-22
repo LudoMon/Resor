@@ -53,7 +53,7 @@ ul {
     width: 20%;
     background: #EDEDED;
     float: left;
-    padding: 20px;
+    padding: 10px;
     border-radius: 5px;
     border: 1px #CFCFCF solid;
     border-width: 1px 1px 3px 1px;
@@ -78,8 +78,81 @@ ul {
     color: #333;
     font-weight: lighter;
     margin: 20px 0;
+    display: table;
+}
+
+.result > * {
+    display: table-cell;
+    vertical-align: top;
 }
 
 .result:first-child {
     margin-top: 0;
+}
+
+.result-photo-wrapper {
+    width: 25%;
+}
+
+.result-photo-wrapper img {
+    max-width: 100%;
+}
+
+.result-infos {
+    padding: 0 0 0 10px;
+    width: 58%;
+}
+
+.result-title {
+    margin-bottom: 10px;
+    font-size: 1.9em;
+}
+
+.result-description {
+    font-size: 0.8em;
+    text-indent: 2em;
+    color: #555;
+}
+
+.result-submit {
+    text-align: center;
+    position: relative;
+}
+
+.result-price {
+    text-align: right;
+    font-size: 0.6em;
+    position: relative;
+}
+
+.result-amount {
+    font-weight: bold;
+    font-size: 5em;
+    vertical-align: middle;
+}
+
+.result-submit-button {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    outline: none;
+    background: rgba(231, 76, 60, 0.81);
+    color: white;
+    border-radius: 2px;
+    padding: 10px 20px;
+    font-size: 14px;
+    font-weight: bold;
+    font-family: "Lato";
+    border: rgba(119, 46, 39, 0.81) solid;
+    border-width: 1px 1px 3px 1px;
+    cursor: pointer;
+    border-radius: 3px;
+}
+
+.result-submit-button:hover {
+    background: rgba(231, 107, 94, 0.81);
+}
+
+.result-submit-button:active {
+    border-width: 3px 1px 1px 1px;
 }
