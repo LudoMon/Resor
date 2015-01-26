@@ -24,7 +24,9 @@
             return invalidInput;
         }
 
-        placeInput.geocomplete();
+        placeInput.geocomplete({
+            details: '.search-place'
+        });
 
         submitButton.on('click', function (evt) {
             var invalidInput;

@@ -235,3 +235,7 @@ ul {
     padding: 10px 0 5px 0;
     font-weight: normal;
 }
+
+.map-container {
+    height: 330px;
+}

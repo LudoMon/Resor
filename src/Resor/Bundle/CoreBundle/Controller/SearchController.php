@@ -25,7 +25,13 @@ class SearchController extends Controller
     public function resultsAction(Request $request)
     {
         $place = $request->query->get('place');
-        return array("place" => $place);
+        $lat = $request->query->get('lat');
+        $lng = $request->query->get('lng');
+        return array(
+            "place" => $place,
+            "lat" => $lat,
+            "lng" => $lng
+        );
     }
 
 }

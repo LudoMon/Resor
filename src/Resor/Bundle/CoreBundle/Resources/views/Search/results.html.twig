@@ -8,10 +8,10 @@
 {% endblock %}
 
 {% block javascripts %}
-    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?libraries=places"></script>
+    <script type="text/javascript" src="//maps.google.com/maps/api/js?sensor=true"></script>
     {% javascripts
         '@ResorCoreBundle/Resources/public/js/vendor/jquery/dist/jquery.js'
-        '@ResorCoreBundle/Resources/public/js/vendor/ubilabs-geocomplete/jquery.geocomplete.js'
+        '@ResorCoreBundle/Resources/public/js/vendor/gmaps/gmaps.js'
         '@ResorCoreBundle/Resources/public/js/results.js'
     %}
     <script src="{{ asset_url }}"></script>
@@ -20,10 +20,12 @@
 
 {% block body %}
     <div class="map-wrapper">
-        <img src="http://maps.googleapis.com/maps/api/staticmap?center={{place}}&zoom=12&scale=2&size=1500x540&maptype=roadmap&format=png&visual_refresh=true" alt="Google Map of Albany, NY">
+        <div id="map" class="map-container"></div>
         <div class="map-position">
             <i class="fa fa-search"></i>
             <strong class="map-position-place">{{place}}</strong>
+            <input type="hidden" name="lat" class="js-lat" value="{{ lat }}">
+            <input type="hidden" name="lng" class="js-lng" value="{{ lng }}">
             <div class="change-position">Changer la position</div>
         </div>
     </div>
