@@ -213,7 +213,7 @@ ul {
     font-weight: lighter;
     cursor: pointer;
     margin-bottom: -30px;
-    width: 170px;
+    min-width: 170px;
     text-align: center;
     transition: 0.2s linear;
 }
