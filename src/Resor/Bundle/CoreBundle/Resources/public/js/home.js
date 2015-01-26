@@ -6,6 +6,7 @@
             toInput = $('.js-to-input'),
             inputs = [placeInput, fromInput, toInput],
             submitButton = $('.js-submit'),
+            form = $('.js-form'),
             datetimepickerOptions = {
                 lang: 'fr',
                 timepicker: false,
@@ -34,6 +35,7 @@
                 invalidInput.focus();
                 return false;
             }
+            form.submit();
             return true;
         })
 
