@@ -4,7 +4,24 @@
 
 {% block stylesheets %}
     <link rel="stylesheet" href="{{ asset('bundles/resorcore/css/home.css') }}">
+        {% stylesheets
+            '@ResorCoreBundle/Resources/public/js/vendor/datetimepicker/jquery.datetimepicker.css'
+        %}
+        <link rel="stylesheet" type="text/css" href="{{ asset_url }}">
+    {% endstylesheets %}
     <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+{% endblock %}
+
+{% block javascripts %}
+    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?libraries=places"></script>
+    {% javascripts
+        '@ResorCoreBundle/Resources/public/js/vendor/jquery/dist/jquery.js'
+        '@ResorCoreBundle/Resources/public/js/vendor/datetimepicker/jquery.datetimepicker.js'
+        '@ResorCoreBundle/Resources/public/js/vendor/ubilabs-geocomplete/jquery.geocomplete.js'
+        '@ResorCoreBundle/Resources/public/js/home.js'
+    %}
+    <script src="{{ asset_url }}"></script>
+    {% endjavascripts %}
 {% endblock %}
 
 {% block body %}
@@ -28,14 +45,14 @@
                 </div>
                 <div class="search-item search-date-start">
                     <i class="fa fa-calendar-o"></i>
-                    <input type="text" class="date-input" placeholder="du..." name="from">
+                    <input type="text" class="js-from-input date-input" placeholder="du..." name="from">
                 </div>
                 <div class="search-item search-date-end">
                     <i class="fa fa-calendar-o"></i>
-                    <input type="text" class="date-input" placeholder="au..." name="to">
+                    <input type="text" class="js-to-input date-input" placeholder="au..." name="to">
                 </div>
                 <div class="search-item">
-                    <input type="submit" value="Rechercher!">
+                    <input type="submit" class="js-submit" value="Rechercher!">
                 </div>
             </form>
         </div>

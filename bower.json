@@ -20,6 +20,7 @@
   ],
   "dependencies": {
     "jquery": "~2.1.3",
-    "ubilabs-geocomplete": "~1.6.4"
+    "ubilabs-geocomplete": "~1.6.4",
+    "datetimepicker": "~2.4.1"
   }
 }
