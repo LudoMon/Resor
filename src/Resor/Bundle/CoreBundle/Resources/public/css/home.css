@@ -180,3 +180,30 @@ h1, h2, h3, h4, h5, h6 {
 .top-actions button:active {
     border-width: 3px 1px 1px 1px;
 }
+
+@media screen and (max-width:800px) {
+
+    .hero-unit__title {
+        padding-top: 30px;
+        font-size: 3em;
+    }
+
+    .hero-unit__subtitle {
+        display: none;
+    }
+
+    .search-bar {
+        margin-bottom: 25px;
+    }
+
+    .search-item {
+        width: 100% !important;
+    }
+
+    .infos-argument {
+        width: 100%;
+        display: block;
+        border-right: none;
+        margin-bottom: 20px;
+    }
+}
