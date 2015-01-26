@@ -1,7 +1,8 @@
 (function ($, top) {
 
     $(function () {
-        // do stuff
+        var placeInput = $('.js-place-input');
+        placeInput.geocomplete();
     });
 
 }(jQuery, window));
