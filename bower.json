@@ -1,0 +1,24 @@
+{
+  "name": "Resor",
+  "version": "0.0.1",
+  "homepage": "https://github.com/LudoZeGeek/Resor",
+  "authors": [
+    "Arthur Himmel <himmel.arthur@gmail.com>"
+  ],
+  "description": "Plateforme de réservation de voyages",
+  "keywords": [
+    "resor"
+  ],
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jquery": "~2.1.3"
+  }
+}
