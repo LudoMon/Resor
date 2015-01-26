@@ -212,7 +212,9 @@ ul {
     border-radius: 5px 5px 0 0;
     font-weight: lighter;
     cursor: pointer;
-    margin-bottom: -40px;
+    margin-bottom: -30px;
+    width: 170px;
+    text-align: center;
     transition: 0.2s linear;
 }
 
