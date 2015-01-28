@@ -7,12 +7,19 @@
     <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
 {% endblock %}
 
-{% block javascripts %}
+{% block headjs %}
     <script type="text/javascript" src="//maps.google.com/maps/api/js?sensor=true"></script>
     {% javascripts
+        '@ResorCoreBundle/Resources/public/js/vendor/angular/angular.js'
         '@ResorCoreBundle/Resources/public/js/vendor/jquery/dist/jquery.js'
         '@ResorCoreBundle/Resources/public/js/vendor/gmaps/gmaps.js'
-        '@ResorCoreBundle/Resources/public/js/vendor/angular/angular.js'
+    %}
+    <script src="{{ asset_url }}"></script>
+    {% endjavascripts %}
+{% endblock %}
+
+{% block javascripts %}
+    {% javascripts
         '@ResorCoreBundle/Resources/public/js/results.js'
     %}
     <script src="{{ asset_url }}"></script>
@@ -20,155 +27,74 @@
 {% endblock %}
 
 {% block body %}
-    <div class="map-wrapper">
-        <div id="map" class="map-container"></div>
-        <div class="map-position">
-            <i class="fa fa-search"></i>
-            <strong class="map-position-place">{{place}}</strong>
-            <input type="hidden" name="lat" class="js-lat" value="{{ lat }}">
-            <input type="hidden" name="lng" class="js-lng" value="{{ lng }}">
-            <div class="change-position">Changer la position</div>
-        </div>
-    </div>
-    <div class="top-bar">
-        <h3 class="resor-title">Resor</h3>
-    </div>
-    <div class="content">
-        <div class="filters-bar">
-            <h4 class="result-number">6 résultats</h4>
-            <div class="filters">
-                <div class="filter">
-                    <input type="checkbox" id="pool_checkbox">
-                    <label for="pool_checkbox">Pool</label>
-                </div>
-
-                <div class="filter">
-                    <input type="checkbox" id ="spa_checkbox">
-                    <label for="spa_checkbox">Spa</label>
-                </div>
-
-                <div class="filter">
-                    <input type="checkbox" id="jacuzzi_checkbox">
-                    <label for="jacuzzi_checkbox">Jacuzzi</label>
-                </div>
-
-                <div class="filter">
-                    <input type="checkbox" id="animals_checkbox">
-                    <label for="animals_checkbox">Animals</label>
-                </div>
-
-                <div class="filter">
-                    <input type="checkbox" id="children_checkbox">
-                    <label for="children_checkbox">Children</label>
-                </div>
-
+    <div class="result-page" ng-app="resultsApp">
+        <div class="map-wrapper">
+            <div id="map" class="map-container"></div>
+            <div class="map-position">
+                <i class="fa fa-search"></i>
+                <strong class="map-position-place">{{place}}</strong>
+                <input type="hidden" name="lat" class="js-lat" value="{{ lat }}">
+                <input type="hidden" name="lng" class="js-lng" value="{{ lng }}">
+                <div class="change-position">Changer la position</div>
             </div>
         </div>
-        <div class="results-body">
-            <ul class="results">
-                <li class="result">
-                    <div class="result-photo-wrapper">
-                        <img src="{{ asset('bundles/resorcore/images/placeholders/camping1.jpg') }}">
+        <div class="top-bar">
+            <h3 class="resor-title">Resor</h3>
+        </div>
+        <div class="content" ng-controller="ResultCtrl">
+            <div class="filters-bar">
+                <h4 class="result-number">6 résultats</h4>
+                <div class="filters">
+                    <div class="filter">
+                        <input type="checkbox" id="pool_checkbox">
+                        <label for="pool_checkbox">Pool</label>
                     </div>
-                    <div class="result-infos">
-                        <h4 class="result-title">Camping des flots bleus</h4>
-                        <p class="result-description">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce in dignissim ex. Ut efficitur libero sed ipsum laoreet, a laoreet nunc consequat. Vestibulum mollis quis dui non commodo. Donec nec neque id nulla volutpat maximus. Nulla facilisi. Nullam ultricies lacinia diam, nec consectetur massa congue ac. Phasellus scelerisque at enim sed rhoncus. Ut ut ex leo. Nunc eu libero leo. Phasellus placerat luctus interdum. Duis efficitur laoreet dolor, malesuada rutrum neque congue sit amet. Aliquam semper arcu sapien. Suspendisse diam neque, ullamcorper sed pulvinar nec, tincidunt non mauris. Nulla at sagittis risus. Nullam aliquam, lectus in fermentum blandit, eros risus pellentesque purus, et interdum dolor magna eu arcu.</p>
+
+                    <div class="filter">
+                        <input type="checkbox" id ="spa_checkbox">
+                        <label for="spa_checkbox">Spa</label>
                     </div>
-                    <div class="result-submit">
-                        <div class="result-price">
-                            <span class="result-daily-price">
-                                <span class="result-amount">34€</span>/jour
-                            </span>
+
+                    <div class="filter">
+                        <input type="checkbox" id="jacuzzi_checkbox">
+                        <label for="jacuzzi_checkbox">Jacuzzi</label>
+                    </div>
+
+                    <div class="filter">
+                        <input type="checkbox" id="animals_checkbox">
+                        <label for="animals_checkbox">Animals</label>
+                    </div>
+
+                    <div class="filter">
+                        <input type="checkbox" id="children_checkbox">
+                        <label for="children_checkbox">Children</label>
+                    </div>
+
+                </div>
+            </div>
+            <div class="results-body">
+                <ul class="results" ng-repeat="result in results">
+                    <li class="result">
+                        <div class="result-photo-wrapper">
+                            <img src="{{ asset('bundles/resorcore/images/placeholders/camping1.jpg') }}">
                         </div>
-                        <button class="result-submit-button">Reserver</button>
-                    </div>
-                </li>
-                <li class="result">
-                    <div class="result-photo-wrapper">
-                        <img src="{{ asset('bundles/resorcore/images/placeholders/camping2.jpeg') }}">
-                    </div>
-                    <div class="result-infos">
-                        <h4 class="result-title">Camping de l'océan</h4>
-                        <p class="result-description">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce in dignissim ex. Ut efficitur libero sed ipsum laoreet, a laoreet nunc consequat. Vestibulum mollis quis dui non commodo. Donec nec neque id nulla volutpat maximus. Nulla facilisi. Nullam ultricies lacinia diam, nec consectetur massa congue ac. Phasellus scelerisque at enim sed rhoncus. Ut ut ex leo. Nunc eu libero leo. Phasellus placerat luctus interdum. Duis efficitur laoreet dolor, malesuada rutrum neque congue sit amet. Aliquam semper arcu sapien. Suspendisse diam neque, ullamcorper sed pulvinar nec, tincidunt non mauris. Nulla at sagittis risus. Nullam aliquam, lectus in fermentum blandit, eros risus pellentesque purus, et interdum dolor magna eu arcu.</p>
-                    </div>
-                    <div class="result-submit">
-                        <div class="result-price">
-                            <span class="result-daily-price">
-                                <span class="result-amount">34€</span>/jour
-                            </span>
+                        {% verbatim %}
+                        <div class="result-infos">
+                            <h4 class="result-title">{{ result.title }}</h4>
+                            <p class="result-description">{{ result.description }}</p>
                         </div>
-                        <button class="result-submit-button">Reserver</button>
-                    </div>
-                </li>
-                <li class="result">
-                    <div class="result-photo-wrapper">
-                        <img src="{{ asset('bundles/resorcore/images/placeholders/camping3.jpg') }}">
-                    </div>
-                    <div class="result-infos">
-                        <h4 class="result-title">Camping de la plage</h4>
-                        <p class="result-description">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce in dignissim ex. Ut efficitur libero sed ipsum laoreet, a laoreet nunc consequat. Vestibulum mollis quis dui non commodo. Donec nec neque id nulla volutpat maximus. Nulla facilisi. Nullam ultricies lacinia diam, nec consectetur massa congue ac. Phasellus scelerisque at enim sed rhoncus. Ut ut ex leo. Nunc eu libero leo. Phasellus placerat luctus interdum. Duis efficitur laoreet dolor, malesuada rutrum neque congue sit amet. Aliquam semper arcu sapien. Suspendisse diam neque, ullamcorper sed pulvinar nec, tincidunt non mauris. Nulla at sagittis risus. Nullam aliquam, lectus in fermentum blandit, eros risus pellentesque purus, et interdum dolor magna eu arcu.</p>
-                    </div>
-                    <div class="result-submit">
-                        <div class="result-price">
-                            <span class="result-daily-price">
-                                <span class="result-amount">34€</span>/jour
-                            </span>
+                        <div class="result-submit">
+                            <div class="result-price">
+                                <span class="result-daily-price">
+                                    <span class="result-amount">{{ result.price }}€</span>/jour
+                                </span>
+                            </div>
+                            <button class="result-submit-button">Reserver</button>
                         </div>
-                        <button class="result-submit-button">Reserver</button>
-                    </div>
-                </li>
-                <li class="result">
-                    <div class="result-photo-wrapper">
-                        <img src="{{ asset('bundles/resorcore/images/placeholders/camping4.jpg') }}">
-                    </div>
-                    <div class="result-infos">
-                        <h4 class="result-title">Camping du soleil</h4>
-                        <p class="result-description">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce in dignissim ex. Ut efficitur libero sed ipsum laoreet, a laoreet nunc consequat. Vestibulum mollis quis dui non commodo. Donec nec neque id nulla volutpat maximus. Nulla facilisi. Nullam ultricies lacinia diam, nec consectetur massa congue ac. Phasellus scelerisque at enim sed rhoncus. Ut ut ex leo. Nunc eu libero leo. Phasellus placerat luctus interdum. Duis efficitur laoreet dolor, malesuada rutrum neque congue sit amet. Aliquam semper arcu sapien. Suspendisse diam neque, ullamcorper sed pulvinar nec, tincidunt non mauris. Nulla at sagittis risus. Nullam aliquam, lectus in fermentum blandit, eros risus pellentesque purus, et interdum dolor magna eu arcu.</p>
-                    </div>
-                    <div class="result-submit">
-                        <div class="result-price">
-                            <span class="result-daily-price">
-                                <span class="result-amount">34€</span>/jour
-                            </span>
-                        </div>
-                        <button class="result-submit-button">Reserver</button>
-                    </div>
-                </li>
-                <li class="result">
-                    <div class="result-photo-wrapper">
-                        <img src="{{ asset('bundles/resorcore/images/placeholders/camping5.jpg') }}">
-                    </div>
-                    <div class="result-infos">
-                        <h4 class="result-title">Camping Serge</h4>
-                        <p class="result-description">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce in dignissim ex. Ut efficitur libero sed ipsum laoreet, a laoreet nunc consequat. Vestibulum mollis quis dui non commodo. Donec nec neque id nulla volutpat maximus. Nulla facilisi. Nullam ultricies lacinia diam, nec consectetur massa congue ac. Phasellus scelerisque at enim sed rhoncus. Ut ut ex leo. Nunc eu libero leo. Phasellus placerat luctus interdum. Duis efficitur laoreet dolor, malesuada rutrum neque congue sit amet. Aliquam semper arcu sapien. Suspendisse diam neque, ullamcorper sed pulvinar nec, tincidunt non mauris. Nulla at sagittis risus. Nullam aliquam, lectus in fermentum blandit, eros risus pellentesque purus, et interdum dolor magna eu arcu.</p>
-                    </div>
-                    <div class="result-submit">
-                        <div class="result-price">
-                            <span class="result-daily-price">
-                                <span class="result-amount">34€</span>/jour
-                            </span>
-                        </div>
-                        <button class="result-submit-button">Reserver</button>
-                    </div>
-                </li>
-                <li class="result">
-                    <div class="result-photo-wrapper">
-                        <img src="{{ asset('bundles/resorcore/images/placeholders/camping6.jpg') }}">
-                    </div>
-                    <div class="result-infos">
-                        <h4 class="result-title">Camping des vacances</h4>
-                        <p class="result-description">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce in dignissim ex. Ut efficitur libero sed ipsum laoreet, a laoreet nunc consequat. Vestibulum mollis quis dui non commodo. Donec nec neque id nulla volutpat maximus. Nulla facilisi. Nullam ultricies lacinia diam, nec consectetur massa congue ac. Phasellus scelerisque at enim sed rhoncus. Ut ut ex leo. Nunc eu libero leo. Phasellus placerat luctus interdum. Duis efficitur laoreet dolor, malesuada rutrum neque congue sit amet. Aliquam semper arcu sapien. Suspendisse diam neque, ullamcorper sed pulvinar nec, tincidunt non mauris. Nulla at sagittis risus. Nullam aliquam, lectus in fermentum blandit, eros risus pellentesque purus, et interdum dolor magna eu arcu.</p>
-                    </div>
-                    <div class="result-submit">
-                        <div class="result-price">
-                            <span class="result-daily-price">
-                                <span class="result-amount">34€</span>/jour
-                            </span>
-                        </div>
-                        <button class="result-submit-button">Réserver</button>
-                    </div>
-                </li>
-            </ul>
+                        {% endverbatim %}
+                    </li>
+                </ul>
+            </div>
         </div>
     </div>
 {% endblock %}
