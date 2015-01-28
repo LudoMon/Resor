@@ -177,24 +177,35 @@ ul {
 }
 
 .filters {
-    border-top: 1px #333 solid;
     margin-top: 54px;
+    padding: 0 20px;
 }
 
 .filter {
     font-family: Lato;
     font-weight: normal;
     color: #eee;
-    padding: 0 20px;
-    border-bottom: 1px #333 solid;
     cursor: pointer;
+    width: 30%;
+    display: inline-block;
+    text-align: center;
+    margin-bottom: 20px;
+    position: relative;
+    border: 1px #454545 solid;
+    margin: 10px 1%;
+    border-radius: 3px;
+}
+
+.filter input {
+    top: 15px;
+    left: 39%;
+    position: absolute;
 }
 
 .filter label {
-    display: inline-block;
-    width: 90%;
-    padding: 10px;
+    display: block;
     cursor: pointer;
+    padding: 40px 0 15px 0;
 }
 
 .filter:hover {
