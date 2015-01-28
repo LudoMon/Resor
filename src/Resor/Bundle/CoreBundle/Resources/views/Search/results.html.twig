@@ -44,36 +44,17 @@
         <div class="content" ng-controller="ResultCtrl">
             <div class="filters-bar">
                 <h4 class="result-number">6 résultats</h4>
-                <div class="filters">
-                    <div class="filter">
-                        <input type="checkbox" id="pool_checkbox">
-                        <label for="pool_checkbox">Pool</label>
-                    </div>
-
-                    <div class="filter">
-                        <input type="checkbox" id ="spa_checkbox">
-                        <label for="spa_checkbox">Spa</label>
-                    </div>
-
-                    <div class="filter">
-                        <input type="checkbox" id="jacuzzi_checkbox">
-                        <label for="jacuzzi_checkbox">Jacuzzi</label>
-                    </div>
-
-                    <div class="filter">
-                        <input type="checkbox" id="animals_checkbox">
-                        <label for="animals_checkbox">Animals</label>
-                    </div>
-
-                    <div class="filter">
-                        <input type="checkbox" id="children_checkbox">
-                        <label for="children_checkbox">Children</label>
-                    </div>
-
-                </div>
+                <ul class="filters">
+                    {% verbatim %}
+                    <li class="filter" ng-repeat="filter in filters">
+                        <input type="checkbox" id="{{filter.name}}_checkbox" ng-model="filter.on">
+                        <label for="{{filter.name}}_checkbox">{{filter.name | capitalize }}</label>
+                    </li>
+                    {% endverbatim %}
+                </ul>
             </div>
             <div class="results-body">
-                <ul class="results" ng-repeat="result in results">
+                <ul class="results" ng-repeat="result in filtered=(results| filter:filterByFeatures)">
                     <li class="result">
                         <div class="result-photo-wrapper">
                             <img src="{{ asset('bundles/resorcore/images/placeholders/camping1.jpg') }}">
