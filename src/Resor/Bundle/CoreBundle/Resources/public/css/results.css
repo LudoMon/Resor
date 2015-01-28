@@ -130,6 +130,10 @@ ul {
     position: relative;
 }
 
+.result-daily-price {
+    font-family: "Lato", "Helvetica", Arial, sans-serif;
+}
+
 .result-price {
     text-align: right;
     font-size: 0.6em;
