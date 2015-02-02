@@ -67,28 +67,16 @@
             }
         ];
 
-        $scope.filters = [
-            {
-                name: "pool",
-                on: true
-            },
-            {
-                name: "spa",
+        $scope.filters = _.map(_.reduce(_.map($scope.results, function (result) {
+            return result.features;
+        }), function (memo, curr) {
+            return _.union(memo, curr);
+        }, []), function (filter) {
+            return {
+                name: filter,
                 on: false
-            },
-            {
-                name: "jacuzzi",
-                on: false
-            },
-            {
-                name: "animals",
-                on: false
-            },
-            {
-                name: "children",
-                on: false
-            }
-        ];
+            };
+        });
 
         $scope.filterByFeatures = function (result) {
             return $scope.filters.reduce(function(memo, filter){
