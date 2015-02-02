@@ -18,7 +18,8 @@
 }(jQuery, window, GMaps, angular));
 
 (function () {
-    var app = angular.module("resultsApp", ['ngResource']);
+
+    var app = angular.module("resultsApp", ['ngRoute', 'ngResource']);
 
     app.filter("capitalize", function () {
         return function (s) {
@@ -34,9 +35,18 @@
         });
     });
 
-    app.controller('ResultCtrl', ['$scope', 'Result', function ($scope, Result) {
+    app.config(function ($routeProvider) {
+        $routeProvider.when('/', {
+            templateUrl: '/bundles/resorcore/js/pages/results.html',
+            controller: 'ResultsCtrl'
+        });
+    });
 
-        Result.query(function (data) {
+    app.controller('ResultsCtrl', ['$scope', 'Result', function ($scope, Result) {
+
+        Result.query({
+            a: 2
+        }, function (data) {
             $scope.results = data.results;
             $scope.filters = _.map(_.reduce(_.map($scope.results, function (result) {
                 return result.features;
@@ -58,4 +68,5 @@
         };
 
     }]);
+
 }());
