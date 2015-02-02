@@ -26,15 +26,16 @@ ul {
 
 .top-bar {
     position: fixed;
-    padding: 0 20px;
     top: 0;
-    background: rgba(231, 76, 60, 0.81);
     width: 100%;
     color: white;
     border-bottom: 2px rgba(184, 63, 50, 0.81) solid;
     height: 50px;
-    display: table;
     z-index: 100;
+    background: rgba(237, 239, 237, 0.7);
+    display: table;
+    line-height: 47px;
+    padding: 0 20px;
 }
 
 .top-bar > * {
@@ -42,13 +43,20 @@ ul {
     vertical-align: middle;
 }
 
+.resor-title {
+    font-family: Lato;
+    font-weight: bold;
+    display: table-cell;
+    width: 100px;
+    color: rgba(231, 76, 60, 0.81);
+}
+
 .map-wrapper {
     height: 270px;
     overflow: hidden;
     width: 80%;
-    margin-top: 50px;
     border-bottom: 1px #aaa solid;
-    margin: 50px 0 0 auto;
+    margin: 50px auto 0 auto;
     position: relative;
 }
 
@@ -65,31 +73,18 @@ ul {
     position: relative;
 }
 
-.filters-bar {
-    width: 20%;
-    position: fixed;
-    top: 50px;
-    background: rgb(40, 40, 40);
-    font-family: Merriweather, Helvetica, sans-serif;
-    color: white;
-    height: 100%;
-    font-weight: lighter;
-    box-shadow: inset -23px -20px 30px -20px black;
-}
-
 .results-body {
     width: 80%;
-    margin-left: 20%;
+    margin-left: 10%;
     display: inline-block;
 }
 
 .result {
-    padding: 15px;
-    font-family: Merriweather, Helvetica, sans-serif;
     color: #333;
     font-weight: lighter;
-    border-bottom: 1px #ddd solid;
+    border-top: 1px #ddd solid;
     display: table;
+    padding: 20px 0;
 }
 
 .result > * {
@@ -102,7 +97,7 @@ ul {
 }
 
 .result-photo-wrapper {
-    width: 25%;
+    width: 20%;
 }
 
 .result-photo-wrapper img {
@@ -110,7 +105,7 @@ ul {
 }
 
 .result-infos {
-    padding: 0 0 0 10px;
+    padding: 0 0 0 30px;
     width: 58%;
 }
 
@@ -120,9 +115,11 @@ ul {
 }
 
 .result-description {
-    font-size: 0.8em;
+    font-size: 1.0em;
+    line-height: 1.3em;
     text-indent: 2em;
     color: #555;
+    font-family: "Lato", "Helvetica", Arial, sans-serif;
 }
 
 .result-submit {
@@ -158,7 +155,7 @@ ul {
     font-size: 14px;
     font-weight: bold;
     font-family: "Lato";
-    border: rgba(119, 46, 39, 0.81) solid;
+    border: rgba(119, 46, 39, 0.5) solid;
     border-width: 1px 1px 3px 1px;
     cursor: pointer;
     border-radius: 3px;
@@ -178,42 +175,6 @@ ul {
     font-size: 1.4em;
     margin-bottom: 10px;
     padding-top: 20px;
-}
-
-.filters {
-    margin-top: 54px;
-    padding: 0 20px;
-}
-
-.filter {
-    font-family: Lato;
-    font-weight: normal;
-    color: #eee;
-    cursor: pointer;
-    width: 30%;
-    display: inline-block;
-    text-align: center;
-    margin-bottom: 20px;
-    position: relative;
-    border: 1px #454545 solid;
-    margin: 10px 1%;
-    border-radius: 3px;
-}
-
-.filter input {
-    top: 15px;
-    left: 39%;
-    position: absolute;
-}
-
-.filter label {
-    display: block;
-    cursor: pointer;
-    padding: 40px 0 15px 0;
-}
-
-.filter:hover {
-    background: #424242;
 }
 
 .map-position {
@@ -253,4 +214,42 @@ ul {
 
 .map-container {
     height: 330px;
+}
+
+.filters {
+    width: 80%;
+    margin: auto;
+    padding: 20px 0;
+    color: #888;
+    display: table;
+    font-family: 'Lato', 'Helvetica', sans-serif;
+}
+
+.primary-filters {
+    display: table-cell;
+}
+
+.secondary-filters {
+    display: table-cell;
+    text-align: right;
+}
+
+.filter {
+    display: inline-block;
+    font-family: Lato;
+}
+
+.filter strong {
+    color: #333;
+    cursor: pointer;
+}
+
+.filter strong:hover {
+    text-decoration: underline;
+}
+
+.filter i {
+    padding-left: 3px;
+    padding-right: 5px;
+    color: #555;
 }

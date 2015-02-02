@@ -30,34 +30,40 @@
     <div class="result-page" ng-app="resultsApp">
         <div class="map-wrapper">
             <div id="map" class="map-container"></div>
-            <div class="map-position">
-                <i class="fa fa-search"></i>
-                <strong class="map-position-place">{{place}}</strong>
-                <input type="hidden" name="lat" class="js-lat" value="{{ lat }}">
-                <input type="hidden" name="lng" class="js-lng" value="{{ lng }}">
-                <div class="change-position">Changer la position</div>
-            </div>
+            <input type="hidden" name="lat" class="js-lat" value="{{ lat }}">
+            <input type="hidden" name="lng" class="js-lng" value="{{ lng }}">
         </div>
         <div class="top-bar">
             <h3 class="resor-title">Resor</h3>
         </div>
-        <div class="content" ng-controller="ResultCtrl">
-            <div class="filters-bar">
-                <h4 class="result-number">6 résultats</h4>
-                <ul class="filters">
-                    {% verbatim %}
-                    <li class="filter" ng-repeat="filter in filters">
-                        <input type="checkbox" id="{{filter.name}}_checkbox" ng-model="filter.on">
-                        <label for="{{filter.name}}_checkbox">{{filter.name | capitalize }}</label>
+        <div class="filters-bar">
+            <ul class="filters">
+                <div class="primary-filters">
+                    <li class="filter-place filter">
+                        <strong>Lille <i class="fa fa-caret-down"></i></strong>
                     </li>
-                    {% endverbatim %}
-                </ul>
-            </div>
+                    <li class="filter-from filter">
+                        du <strong>12 janvier <i class="fa fa-caret-down"></i></strong>
+                    </li>
+                    <li class="filter-to filter">
+                        au <strong>18 janvier <i class="fa fa-caret-down"></i></strong>
+                    </li>
+                </div>
+                <div class="secondary-filters">
+                    <div class="filter">
+                        <strong>
+                            Filtres  <i class="fa fa-caret-down"></i>
+                        </strong>
+                    </div>
+                </div>
+            </ul>
+        </div>
+        <div class="content" ng-controller="ResultCtrl">
             <div class="results-body">
                 <ul class="results" ng-repeat="result in filtered=(results| filter:filterByFeatures)">
                     <li class="result">
                         <div class="result-photo-wrapper">
-                            <img src="{{ asset('bundles/resorcore/images/placeholders/camping1.jpg') }}">
+                            <img src="{{ asset('bundles/resorcore/images/placeholders/camping2.jpg') }}">
                         </div>
                         {% verbatim %}
                         <div class="result-infos">
