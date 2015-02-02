@@ -18,7 +18,7 @@
 }(jQuery, window, GMaps, angular));
 
 (function () {
-    var app = angular.module("resultsApp", []);
+    var app = angular.module("resultsApp", ['ngResource']);
 
     app.filter("capitalize", function () {
         return function (s) {
@@ -26,57 +26,30 @@
         };
     });
 
-    var lorem = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce in dignissim ex. Ut efficitur libero sed ipsum laoreet, a laoreet nunc consequat. Vestibulum mollis quis dui non commodo. Donec nec neque id nulla volutpat maximus. Nulla facilisi. Nullam ultricies lacinia diam, nec consectetur massa congue ac. Phasellus scelerisque at enim sed rhoncus. Ut ut ex leo. Nunc eu libero leo. Phasellus placerat luctus interdum. Duis efficitur laoreet dolor, malesuada rutrum neque congue sit amet. Aliquam semper arcu sapien. ";
-
-    app.controller('ResultCtrl', function ($scope) {
-        $scope.results = [
-            {
-                title: "Camping des flots bleus",
-                description: lorem,
-                price: "34",
-                features: ["pool", "animals", "spa", "jacuzzi"]
-
-            },
-            {
-                title: "Camping de l'océan",
-                description: lorem,
-                price: "27",
-                features: ["spa", "jacuzzi"]
-
-            },
-            {
-                title: "Camping de la plage",
-                description: lorem,
-                price: "39",
-                features: ["pool", "spa", "jacuzzi"]
-
-            },
-            {
-                title: "Camping du soleil",
-                description: lorem,
-                price: "42",
-                features: ["pool", "animals"]
-
-            },
-            {
-                title: "Camping Serge",
-                description: lorem,
-                price: "19",
-                features: ["spa", "jacuzzi"]
-
+    app.factory('Result', function ($resource) {
+        return $resource("/api/results/:id", {}, {
+            query: {
+                method: 'GET'
             }
-        ];
-
-        $scope.filters = _.map(_.reduce(_.map($scope.results, function (result) {
-            return result.features;
-        }), function (memo, curr) {
-            return _.union(memo, curr);
-        }, []), function (filter) {
-            return {
-                name: filter,
-                on: false
-            };
         });
+    });
+
+    app.controller('ResultCtrl', ['$scope', 'Result', function ($scope, Result) {
+
+        Result.query(function (data) {
+            $scope.results = data.results;
+            $scope.filters = _.map(_.reduce(_.map($scope.results, function (result) {
+                return result.features;
+            }), function (memo, curr) {
+                return _.union(memo, curr);
+            }, []), function (filter) {
+                return {
+                    name: filter,
+                    on: false
+                };
+            });
+        });
+
 
         $scope.filterByFeatures = function (result) {
             return $scope.filters.reduce(function(memo, filter){
@@ -84,5 +57,5 @@
             }, true);
         };
 
-    });
+    }]);
 }());
