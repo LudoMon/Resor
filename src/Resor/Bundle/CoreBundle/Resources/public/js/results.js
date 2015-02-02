@@ -1,25 +1,6 @@
-(function ($, top, GMaps, angular) {
-
-    $(function () {
-        var changePosition = $('.js-change-position'),
-            positionInput = $('.js-position-place'),
-            latInput = $('.js-lat'),
-            lngInput = $('.js-lng'),
-            map;
-
-        map = new GMaps({
-            div: '#map',
-            lat: +(latInput.val()),
-            lng: +(lngInput.val())
-        });
-
-    });
-
-}(jQuery, window, GMaps, angular));
-
 (function () {
 
-    var app = angular.module("resultsApp", ['ngRoute', 'ngResource']);
+    var app = angular.module("resultsApp", ['ngRoute', 'ngResource', 'uiGmapgoogle-maps']);
 
     app.filter("capitalize", function () {
         return function (s) {
@@ -44,6 +25,9 @@
 
     app.controller('ResultsCtrl', ['$scope', 'Result', function ($scope, Result) {
 
+        $scope.results = [];
+        $scope.filters = [];
+
         Result.query({
             a: 2
         }, function (data) {
@@ -60,6 +44,13 @@
             });
         });
 
+        $scope.map = {
+            center: {
+                latitude: 45,
+                longitude: -73
+            },
+            zoom: 8
+        };
 
         $scope.filterByFeatures = function (result) {
             return $scope.filters.reduce(function(memo, filter){

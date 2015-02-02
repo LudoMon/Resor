@@ -10,12 +10,12 @@
 {% block headjs %}
     <script type="text/javascript" src="//maps.google.com/maps/api/js?sensor=true"></script>
     {% javascripts
+        '@ResorCoreBundle/Resources/public/js/vendor/lodash/lodash.js'
         '@ResorCoreBundle/Resources/public/js/vendor/angular/angular.js'
         '@ResorCoreBundle/Resources/public/js/vendor/angular-route/angular-route.js'
         '@ResorCoreBundle/Resources/public/js/vendor/angular-resource/angular-resource.js'
+        '@ResorCoreBundle/Resources/public/js/vendor/angular-google-maps/angular-google-maps.js'
         '@ResorCoreBundle/Resources/public/js/vendor/jquery/dist/jquery.js'
-        '@ResorCoreBundle/Resources/public/js/vendor/gmaps/gmaps.js'
-        '@ResorCoreBundle/Resources/public/js/vendor/lodash/lodash.js'
     %}
     <script src="{{ asset_url }}"></script>
     {% endjavascripts %}
