@@ -20,11 +20,11 @@
                     </li>
                 </div>
                 <div class="filter filters-expand">
-                    <strong>
+                    <strong ng-click="displayFilters = !displayFilters">
                         Filtres  <i class="fa fa-caret-down"></i>
                     </strong>
                 </div>
-                <div class="filters-to-expand">
+                <div class="filters-to-expand" ng-show="displayFilters">
                     <ul class="secondary-filters">
                         <li class="secondary-filter" ng-repeat="filter in filters">
                             <input type="checkbox" id="{{filter.name}}_checkbox" ng-model="filter.on">

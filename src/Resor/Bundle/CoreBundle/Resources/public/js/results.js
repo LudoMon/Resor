@@ -70,6 +70,8 @@
             });
         });
 
+        $scope.displayFilters = false;
+
         $scope.filterByFeatures = function (result) {
             return $scope.filters.reduce(function(memo, filter){
                 return memo && !(filter.on && result.features.indexOf(filter.name) < 0)
