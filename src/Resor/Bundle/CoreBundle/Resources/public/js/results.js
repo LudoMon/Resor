@@ -23,13 +23,39 @@
         });
     });
 
-    app.controller('ResultsCtrl', ['$scope', 'Result', function ($scope, Result) {
+    app.controller('ResultsCtrl', ['$scope', '$location', 'Result', function ($scope, $location, Result) {
 
         $scope.results = [];
         $scope.filters = [];
 
+        var urlParams = $location.search();
+        var lat = urlParams["lat"] || null;
+        var lng = urlParams["lng"] || null;
+        var from = urlParams["from"] || null;
+        var to = urlParams["to"] || null;
+        var place = urlParams["place"] || "";
+
+        $scope.place = {
+            map:{
+                center: {
+                    latitude: +(lat),
+                    longitude: +(lng)
+                },
+                zoom: 9
+            },
+            name: place
+        };
+
+        $scope.date = {
+            from: from,
+            to: to
+        };
+
         Result.query({
-            a: 2
+            from: from,
+            to: to,
+            lat: lat,
+            lng: lng
         }, function (data) {
             $scope.results = data.results;
             $scope.filters = _.map(_.reduce(_.map($scope.results, function (result) {
@@ -43,14 +69,6 @@
                 };
             });
         });
-
-        $scope.map = {
-            center: {
-                latitude: 45,
-                longitude: -73
-            },
-            zoom: 8
-        };
 
         $scope.filterByFeatures = function (result) {
             return $scope.filters.reduce(function(memo, filter){

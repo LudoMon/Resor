@@ -2,6 +2,8 @@
 
     $(function () {
         var placeInput = $('.js-place-input'),
+            latInput = $('.js-lat-input'),
+            lngInput = $('.js-lng-input'),
             fromInput = $('.js-from-input'),
             toInput = $('.js-to-input'),
             inputs = [placeInput, fromInput, toInput],
@@ -37,7 +39,13 @@
                 invalidInput.focus();
                 return false;
             }
-            form.submit();
+            var place = placeInput.val();
+            var lat = latInput.val();
+            var lng = lngInput.val();
+            var from = fromInput.val();
+            var to = toInput.val();
+            var url = "/results#/?place=" + place + "&lat=" + lat + "&lng=" + lng + "&from=" + from + "&to=" + to;
+            location.href = url;
             return true;
         })
 
