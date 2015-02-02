@@ -229,9 +229,27 @@ ul {
     display: table-cell;
 }
 
-.secondary-filters {
-    display: table-cell;
+.filters-expand {
+    display: table-cell !important;
     text-align: right;
+}
+
+.filters-to-expand {
+    display: table-row;
+    position: relative;
+}
+
+.secondary-filters {
+    padding-top: 20px;
+}
+
+.secondary-filter {
+    display: inline-table;
+    margin-right: 10px;
+    color: #333;
+    font-weight: bold;
+    border-right: 1px #ddd solid;
+    padding-right: 10px;
 }
 
 .filter {

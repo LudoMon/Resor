@@ -36,32 +36,40 @@
         <div class="top-bar">
             <h3 class="resor-title">Resor</h3>
         </div>
-        <div class="filters-bar">
-            <ul class="filters">
-                <div class="primary-filters">
-                    <li class="filter-place filter">
-                        <strong>Lille <i class="fa fa-caret-down"></i></strong>
-                    </li>
-                    <li class="filter-from filter">
-                        du <strong>12 janvier <i class="fa fa-caret-down"></i></strong>
-                    </li>
-                    <li class="filter-to filter">
-                        au <strong>18 janvier <i class="fa fa-caret-down"></i></strong>
-                    </li>
-                </div>
-                <div class="secondary-filters">
-                    <div class="filter">
+        <div class="content" ng-controller="ResultCtrl">
+            <div class="filters-bar">
+                <ul class="filters">
+                    <div class="primary-filters">
+                        <li class="filter-place filter">
+                            <strong>Lille <i class="fa fa-pencil"></i></strong>
+                        </li>
+                        <li class="filter-from filter">
+                            du <strong>12 janvier <i class="fa fa-pencil"></i></strong>
+                        </li>
+                        <li class="filter-to filter">
+                            au <strong>18 janvier <i class="fa fa-pencil"></i></strong>
+                        </li>
+                    </div>
+                    <div class="filter filters-expand">
                         <strong>
                             Filtres  <i class="fa fa-caret-down"></i>
                         </strong>
                     </div>
-                </div>
-            </ul>
-        </div>
-        <div class="content" ng-controller="ResultCtrl">
+                    <div class="filters-to-expand">
+                        <ul class="secondary-filters">
+                            <li class="secondary-filter" ng-repeat="filter in filters">
+                                {% verbatim %}
+                                    <input type="checkbox" id="{{filter.name}}_checkbox" ng-model="filter.on">
+                                    <label for="{{filter.name}}_checkbox">{{ filter.name }}</label>
+                                {% endverbatim %}
+                            </li>
+                        </ul>
+                    </div>
+                </ul>
+            </div>
             <div class="results-body">
-                <ul class="results" ng-repeat="result in filtered=(results| filter:filterByFeatures)">
-                    <li class="result">
+                <ul class="results">
+                    <li class="result" ng-repeat="result in filtered=(results| filter:filterByFeatures)">
                         <div class="result-photo-wrapper">
                             <img src="{{ asset('bundles/resorcore/images/placeholders/camping2.jpg') }}">
                         </div>
