@@ -1,6 +1,8 @@
 (function () {
 
-    var app = angular.module("resultsApp", ['ngRoute', 'ngResource', 'uiGmapgoogle-maps', 'ngAutocomplete']);
+    'use strict';
+
+    var app = angular.module("resultsApp", ['ngRoute', 'ngResource', 'uiGmapgoogle-maps', 'ngAutocomplete', 'angularPikaday']);
 
     app.filter("capitalize", function () {
         return function (s) {
@@ -89,6 +91,31 @@
         $scope.placeInputOptions = {
             callback: $scope.togglePlaceInput
         };
+
+        $scope.toggleFromInput = function () {
+            $scope.displayFromInput = !$scope.displayFromInput;
+        }
+
+        $scope.fromPicked = function () {
+            $scope.toggleFromInput();
+        }
+
+        $scope.toggleToInput = function () {
+            $scope.displayToInput = !$scope.displayToInput;
+        }
+
+        $scope.toPicked = function () {
+            $scope.toggleToInput();
+        }
+
+        $scope.validateToDate = function () {
+            console.log('a');
+            console.log(moment($scope.date.to, 'DD/MM/YYYY'));
+            console.log(moment($scope.date.from, 'DD/MM/YYYY'));
+            if (moment($scope.date.to, 'DD/MM/YYYY').isBefore(moment($scope.date.from, 'DD/MM/YYYY'))) {
+                console.log("error");
+            }
+        }
 
     }]);
 
