@@ -29,6 +29,6 @@
     "angular-resource": "~1.3.11",
     "angular-route": "~1.3.11",
     "angular-datepicker": "~1.0.3",
-    "ngAutocomplete": "git@github.com:himmelarthur/ngAutocomplete"
+    "ngAutocomplete": "git@github.com:himmelarthur/ngAutocomplete#master"
   }
 }
