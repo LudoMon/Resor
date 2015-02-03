@@ -272,3 +272,13 @@ ul {
 }
 
 .angular-google-map-container { height: 400px; }
+
+.place-input {
+    padding: 8px 10px;
+    border-radius: 3px;
+    border: none;
+    margin-right: 5px;
+    font-family: Lato;
+    font-weight: bold;
+    font-size: 0.8em;
+}
