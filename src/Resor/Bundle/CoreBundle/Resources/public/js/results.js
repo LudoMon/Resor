@@ -1,6 +1,6 @@
 (function () {
 
-    var app = angular.module("resultsApp", ['ngRoute', 'ngResource', 'uiGmapgoogle-maps']);
+    var app = angular.module("resultsApp", ['ngRoute', 'ngResource', 'uiGmapgoogle-maps', 'ngAutocomplete']);
 
     app.filter("capitalize", function () {
         return function (s) {
@@ -76,6 +76,18 @@
             return $scope.filters.reduce(function(memo, filter){
                 return memo && !(filter.on && result.features.indexOf(filter.name) < 0)
             }, true);
+        };
+
+        $scope.togglePlaceInput = function () {
+            $scope.displayPlaceInput = !$scope.displayPlaceInput;
+        }
+
+        $scope.$on('placeAutocomplete', function () {
+            $scope.togglePlaceInput();
+        });
+
+        $scope.placeInputOptions = {
+            callback: $scope.togglePlaceInput
         };
 
     }]);

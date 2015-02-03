@@ -10,7 +10,8 @@
             <ul class="filters">
                 <div class="primary-filters">
                     <li class="filter-place filter">
-                        <strong>{{ place.name }} <i class="fa fa-pencil"></i></strong>
+                        <strong ng-show="!displayPlaceInput" ng-click="togglePlaceInput()">{{ place.name }} <i class="fa fa-pencil"></i></strong>
+                        <input type="text" id="place-autocomplete" ng-show="displayPlaceInput" ng-autocomplete ng-model="place.name" ng-change="validatePlaceInput()" options="placeInputOptions">
                     </li>
                     <li class="filter-from filter">
                         du <strong>{{ date.from }} <i class="fa fa-pencil"></i></strong>

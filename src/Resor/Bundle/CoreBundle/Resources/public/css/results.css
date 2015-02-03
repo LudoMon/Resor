@@ -35,7 +35,7 @@ ul {
     background: rgba(237, 239, 237, 0.7);
     display: table;
     line-height: 47px;
-    padding: 0 20px;
+    padding: 0 10%;
 }
 
 .top-bar > * {
@@ -47,7 +47,6 @@ ul {
     font-family: Lato;
     font-weight: bold;
     display: table-cell;
-    width: 100px;
     color: rgba(231, 76, 60, 0.81);
 }
 
