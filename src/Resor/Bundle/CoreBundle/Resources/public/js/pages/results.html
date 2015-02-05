@@ -5,25 +5,18 @@
     <div class="top-bar">
         <h3 class="resor-title">Resor</h3>
     </div>
-    <div class="content" ng-controller="ResultsCtrl">
+    <div class="content" >
         <div class="filters-bar">
             <ul class="filters">
-                <div class="primary-filters">
+                <div class="primary-filters" ng-controller="PrimaryFiltersCtrl">
                     <li class="filter-place filter">
-                        <strong ng-show="!displayPlaceInput" ng-click="togglePlaceInput()">{{ place.name }} <i class="fa fa-pencil"></i></strong>
-                        <input class="primary-input" type="text" id="place-autocomplete" ng-show="displayPlaceInput" ng-autocomplete ng-model="place.name" options="placeInputOptions">
+                        <placeinput place="place.name"></placeinput>
                     </li>
                     <li class="filter-from filter">
-                        <span ng-show="!displayFromInput">
-                            du <strong ng-click="toggleFromInput()">{{ date.from }} <i class="fa fa-pencil"></i></strong>
-                        </span>
-                        <input class="primary-input" pikaday="fromDate" format="DD/MM/YYYY" ng-show="displayFromInput" set-default-date="true" ng-change="fromPicked()" ng-model="date.from" max-date="date.to" ng-blur="toggleFromInput()">
+                        <editabledatepicker date="date.from" time="start"></editabledatepicker>
                     </li>
                     <li class="filter-to filter">
-                        <span ng-show="!displayToInput">
-                            au <strong ng-click="toggleToInput()">{{ date.to }} <i class="fa fa-pencil"></i></strong>
-                        </span>
-                        <input class="primary-input" pikaday="toDate" format="DD/MM/YYYY" ng-show="displayToInput" set-default-date="true" ng-change="toPicked()" ng-model="date.to" min-date="date.from" ng-blur="toggleToInput()" ng-change="validateToDate()">
+                        <editabledatepicker date="date.to" time="end"></editabledatepicker>
                     </li>
                 </div>
                 <div class="filter filters-expand">
@@ -42,7 +35,7 @@
             </ul>
         </div>
         <div class="results-body">
-            <ul class="results">
+            <ul class="results" ng-controller="ResultsCtrl">
                 <li class="result" ng-repeat="result in filtered=(results| filter:filterByFeatures)">
                     <div class="result-photo-wrapper">
                         <img src="http://placehold.it/350x200">

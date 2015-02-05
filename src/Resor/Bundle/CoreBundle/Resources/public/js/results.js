@@ -25,6 +25,14 @@
         });
     });
 
+    app.controller('PrimaryFiltersCtrl', ['$scope', function ($scope) {
+        $scope.$watch('date.to', function(value) {
+            if (moment(value, 'DD/MM/YYYY').isBefore(moment($scope.date.from, 'DD/MM/YYYY'))) {
+                console.log('error');
+            }
+        });
+    }]);
+
     app.controller('ResultsCtrl', ['$scope', '$location', 'Result', function ($scope, $location, Result) {
 
         $scope.results = [];
@@ -53,6 +61,9 @@
             to: to
         };
 
+        $scope.start = "start";
+        $scope.end = "end";
+
         Result.query({
             from: from,
             to: to,
@@ -80,43 +91,67 @@
             }, true);
         };
 
-        $scope.togglePlaceInput = function () {
-            $scope.displayPlaceInput = !$scope.displayPlaceInput;
-        }
-
-        $scope.$on('placeAutocomplete', function () {
-            $scope.togglePlaceInput();
-        });
-
-        $scope.placeInputOptions = {
-            callback: $scope.togglePlaceInput
-        };
-
-        $scope.toggleFromInput = function () {
-            $scope.displayFromInput = !$scope.displayFromInput;
-        }
-
-        $scope.fromPicked = function () {
-            $scope.toggleFromInput();
-        }
-
-        $scope.toggleToInput = function () {
-            $scope.displayToInput = !$scope.displayToInput;
-        }
-
-        $scope.toPicked = function () {
-            $scope.toggleToInput();
-        }
-
-        $scope.validateToDate = function () {
-            console.log('a');
-            console.log(moment($scope.date.to, 'DD/MM/YYYY'));
-            console.log(moment($scope.date.from, 'DD/MM/YYYY'));
-            if (moment($scope.date.to, 'DD/MM/YYYY').isBefore(moment($scope.date.from, 'DD/MM/YYYY'))) {
-                console.log("error");
-            }
-        }
 
     }]);
+
+    app.directive('editabledatepicker', function () {
+        return {
+            restrict: 'E',
+            transclude: true,
+            scope: {
+                date: "=",
+                time: "="
+            },
+            controller: function ($scope, $element) {
+                $scope.displayInput = false;
+
+                $scope.toggleInput = function () {
+                    $scope.displayInput = !$scope.displayInput;
+                }
+
+                $scope.toPicked = function () {
+                    $scope.toggleToInput();
+                }
+                $scope.timeWording = ($scope.time === "start") ? "du" : "au";
+            },
+            template:   '<div>' +
+                        '<span ng-show="!displayInput">' +
+                            '{{ timeWording }} <strong ng-click="toggleInput()">' +
+                                '{{ date }} <i class="fa fa-pencil"></i>' +
+                            '</strong>' +
+                        '</span>'+
+                        '<input class="primary-input" pikaday="fromDate" format="DD/MM/YYYY" ng-sho' +
+                        'w="displayInput" set-default-date="true" ng-model="date"' +
+                        'max-date="date.to" ng-blur="toggleInput()" validate-to-date>' +
+                        '</div>',
+            replace: true
+        };
+    });
+
+    app.directive('placeinput', function () {
+        return {
+            restrict: 'E',
+            transclude: true,
+            scope: {
+                place: "="
+            },
+            controller: function ($scope, $element) {
+
+                $scope.toggleInput = function () {
+                    $scope.displayInput = !$scope.displayInput;
+                }
+
+                $scope.placeInputOptions = {
+                    callback: $scope.toggleInput
+                };
+
+            },
+            template: '<div>' +
+                      '<strong ng-show="!displayInput" ng-click="toggleInput()">{{ place }} <i class="fa fa-pencil"></i></strong>' +
+                      '<input class="primary-input" type="text" id="place-autocomplete" ng-show="displayInput" ng-autocomplete ng-model="place"' +
+                      ' options="placeInputOptions"></div>',
+            replace: true
+        };
+    });
 
 }());
