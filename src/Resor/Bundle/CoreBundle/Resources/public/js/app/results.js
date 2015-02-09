@@ -36,15 +36,29 @@
         });
     });
 
-    app.controller('MainCtrl', ['$scope', 'SearchParams', function ($scope, SearchParams) {
+    app.controller('MainCtrl', ['$scope', 'SearchParams', 'Result', function ($scope, SearchParams, Result) {
         $scope = _.extend($scope, {
             searchParams: SearchParams
         });
         $scope.results = [];
+        $scope.filters = [];
 
-        $scope.updateResults = function (results) {
-            $scope.results = results;
-        }
+        Result.query($scope.searchParams, function (data) {
+            $scope.results = data.results;
+            $scope.filters = _.map(data.filters, function (filter) {
+                return {
+                    name: filter,
+                    on: false
+                };
+            });
+        });
+
+        $scope.filterByFeatures = function (result) {
+            return $scope.filters.reduce(function(memo, filter){
+                return memo && !(filter.on && result.features.indexOf(filter.name) < 0)
+            }, true);
+        };
+
     }]);
 
     app.controller('MapCtrl', ['$scope', '$location', '$anchorScroll', 'Result', function ($scope, $location, $anchorScroll, Result) {
@@ -69,46 +83,32 @@
         };
 
         $scope.$watch('results', function(results) {
-            $scope.markers.data = _.map(results, function (result) {
+            $scope.updateMarkers();
+        });
+
+        $scope.$watch('filters', function () {
+            $scope.updateMarkers();
+        }, true);
+
+        $scope.updateMarkers = function () {
+            $scope.markers.data = _.map(_.filter($scope.results, function (result) {
+                return $scope.filterByFeatures(result);
+            }), function (result) {
                 return {
                     latitude: result.lat,
                     longitude: result.lng,
                     id: result.id
-                }
+                };
             });
-        });
+        }
 
     }]);
 
-    app.controller('ResultsCtrl', ['$scope', 'Result', function ($scope, Result) {
-
-        $scope.filters = [];
+    app.controller('ResultsCtrl', ['$scope', function ($scope) {
 
         $scope.start = "start";
         $scope.end = "end";
-
-        Result.query($scope.searchParams, function (data) {
-            $scope.updateResults(data.results);
-            $scope.filters = _.map(_.reduce(_.map(data.results, function (result) {
-                return result.features;
-            }), function (memo, curr) {
-                return _.union(memo, curr);
-            }, []), function (filter) {
-                return {
-                    name: filter,
-                    on: false
-                };
-            });
-        });
-
         $scope.displayFilters = false;
-
-        $scope.filterByFeatures = function (result) {
-            return $scope.filters.reduce(function(memo, filter){
-                return memo && !(filter.on && result.features.indexOf(filter.name) < 0)
-            }, true);
-        };
-
 
     }]);
 
