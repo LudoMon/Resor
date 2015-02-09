@@ -1,0 +1,209 @@
+*, *:before, *:after {
+    box-sizing: border-box;
+}
+
+html, body {
+    margin: 0;
+    padding: 0;
+    background: #EDEFED;
+}
+
+p {
+    font-family: 'Merriweather', 'Times New Roman', serif;
+    margin: 0;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    margin: 0;
+    font-family: 'Lato', 'Helvetica', sans-serif;
+}
+
+.hero-unit {
+    text-align: center;
+    background-size: 100%;
+    color: white;
+    font-family: 'Helvatica Neue';
+    position: relative;
+    z-index: 100;
+}
+
+.hero-unit-bg-wrapper {
+    background: url('/bundles/resorcore/images/bg.jpg') no-repeat bottom center;
+    background-size: 100%;
+    position: absolute;
+    z-index: -1;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+}
+
+.hero-unit__title {
+    padding-top: 1.4em;
+    font-weight: lighter;
+    font-size: 6em;
+}
+
+.hero-unit-content {
+    background: rgba(0,0,0,0.6);
+    height: 100%;
+    z-index: 101;
+}
+
+.search-bar {
+    border-radius: 2px;
+    overflow: hidden;
+    width: 60%;
+    margin: 25px auto;
+    margin-bottom: 140px;
+}
+
+.search-bar input {
+    margin: 0;
+    padding: 10px 35px;
+    border: none;
+    border-right: 1px #ddd solid;
+    font-size: 1em;
+    outline: none;
+    width: 100%;
+}
+
+.search-bar input[type=submit] {
+    color: white;
+    font-family: 'Lato';
+    font-weight: bold;
+    background: rgba(231, 76, 60, 0.81);
+    border-right: none;
+    cursor: pointer;
+    padding-top: 9px;
+}
+
+.search-bar input[type=submit]:hover {
+    background: rgba(231, 107, 94, 0.81);
+}
+
+.search-item {
+    width: 21.6%;
+    display: inline-block;
+    position: relative;
+    float: left;
+}
+
+.search-item.search-place {
+    width: 35%;
+}
+
+.search-item i {
+    position: absolute;
+    color: #888;
+    top: 12px;
+    left: 10px;
+}
+
+.infos {
+    text-align: center;
+    padding: 20px;
+    color: #565a5c;
+}
+
+.infos-title {
+    font-weight: lighter;
+}
+
+.infos-arguments {
+    margin: 0;
+    padding: 40px 0;
+    width: 100%;
+    list-style-type: none;
+    display: table;
+}
+
+.infos-argument {
+    width: 33%;
+    display: inline-block;
+    border-right: 1px #ccc solid;
+    padding: 0 30px;
+    display: table-cell;
+    vertical-align: top;
+}
+
+.infos-argument:last-child {
+    border-right: none;
+}
+
+.fa.infos-argument-icon {
+    font-size: 2.4em;
+}
+
+.infos-argument h3 {
+    padding: 15px 0;
+    font-size: 2em;
+}
+
+.footer {
+    position: fixed;
+    bottom: 0;
+    padding: 5px 10px;
+    background: rgba(231, 107, 94, 0.81);
+    color: white;
+    width: 100%;
+    font-family: 'Lato';
+    font-size: 0.8em;
+}
+
+.top-actions {
+    position: absolute;
+    right: 0;
+    top: 0;
+    padding: 20px;
+}
+
+.top-actions button {
+    outline: none;
+    background: rgba(231, 76, 60, 0.81);
+    color: white;
+    border-radius: 2px;
+    padding: 10px 20px;
+    font-size: 14px;
+    font-weight: bold;
+    font-family: "Lato";
+    border: rgba(119, 46, 39, 0.81) solid;
+    border-width: 1px 1px 3px 1px;
+    cursor: pointer;
+    border-radius: 3px;
+}
+
+.top-actions button:hover {
+    background: rgba(231, 107, 94, 0.81);
+}
+
+.top-actions button:active {
+    border-width: 3px 1px 1px 1px;
+}
+
+@media screen and (max-width:800px) {
+
+    .hero-unit__title {
+        padding-top: 30px;
+        font-size: 3em;
+    }
+
+    .hero-unit__subtitle {
+        display: none;
+    }
+
+    .search-bar {
+        margin-bottom: 25px;
+    }
+
+    .search-item {
+        width: 100% !important;
+    }
+
+    .infos-argument {
+        width: 100%;
+        display: block;
+        border-right: none;
+        margin-bottom: 20px;
+    }
+}

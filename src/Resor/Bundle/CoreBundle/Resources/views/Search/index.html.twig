@@ -1,0 +1,91 @@
+{% extends "::base.html.twig" %}
+
+{% block title %}Resor{% endblock %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('bundles/resorcore/css/home.css') }}">
+        {% stylesheets
+            '@ResorCoreBundle/Resources/public/js/vendor/datetimepicker/jquery.datetimepicker.css'
+        %}
+        <link rel="stylesheet" type="text/css" href="{{ asset_url }}">
+    {% endstylesheets %}
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+{% endblock %}
+
+{% block javascripts %}
+    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?libraries=places"></script>
+    {% javascripts
+        '@ResorCoreBundle/Resources/public/js/vendor/jquery/dist/jquery.js'
+        '@ResorCoreBundle/Resources/public/js/vendor/datetimepicker/jquery.datetimepicker.js'
+        '@ResorCoreBundle/Resources/public/js/vendor/ubilabs-geocomplete/jquery.geocomplete.js'
+        '@ResorCoreBundle/Resources/public/js/home.js'
+    %}
+    <script src="{{ asset_url }}"></script>
+    {% endjavascripts %}
+{% endblock %}
+
+{% block body %}
+<div class="hero-unit">
+    <div class="top-actions">
+        <button>Se connecter</button>
+    </div>
+    <div class="hero-unit-bg-wrapper"></div>
+    <div class="hero-unit-content">
+        <h1 class="hero-unit__title">
+            Resor
+        </h1>
+        <p class="hero-unit__subtitle">
+            Recherchez. Réservez. Campez.
+        </p>
+        <div class="search-bar">
+            <div class="search-item search-place">
+                <i class="fa fa-map-marker"></i>
+                <input type="text" class="js-place-input" placeholder="Je cherche vers..."><!--
+            --></div>
+            <div class="search-item search-date-start">
+                <i class="fa fa-calendar-o"></i>
+                <input type="text" class="js-from-input date-input" placeholder="du...">
+            </div>
+            <div class="search-item search-date-end">
+                <i class="fa fa-calendar-o"></i>
+                <input type="text" class="js-to-input date-input" placeholder="au...">
+            </div>
+            <div class="search-item">
+                <input type="submit" class="js-submit" value="Rechercher!">
+            </div>
+        </div>
+    </div>
+</div>
+<div class="infos">
+    <h2 class="infos-title">Resor facilite vos réservations de camping.</h2>
+    <ul class="infos-arguments">
+        <li class="infos-argument">
+            <i class="infos-argument-icon fa fa-search"></i>
+            <h3>
+                Recherchez
+            </h3>
+            <p>parmi des milliers de campings à travers le monde entier</p>
+        </li>
+        <li class="infos-argument">
+            <i class="infos-argument-icon fa fa-star"></i>
+            <i class="infos-argument-icon fa fa-star"></i>
+            <i class="infos-argument-icon fa fa-star"></i>
+            <i class="infos-argument-icon fa fa-star"></i>
+            <h3>
+                Consultez
+            </h3>
+            <p>les avis de centaines d'autres campeurs</p>
+        </li>
+        <li class="infos-argument">
+            <i class="infos-argument-icon fa fa-check"></i>
+            <h3>
+                Réservez
+            </h3>
+            <p>et partez en voyage en toute sécurité !</p>
+        </li>
+    </ul>
+</div>
+<div class="footer">
+    Fait avec <i class="fa fa-heart"></i> par <strong>Ludovic, Thibault & Arthur</strong> @ <strong>Centrale Lille</strong>
+</div>
+{% endblock %}
