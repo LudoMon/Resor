@@ -114,16 +114,7 @@
                 }
                 $scope.timeWording = ($scope.time === "start") ? "du" : "au";
             },
-            template:   '<div>' +
-                        '<span ng-show="!displayInput">' +
-                            '{{ timeWording }} <strong ng-click="toggleInput()">' +
-                                '{{ date }} <i class="fa fa-pencil"></i>' +
-                            '</strong>' +
-                        '</span>'+
-                        '<input class="primary-input" pikaday="fromDate" format="DD/MM/YYYY" ng-sho' +
-                        'w="displayInput" set-default-date="true" ng-model="date"' +
-                        'max-date="date.to" ng-blur="toggleInput()" validate-to-date>' +
-                        '</div>',
+            templateUrl: '/bundles/resorcore/js/templates/editabledatepicker.html',
             replace: true
         };
     });
@@ -146,10 +137,7 @@
                 };
 
             },
-            template: '<div>' +
-                      '<strong ng-show="!displayInput" ng-click="toggleInput()">{{ place }} <i class="fa fa-pencil"></i></strong>' +
-                      '<input class="primary-input" type="text" id="place-autocomplete" ng-show="displayInput" ng-autocomplete ng-model="place"' +
-                      ' options="placeInputOptions"></div>',
+            templateUrl: '/bundles/resorcore/js/templates/placeinput.html',
             replace: true
         };
     });
