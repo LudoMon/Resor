@@ -1,7 +1,7 @@
 <div class="result-page">
     <div class="map-wrapper" ng-controller="MapCtrl">
-        <ui-gmap-google-map center='place.map.center' zoom='place.map.zoom'>
-            <ui-gmap-markers models="markers" coords="'self'">
+        <ui-gmap-google-map center='map.center' zoom='map.zoom'>
+            <ui-gmap-markers models="markers.data" coords="'self'" events="markerEvents">
             </ui-gmap-markers>
         </ui-gmap-google-map>
     </div>
@@ -11,15 +11,15 @@
     <div class="content" >
         <div class="filters-bar">
             <ul class="filters">
-                <div class="primary-filters" ng-controller="PrimaryFiltersCtrl">
+                <div class="primary-filters">
                     <li class="filter-place filter">
-                        <placeinput place="place.name"></placeinput>
+                        <placeinput place="searchParams.place"></placeinput>
                     </li>
                     <li class="filter-from filter">
-                        <editabledatepicker date="date.from" time="start"></editabledatepicker>
+                        <editabledatepicker date="searchParams.from" time="start"></editabledatepicker>
                     </li>
                     <li class="filter-to filter">
-                        <editabledatepicker date="date.to" time="end"></editabledatepicker>
+                        <editabledatepicker date="searchParams.to" time="end"></editabledatepicker>
                     </li>
                 </div>
                 <div class="filter filters-expand">
@@ -39,7 +39,7 @@
         </div>
         <div class="results-body">
             <ul class="results" ng-controller="ResultsCtrl">
-                <li class="result" ng-repeat="result in filtered=(results| filter:filterByFeatures)">
+                <li id="result-{{ result.id }}" class="result" ng-repeat="result in filtered=(results| filter:filterByFeatures)">
                     <div class="result-photo-wrapper">
                         <img src="http://placehold.it/350x200">
                     </div>

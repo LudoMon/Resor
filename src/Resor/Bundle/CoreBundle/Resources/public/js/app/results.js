@@ -18,7 +18,7 @@
         });
     });
 
-    app.factory('Url', function ($location) {
+    app.factory('SearchParams', function ($location) {
         var urlParams = $location.search();
         return {
             lat: urlParams["lat"] || null,
@@ -30,30 +30,46 @@
     });
 
     app.config(function ($routeProvider) {
-        $routeProvider.when('/', {
+        $routeProvider.when('/:result?', {
             templateUrl: '/bundles/resorcore/js/pages/results.html',
-            controller: 'ResultsCtrl'
+            controller: 'MainCtrl'
         });
     });
 
-    app.controller('PrimaryFiltersCtrl', ['$scope', function ($scope) {
-        $scope.$watch('date.to', function(value) {
-            if (moment(value, 'DD/MM/YYYY').isBefore(moment($scope.date.from, 'DD/MM/YYYY'))) {
-                console.log('error');
-            }
+    app.controller('MainCtrl', ['$scope', 'SearchParams', function ($scope, SearchParams) {
+        $scope = _.extend($scope, {
+            searchParams: SearchParams
         });
+        $scope.results = [];
+
+        $scope.updateResults = function (results) {
+            $scope.results = results;
+        }
     }]);
 
-    app.controller('MapCtrl', ['$scope', 'Url', 'Result', function ($scope, Url, Result) {
-        $scope.markers = [];
-        Result.query({
-            from: Url.from,
-            to: Url.to,
-            lat: Url.lat,
-            lng: Url.lng
-        }, function (data) {
-            $scope.results = data.results;
-            $scope.markers = _.map($scope.results, function (result) {
+    app.controller('MapCtrl', ['$scope', '$location', '$anchorScroll', 'Result', function ($scope, $location, $anchorScroll, Result) {
+
+        $scope.map = {
+            center: {
+                latitude: +($scope.searchParams.lat),
+                longitude: +($scope.searchParams.lng)
+            },
+            zoom: 10
+        };
+
+        $scope.markers = {
+            data: [],
+            markerEvents: {
+                click: function (gMarker, eventName, model) {
+                    var dest = 'result-' + model.id;
+                    $location.hash(dest);
+                    $anchorScroll();
+                }
+            }
+        };
+
+        $scope.$watch('results', function(results) {
+            $scope.markers.data = _.map(results, function (result) {
                 return {
                     latitude: result.lat,
                     longitude: result.lng,
@@ -61,42 +77,19 @@
                 }
             });
         });
+
     }]);
 
-    app.controller('ResultsCtrl', ['$scope', 'Url', 'Result', function ($scope, Url, Result) {
+    app.controller('ResultsCtrl', ['$scope', 'Result', function ($scope, Result) {
 
-        $scope.results = [];
         $scope.filters = [];
-
-        $scope.place = {
-            map:{
-                center: {
-                    latitude: +(Url.lat),
-                    longitude: +(Url.lng)
-                },
-                zoom: 9
-            },
-            name: Url.place
-        };
-
-        $scope.date = {
-            from: Url.from,
-            to: Url.to
-        };
 
         $scope.start = "start";
         $scope.end = "end";
 
-        $scope.markers = [];
-
-        Result.query({
-            from: Url.from,
-            to: Url.to,
-            lat: Url.lat,
-            lng: Url.lng
-        }, function (data) {
-            $scope.results = data.results;
-            $scope.filters = _.map(_.reduce(_.map($scope.results, function (result) {
+        Result.query($scope.searchParams, function (data) {
+            $scope.updateResults(data.results);
+            $scope.filters = _.map(_.reduce(_.map(data.results, function (result) {
                 return result.features;
             }), function (memo, curr) {
                 return _.union(memo, curr);
@@ -105,13 +98,6 @@
                     name: filter,
                     on: false
                 };
-            });
-            $scope.markers = _.map($scope.results, function (result) {
-                return {
-                    latitude: result.lat,
-                    longitude: result.lng,
-                    idKey: result.id
-                }
             });
         });
 
