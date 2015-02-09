@@ -47,34 +47,49 @@ class SearchController extends Controller
         $results = array(
             "results" => array(
                 array(
+                    "id" => 0,
                     "title" => "Camping des flots bleus",
                     "description" => $lorem,
                     "price" => "34",
-                    "features" => array("pool", "animals", "spa", "jacuzzi")
+                    "features" => array("pool", "animals", "spa", "jacuzzi"),
+                    "lat" => 48.85934,
+                    "lng" => 2.31617
                 ),
                 array(
+                    "id" => 1,
                     "title" => "Camping de l'océan",
                     "description" => $lorem,
                     "price" => "27",
-                    "features" => array("spa", "jacuzzi")
+                    "features" => array("spa", "jacuzzi"),
+                    "lat" => 48.84534,
+                    "lng" => 2.33368
                 ),
                 array(
+                    "id" => 2,
                     "title" => "Camping de la plage",
                     "description" => $lorem,
                     "price" => "39",
-                    "features" => array("pool", "spa", "jacuzzi")
+                    "features" => array("pool", "spa", "jacuzzi"),
+                    "lat" => 48.83811,
+                    "lng" => 2.37522
                 ),
                 array(
+                    "id" => 3,
                     "title" => "Camping du soleil",
                     "description" => $lorem,
                     "price" => "42",
-                    "features" => array("pool", "animals")
+                    "features" => array("pool", "animals"),
+                    "lat" => 48.86431,
+                    "lng" => 2.37248
                 ),
                 array(
+                    "id" => 4,
                     "title" => "Camping Serge",
                     "description" => $lorem,
                     "price" => "19",
-                    "features" => array("spa", "jacuzzi")
+                    "features" => array("spa", "jacuzzi"),
+                    "lat" => 48.89050,
+                    "lng" => 2.33471
                 )
             )
         );

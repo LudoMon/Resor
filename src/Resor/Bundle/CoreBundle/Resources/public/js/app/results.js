@@ -18,6 +18,17 @@
         });
     });
 
+    app.factory('Url', function ($location) {
+        var urlParams = $location.search();
+        return {
+            lat: urlParams["lat"] || null,
+            lng: urlParams["lng"] || null,
+            from: urlParams["from"] || null,
+            to: urlParams["to"] || null,
+            place: urlParams["place"] || ""
+        };
+    });
+
     app.config(function ($routeProvider) {
         $routeProvider.when('/', {
             templateUrl: '/bundles/resorcore/js/pages/results.html',
@@ -33,42 +44,56 @@
         });
     }]);
 
-    app.controller('ResultsCtrl', ['$scope', '$location', 'Result', function ($scope, $location, Result) {
+    app.controller('MapCtrl', ['$scope', 'Url', 'Result', function ($scope, Url, Result) {
+        $scope.markers = [];
+        Result.query({
+            from: Url.from,
+            to: Url.to,
+            lat: Url.lat,
+            lng: Url.lng
+        }, function (data) {
+            $scope.results = data.results;
+            $scope.markers = _.map($scope.results, function (result) {
+                return {
+                    latitude: result.lat,
+                    longitude: result.lng,
+                    id: result.id
+                }
+            });
+        });
+    }]);
+
+    app.controller('ResultsCtrl', ['$scope', 'Url', 'Result', function ($scope, Url, Result) {
 
         $scope.results = [];
         $scope.filters = [];
 
-        var urlParams = $location.search();
-        var lat = urlParams["lat"] || null;
-        var lng = urlParams["lng"] || null;
-        var from = urlParams["from"] || null;
-        var to = urlParams["to"] || null;
-        var place = urlParams["place"] || "";
-
         $scope.place = {
             map:{
                 center: {
-                    latitude: +(lat),
-                    longitude: +(lng)
+                    latitude: +(Url.lat),
+                    longitude: +(Url.lng)
                 },
                 zoom: 9
             },
-            name: place
+            name: Url.place
         };
 
         $scope.date = {
-            from: from,
-            to: to
+            from: Url.from,
+            to: Url.to
         };
 
         $scope.start = "start";
         $scope.end = "end";
 
+        $scope.markers = [];
+
         Result.query({
-            from: from,
-            to: to,
-            lat: lat,
-            lng: lng
+            from: Url.from,
+            to: Url.to,
+            lat: Url.lat,
+            lng: Url.lng
         }, function (data) {
             $scope.results = data.results;
             $scope.filters = _.map(_.reduce(_.map($scope.results, function (result) {
@@ -80,6 +105,13 @@
                     name: filter,
                     on: false
                 };
+            });
+            $scope.markers = _.map($scope.results, function (result) {
+                return {
+                    latitude: result.lat,
+                    longitude: result.lng,
+                    idKey: result.id
+                }
             });
         });
 
