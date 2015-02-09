@@ -91,8 +91,7 @@ class SearchController extends Controller
                     "lat" => 48.89050,
                     "lng" => 2.33471
                 )
-            ),
-            "filters" => array("pool", "animals", "spa", "jacuzzi")
+            )
         );
         return new JsonResponse($results);
     }

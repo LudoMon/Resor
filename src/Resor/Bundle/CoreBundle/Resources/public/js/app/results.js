@@ -41,17 +41,27 @@
             searchParams: SearchParams
         });
         $scope.results = [];
-        $scope.filters = [];
+        $scope.filters = [
+            {
+                name: "pool",
+                on: false
+            }, {
+                name: "animals",
+                on: false
+            }, {
+                name: "spa",
+                on: false
+            }, {
+                name: "jacuzzi",
+                on: false
+            }
+        ];
 
-        Result.query($scope.searchParams, function (data) {
-            $scope.results = data.results;
-            $scope.filters = _.map(data.filters, function (filter) {
-                return {
-                    name: filter,
-                    on: false
-                };
+        $scope.refreshResults = function () {
+            Result.query($scope.searchParams, function (data) {
+                $scope.results = data.results;
             });
-        });
+        };
 
         $scope.filterByFeatures = function (result) {
             return $scope.filters.reduce(function(memo, filter){
@@ -59,6 +69,9 @@
             }, true);
         };
 
+        $scope.$watch('[searchParams.from, searchParams.to]', function(params) {
+            $scope.refreshResults();
+        }, true);
     }]);
 
     app.controller('MapCtrl', ['$scope', '$location', '$anchorScroll', 'Result', function ($scope, $location, $anchorScroll, Result) {
@@ -82,11 +95,7 @@
             }
         };
 
-        $scope.$watch('results', function(results) {
-            $scope.updateMarkers();
-        });
-
-        $scope.$watch('filters', function () {
+        $scope.$watch('[results, filters]', function(results) {
             $scope.updateMarkers();
         }, true);
 
@@ -148,6 +157,7 @@
 
                 $scope.toggleInput = function () {
                     $scope.displayInput = !$scope.displayInput;
+                    $scope.refreshResults();
                 }
 
                 $scope.placeInputOptions = {
