@@ -69,9 +69,16 @@
             }, true);
         };
 
+        $scope.updateLocation = function (lat, lng, type) {
+            $scope.searchParams.lat = lat;
+            $scope.searchParams.lng = lng;
+            $scope.searchParams.zoom = type === "country" ? 5 : 10;
+        };
+
         $scope.$watch('[searchParams.from, searchParams.to]', function(params) {
             $scope.refreshResults();
         }, true);
+
     }]);
 
     app.controller('MapCtrl', ['$scope', '$location', '$anchorScroll', 'Result', function ($scope, $location, $anchorScroll, Result) {
@@ -97,6 +104,14 @@
 
         $scope.$watch('[results, filters]', function(results) {
             $scope.updateMarkers();
+        }, true);
+
+        $scope.$watch('searchParams', function(newParams, oldParams) {
+            if (newParams.lat !== oldParams.lat || newParams.lng !== oldParams.lng) {
+                $scope.map.center.latitude = +(newParams.lat);
+                $scope.map.center.longitude = +(newParams.lng);
+                $scope.map.zoom = +(newParams.zoom);
+            }
         }, true);
 
         $scope.updateMarkers = function () {
@@ -149,16 +164,26 @@
     app.directive('placeinput', function () {
         return {
             restrict: 'E',
-            transclude: true,
-            scope: {
-                place: "="
-            },
+            // transclude: true,
+            scope: false,
             controller: function ($scope, $element) {
+
+                $scope.details = {
+                    lat: $scope.searchParams.lat,
+                    lng: $scope.searchParams.lng,
+                };
 
                 $scope.toggleInput = function () {
                     $scope.displayInput = !$scope.displayInput;
-                    $scope.refreshResults();
                 }
+
+                $scope.$watch('details', function(newValue, oldValue, scope) {
+                    if ($scope.details.geometry) {
+                        $scope.updateLocation($scope.details.geometry.location.k, $scope.details.geometry.location.D,
+                            $scope.details.types[0]);
+                        $scope.refreshResults();
+                    }
+                }, true);
 
                 $scope.placeInputOptions = {
                     callback: $scope.toggleInput

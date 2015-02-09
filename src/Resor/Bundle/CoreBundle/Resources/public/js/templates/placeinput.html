@@ -1,6 +1,6 @@
 <div class="place-input">
       <strong ng-show="!displayInput" ng-click="toggleInput()">
-        {{ place }} <i class="fa fa-pencil"></i>
+        {{ searchParams.place }} <i class="fa fa-pencil"></i>
       </strong>
-      <input class="primary-input" type="text" id="place-autocomplete" ng-show="displayInput" ng-autocomplete ng-model="place" options="placeInputOptions">
+      <input class="primary-input" type="text" id="place-autocomplete" ng-show="displayInput" ng-autocomplete ng-model="searchParams.place" options="placeInputOptions" details="details">
 </div>
