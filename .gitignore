@@ -10,3 +10,4 @@
 /bin/
 /composer.phar
 /src/Resor/Bundle/CoreBundle/Resources/public/js/vendor
+/.idea
