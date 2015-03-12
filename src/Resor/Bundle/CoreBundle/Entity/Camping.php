@@ -49,6 +49,14 @@ class Camping
      */
     private $isActive;
 
+    /**
+     * @var User
+     *
+     * @ORM\OneToOne(targetEntity="Resor\Bundle\CoreBundle\Entity\User", cascade={"persist"})
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $owner;
+
 
     /**
      * Get id
@@ -150,5 +158,28 @@ class Camping
     public function getIsActive()
     {
         return $this->isActive;
+    }
+
+    /**
+     * Set owner
+     *
+     * @param \Resor\Bundle\CoreBundle\Entity\User $owner
+     * @return Camping
+     */
+    public function setOwner(\Resor\Bundle\CoreBundle\Entity\User $owner)
+    {
+        $this->owner = $owner;
+
+        return $this;
+    }
+
+    /**
+     * Get owner
+     *
+     * @return \Resor\Bundle\CoreBundle\Entity\User
+     */
+    public function getOwner()
+    {
+        return $this->owner;
     }
 }

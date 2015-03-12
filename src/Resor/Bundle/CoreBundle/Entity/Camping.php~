@@ -49,6 +49,14 @@ class Camping
      */
     private $isActive;
 
+    /**
+     * @var User
+     *
+     * @ORM\OneToOne(targetEntity="Resor\Bundle\CoreBundle\Entity\User", cascade={"persist"})
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $owner;
+
 
     /**
      * Get id
@@ -104,5 +112,51 @@ class Camping
     public function getUrl()
     {
         return $this->url;
+    }
+
+    /**
+     * Set isUrlChecked
+     *
+     * @param boolean $isUrlChecked
+     * @return Camping
+     */
+    public function setIsUrlChecked($isUrlChecked)
+    {
+        $this->isUrlChecked = $isUrlChecked;
+
+        return $this;
+    }
+
+    /**
+     * Get isUrlChecked
+     *
+     * @return boolean 
+     */
+    public function getIsUrlChecked()
+    {
+        return $this->isUrlChecked;
+    }
+
+    /**
+     * Set isActive
+     *
+     * @param boolean $isActive
+     * @return Camping
+     */
+    public function setIsActive($isActive)
+    {
+        $this->isActive = $isActive;
+
+        return $this;
+    }
+
+    /**
+     * Get isActive
+     *
+     * @return boolean 
+     */
+    public function getIsActive()
+    {
+        return $this->isActive;
     }
 }

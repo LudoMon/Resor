@@ -34,14 +34,6 @@ class User extends BaseUser
      */
     protected $lastName;
 
-    /**
-     * @var Camping
-     *
-     * @ORM\OneToOne(targetEntity="Resor\Bundle\CoreBundle\Entity\Camping", cascade={"persist"})
-     * @ORM\JoinColumn(nullable=false)
-     */
-    protected $camping;
-
     public function __construct()
     {
         parent::__construct();
@@ -102,28 +94,5 @@ class User extends BaseUser
     public function getLastName()
     {
         return $this->lastName;
-    }
-
-    /**
-     * Set camping
-     *
-     * @param \Resor\Bundle\CoreBundle\Entity\Camping $camping
-     * @return User
-     */
-    public function setCamping(\Resor\Bundle\CoreBundle\Entity\Camping $camping)
-    {
-        $this->camping = $camping;
-
-        return $this;
-    }
-
-    /**
-     * Get camping
-     *
-     * @return \Resor\Bundle\CoreBundle\Entity\Camping 
-     */
-    public function getCamping()
-    {
-        return $this->camping;
     }
 }
