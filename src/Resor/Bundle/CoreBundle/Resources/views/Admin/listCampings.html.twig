@@ -1,0 +1,25 @@
+{% extends "::base.html.twig" %}
+
+{% block title %}Campings{% endblock %}
+
+{% block body %}
+    <div class="container">
+        <div class="page-header">
+            <h1>Liste des campings partenaires</h1>
+        </div>
+    </div>
+{% endblock %}
+
+{% block stylesheets %}
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css" rel="stylesheet">
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+{% endblock %}
+
+{% block javascripts %}
+    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?libraries=places"></script>
+    {% javascripts
+    '@ResorCoreBundle/Resources/public/js/vendor/jquery/dist/jquery.js'
+    %}
+    <script src="{{ asset_url }}"></script>
+    {% endjavascripts %}
+{% endblock %}
