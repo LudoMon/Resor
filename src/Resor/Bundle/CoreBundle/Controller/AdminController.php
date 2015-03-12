@@ -14,8 +14,14 @@ class AdminController extends Controller
      */
     public function listCampingsAction()
     {
-        return array(
-                // ...
-            );    }
+        $repository = $this->getDoctrine()
+            ->getManager()
+            ->getRepository('ResorCoreBundle:Camping');
+        $campings = $repository->findAll();
+
+        return [
+            'campings' => $campings
+        ];
+    }
 
 }
