@@ -14,12 +14,17 @@ class AdminController extends Controller
      * @Route("/campings")
      * @Template()
      */
-    public function listCampingsAction()
+    public function listCampingsAction(Request $request)
     {
         $repository = $this->getDoctrine()
             ->getManager()
             ->getRepository('ResorCoreBundle:Camping');
-        $campings = $repository->findAll();
+
+        if ('POST' == $request->getMethod()) {
+            $campings = $repository->findLikeName($request->get('camping-name'));
+        } else {
+            $campings = $repository->findAll();
+        }
 
         return [
             'campings' => $campings

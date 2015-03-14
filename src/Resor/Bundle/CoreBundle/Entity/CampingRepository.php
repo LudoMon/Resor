@@ -12,4 +12,12 @@ use Doctrine\ORM\EntityRepository;
  */
 class CampingRepository extends EntityRepository
 {
+    public function findLikeName($name)
+    {
+        return $this->createQueryBuilder('c')
+            ->where('c.name LIKE :name')
+            ->setParameter('name', '%' .  $name . '%')
+            ->getQuery()
+            ->getResult();
+    }
 }

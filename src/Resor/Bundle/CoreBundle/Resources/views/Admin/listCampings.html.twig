@@ -7,6 +7,26 @@
         <div class="page-header">
             <h1>Liste des campings partenaires</h1>
         </div>
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                Rechercher un camping
+            </div>
+            <div class="panel-body">
+                <form method="post" class="form-horizontal">
+                    <div class="form-group">
+                        <label for="camping-name" class="control-label col-sm-1">Nom : </label>
+                        <div class="col-sm-11">
+                            <div class="input-group">
+                                <input type="text" id="camping-name" name="camping-name" class="form-control"/>
+                                <span class="input-group-btn">
+                                    <button type="submit" class="btn btn-primary"><span class="fa fa-search"></span> Rechercher</button>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
         <table class="table table-stripped" id="campings-list" data-ajax-url = {{ path('home') }}>
             <thead>
                 <tr>
@@ -17,6 +37,11 @@
                 </tr>
             </thead>
             <tbody>
+            {% if campings|length == 0 %}
+                <tr class="active text-center">
+                    <td colspan="4" class="text-muted"><i>Aucun camping trouvé</i></td>
+                </tr>
+            {% endif %}
             {% for camping in campings %}
                 <tr>
                     <td>{{ camping.name }}</td>
