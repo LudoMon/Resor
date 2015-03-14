@@ -36,13 +36,6 @@ class Camping
     private $url;
 
     /**
-    +     * @var boolean
-    +     *
-    +     * @ORM\Column(type="boolean")
-    +     */
-    private $isUrlChecked;
-
-    /**
      * @var boolean
      *
      * @ORM\Column(type="boolean")
@@ -115,29 +108,6 @@ class Camping
     }
 
     /**
-     * Set isUrlChecked
-     *
-     * @param boolean $isUrlChecked
-     * @return Camping
-     */
-    public function setIsUrlChecked($isUrlChecked)
-    {
-        $this->isUrlChecked = $isUrlChecked;
-
-        return $this;
-    }
-
-    /**
-     * Get isUrlChecked
-     *
-     * @return boolean 
-     */
-    public function getIsUrlChecked()
-    {
-        return $this->isUrlChecked;
-    }
-
-    /**
      * Set isActive
      *
      * @param boolean $isActive
@@ -163,10 +133,10 @@ class Camping
     /**
      * Set owner
      *
-     * @param \Resor\Bundle\CoreBundle\Entity\User $owner
+     * @param User $owner
      * @return Camping
      */
-    public function setOwner(\Resor\Bundle\CoreBundle\Entity\User $owner)
+    public function setOwner(User $owner)
     {
         $this->owner = $owner;
 
@@ -176,7 +146,7 @@ class Camping
     /**
      * Get owner
      *
-     * @return \Resor\Bundle\CoreBundle\Entity\User
+     * @return User
      */
     public function getOwner()
     {
