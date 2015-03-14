@@ -21,7 +21,7 @@
                 <tr>
                     <td>{{ camping.name }}</td>
                     <td>{{ camping.owner.lastName|upper }} {{ camping.owner.firstName }}</td>
-                    <td>{{ camping.url }}</td>
+                    <td><button type="button" class="btn btn-default btn-test" data-loading-text="Test...">Tester l'url</button> {{ camping.url }}</td>
                     <td>
                         <div class="btn-group" data-camping-id="{{ camping.id }}">
                             <button type="button" class="btn btn-default btn-enable {{ camping.isActive ? 'active' }}">Activé</button>
