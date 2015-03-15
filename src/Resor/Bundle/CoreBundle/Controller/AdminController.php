@@ -19,15 +19,17 @@ class AdminController extends Controller
         $repository = $this->getDoctrine()
             ->getManager()
             ->getRepository('ResorCoreBundle:Camping');
+        $search = $request->get('camping-name');
 
         if ('POST' == $request->getMethod()) {
-            $campings = $repository->findLikeName($request->get('camping-name'));
+            $campings = $repository->findLikeName($search);
         } else {
             $campings = $repository->findAll();
         }
 
         return [
-            'campings' => $campings
+            'campings' => $campings,
+            'search' => $search
         ];
     }
 
