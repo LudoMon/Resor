@@ -29,6 +29,8 @@
     <div class="top-actions">
         {% if is_granted('IS_AUTHENTICATED_REMEMBERED') == false %}
             <a class="action-btn" href="{{ path('fos_user_security_login') }}">Se connecter</a>
+        {% else %}
+            <a class="action-btn" href="{{ path('fos_user_security_logout') }}">Se déconnecter</a>
         {% endif %}
     </div>
     <div class="hero-unit-bg-wrapper"></div>
