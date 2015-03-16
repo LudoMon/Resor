@@ -17,7 +17,7 @@ $(function() {
             .addClass('disabled');
         $other.addClass('disabled');
         $.ajax({
-            url: ajaxUrl + 'camping/' + campingId + '/' + ajaxAction,
+            url: ajaxUrl + 'admin/camping/' + campingId + '/' + ajaxAction,
             success: function() {
                 $this.button('toggle');
                 $other.button('toggle');
