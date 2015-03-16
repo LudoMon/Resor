@@ -11,7 +11,7 @@ use Symfony\Component\HttpFoundation\Request;
 class AdminController extends Controller
 {
     /**
-     * @Route("/campings")
+     * @Route("/admin/campings", name="campings_list")
      * @Template()
      */
     public function listCampingsAction(Request $request)
@@ -34,7 +34,7 @@ class AdminController extends Controller
     }
 
     /**
-     * @Route("/camping/{id}/{action}", requirements={"id" = "\d+", "action" = "activer|desactiver"})
+     * @Route("/admin/camping/{id}/{action}", requirements={"id" = "\d+", "action" = "activer|desactiver"})
      */
     public function enableCampingAction(Request $request, $id, $action)
     {
