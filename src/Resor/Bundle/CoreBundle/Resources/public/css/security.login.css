@@ -1,0 +1,18 @@
+body {
+    background-color: #eee;
+}
+
+#login-panel {
+    margin-top: 30%;
+}
+
+#username {
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+}
+
+#password {
+    border-top-right-radius: 0;
+    border-top-left-radius: 0;
+    border-top: none;
+}
