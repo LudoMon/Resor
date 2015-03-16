@@ -1,0 +1,23 @@
+{% extends '::base.html.twig' %}
+
+{% block title %}Ajouter un Camping{% endblock %}
+
+{% block body %}
+    <div class="hero-unit">
+        <div class="hero-unit-content">
+            <div class="top-actions text-right">
+                <a class="action-btn" href="{{ path('home') }}">Accueil</a>
+                <a class="action-btn" href="{{ path('fos_user_security_logout') }}">Se déconnecter</a>
+            </div>
+        </div>
+    </div>
+    <div class="page-header">
+            <h1>Ajouter un Camping</h1>
+    </div>
+    
+    
+    <form action="{{ path('camping_add') }}" method="POST" {{ form_enctype(form) }}  novalidate="novalidate">
+        {{ form_widget(form) }}
+        <input type="submit" value="Save" />
+    </form>
+{% endblock %}

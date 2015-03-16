@@ -13,4 +13,10 @@
         </service>
     </services>
     -->
+    
+    <services>
+        <service id="test.form.camping" class="Resor\Bundle\CoreBundle\Form\CampingType">
+            <tag name="form.type" alias="camping"/>
+        </service>
+    </services>
 </container>
