@@ -170,11 +170,11 @@ h1, h2, h3, h4, h5, h6 {
     border-width: 1px 1px 3px 1px;
     cursor: pointer;
     border-radius: 3px;
+    text-decoration: none;
 }
 
 .top-actions .action-btn:hover {
     background: rgba(231, 107, 94, 0.81);
-    text-decoration: none;
 }
 
 .top-actions .action-btn:active {
