@@ -1,3 +1,11 @@
 td {
     vertical-align: middle !important;
 }
+
+.container {
+    background-color: #ffffff;
+}
+
+.top-actions {
+    position: relative !important;
+}
