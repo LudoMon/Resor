@@ -158,11 +158,10 @@ h1, h2, h3, h4, h5, h6 {
     padding: 20px;
 }
 
-.top-actions button {
+.top-actions .action-btn {
     outline: none;
     background: rgba(231, 76, 60, 0.81);
     color: white;
-    border-radius: 2px;
     padding: 10px 20px;
     font-size: 14px;
     font-weight: bold;
@@ -173,11 +172,11 @@ h1, h2, h3, h4, h5, h6 {
     border-radius: 3px;
 }
 
-.top-actions button:hover {
+.top-actions .action-btn:hover {
     background: rgba(231, 107, 94, 0.81);
 }
 
-.top-actions button:active {
+.top-actions .action-btn:active {
     border-width: 3px 1px 1px 1px;
 }
 
