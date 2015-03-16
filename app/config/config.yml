@@ -30,7 +30,7 @@ twig:
     strict_variables: "%kernel.debug%"
     form:
         resources:
-            - 'ResorCoreBundle:Form:bootstrap_3_horizontal_layout.html.twig'
+            - 'ResorCoreBundle:Form:bootstrap_form_theme.html.twig'
 
 # Assetic Configuration
 assetic:
