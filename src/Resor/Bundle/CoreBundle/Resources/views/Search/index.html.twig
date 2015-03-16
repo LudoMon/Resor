@@ -27,7 +27,9 @@
 {% block body %}
 <div class="hero-unit">
     <div class="top-actions">
-        <button>Se connecter</button>
+        {% if is_granted('IS_AUTHENTICATED_REMEMBERED') == false %}
+            <a class="action-btn" href="{{ path('fos_user_security_login') }}">Se connecter</a>
+        {% endif %}
     </div>
     <div class="hero-unit-bg-wrapper"></div>
     <div class="hero-unit-content">
