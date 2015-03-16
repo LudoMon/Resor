@@ -36,6 +36,13 @@ class Camping
     private $url;
 
     /**
+    +     * @var boolean
+    +     *
+    +     * @ORM\Column(type="boolean")
+    +     */
+    private $isUrlChecked;
+
+    /**
      * @var boolean
      *
      * @ORM\Column(type="boolean")
@@ -108,6 +115,29 @@ class Camping
     }
 
     /**
+     * Set isUrlChecked
+     *
+     * @param boolean $isUrlChecked
+     * @return Camping
+     */
+    public function setIsUrlChecked($isUrlChecked)
+    {
+        $this->isUrlChecked = $isUrlChecked;
+
+        return $this;
+    }
+
+    /**
+     * Get isUrlChecked
+     *
+     * @return boolean 
+     */
+    public function getIsUrlChecked()
+    {
+        return $this->isUrlChecked;
+    }
+
+    /**
      * Set isActive
      *
      * @param boolean $isActive
@@ -128,28 +158,5 @@ class Camping
     public function getIsActive()
     {
         return $this->isActive;
-    }
-
-    /**
-     * Set owner
-     *
-     * @param User $owner
-     * @return Camping
-     */
-    public function setOwner(User $owner)
-    {
-        $this->owner = $owner;
-
-        return $this;
-    }
-
-    /**
-     * Get owner
-     *
-     * @return User
-     */
-    public function getOwner()
-    {
-        return $this->owner;
     }
 }

@@ -1,0 +1,90 @@
+{% extends "::base.html.twig" %}
+
+{% block title %}Campings{% endblock %}
+
+{% block body %}
+    <div class="hero-unit">
+        <div class="hero-unit-content">
+            <div class="top-actions text-right">
+                <a class="action-btn" href="{{ path('home') }}">Accueil</a>
+                <a class="action-btn" href="{{ path('fos_user_security_logout') }}">Se déconnecter</a>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="page-header">
+            <h1>Liste des campings partenaires</h1>
+        </div>
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                Rechercher un camping
+            </div>
+            <div class="panel-body">
+                <form method="post" class="form-horizontal">
+                    <div class="form-group">
+                        <label for="camping-name" class="control-label col-sm-1">Nom : </label>
+                        <div class="col-sm-11">
+                            <div class="input-group">
+                                <input type="text" id="camping-name" name="camping-name" class="form-control" value="{{ search }}"/>
+                                <span class="input-group-btn">
+                                    <button type="submit" class="btn btn-primary"><span class="fa fa-search"></span> Rechercher</button>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <table class="table table-stripped" id="campings-list" data-ajax-url = {{ path('home') }}>
+            <thead>
+                <tr>
+                    <th>Camping</th>
+                    <th>Propriétaire</th>
+                    <th>Url de récupération</th>
+                    <th>Activation</th>
+                </tr>
+            </thead>
+            <tbody>
+            {% if campings|length == 0 %}
+                <tr class="active text-center">
+                    <td colspan="4" class="text-muted"><i>Aucun camping trouvé</i></td>
+                </tr>
+            {% endif %}
+            {% for camping in campings %}
+                <tr>
+                    <td>{{ camping.name }}</td>
+                    <td>{{ camping.owner.lastName|upper }} {{ camping.owner.firstName }}</td>
+                    <td><button type="button" class="btn btn-default btn-test" data-loading-text="Test...">Tester l'url</button> {{ camping.url }}</td>
+                    <td>
+                        <div class="btn-group" data-camping-id="{{ camping.id }}">
+                            <button type="button" class="btn btn-default btn-enable {{ camping.isActive ? 'active' }}">Activé</button>
+                            <button type="button" class="btn btn-default btn-disable {{ camping.isActive ? '' : 'active' }}">Désactivé</button>
+                        </div>
+                    </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+{% endblock %}
+
+{% block stylesheets %}
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css" rel="stylesheet">
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+    {% stylesheets
+        '@ResorCoreBundle/Resources/public/css/home.css'
+        '@ResorCoreBundle/Resources/public/css/campings.list.css'
+    %}
+    <link rel="stylesheet" href="{{ asset_url }}" />
+    {% endstylesheets %}
+{% endblock %}
+
+{% block javascripts %}
+    {% javascripts
+    '@ResorCoreBundle/Resources/public/js/vendor/jquery/dist/jquery.js'
+    '@ResorCoreBundle/Resources/public/js/campings.list.js'
+    %}
+    <script src="{{ asset_url }}"></script>
+    {% endjavascripts %}
+    <script type="text/javascript" src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+{% endblock %}

@@ -11,7 +11,7 @@ use Symfony\Component\HttpFoundation\JsonResponse;
 class SearchController extends Controller
 {
     /**
-     * @Route("/")
+     * @Route("/", name="home")
      * @Template()
      */
     public function indexAction()
