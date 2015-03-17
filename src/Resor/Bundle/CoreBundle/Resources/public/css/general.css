@@ -1,0 +1,77 @@
+*, *:before, *:after {
+    box-sizing: border-box;
+}
+
+html, body {
+    margin: 0;
+    padding: 0;
+    background: #EDEFED;
+}
+
+p {
+    font-family: 'Merriweather', 'Times New Roman', serif;
+    margin: 0;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    margin: 0;
+    font-family: 'Lato', 'Helvetica', sans-serif;
+}
+
+.action-btn {
+    outline: none;
+    background: rgba(231, 76, 60, 0.81);
+    color: white;
+    padding: 10px 20px;
+    font-size: 14px;
+    font-weight: bold;
+    font-family: "Lato";
+    border: rgba(119, 46, 39, 0.81) solid;
+    border-width: 1px 1px 3px 1px;
+    cursor: pointer;
+    border-radius: 3px;
+    text-decoration: none;
+    margin: 3px;
+}
+
+.action-btn:hover {
+    background: rgba(231, 107, 94, 0.81);
+    color: #ffffff;
+    text-decoration: none;
+}
+
+.container {
+    margin-top: 50px;
+}
+
+.action-btn:active {
+    border-width: 3px 1px 1px 1px;
+    color: #ffffff;
+    text-decoration: none;
+}
+
+.top-bar {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    color: white;
+    border-bottom: 2px rgba(184, 63, 50, 0.81) solid;
+    height: 50px;
+    z-index: 100;
+    background: rgba(237, 239, 237, 0.7);
+    display: table;
+    padding: 0 10%;
+}
+
+.top-bar > h3 {
+    display: table-cell;
+    vertical-align: middle;
+    line-height: 47px;
+}
+
+.resor-title {
+    font-family: Lato;
+    font-weight: bold;
+    display: table-cell;
+    color: rgba(231, 76, 60, 0.81);
+}

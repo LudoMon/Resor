@@ -24,32 +24,6 @@ ul {
     padding: 0;
 }
 
-.top-bar {
-    position: fixed;
-    top: 0;
-    width: 100%;
-    color: white;
-    border-bottom: 2px rgba(184, 63, 50, 0.81) solid;
-    height: 50px;
-    z-index: 100;
-    background: rgba(237, 239, 237, 0.7);
-    display: table;
-    line-height: 47px;
-    padding: 0 10%;
-}
-
-.top-bar > * {
-    display: table-cell;
-    vertical-align: middle;
-}
-
-.resor-title {
-    font-family: Lato;
-    font-weight: bold;
-    display: table-cell;
-    color: rgba(231, 76, 60, 0.81);
-}
-
 .map-wrapper {
     height: 270px;
     overflow: hidden;

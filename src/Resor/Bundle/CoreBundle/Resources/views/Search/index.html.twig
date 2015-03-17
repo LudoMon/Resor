@@ -3,10 +3,11 @@
 {% block title %}Resor{% endblock %}
 
 {% block stylesheets %}
-    <link rel="stylesheet" href="{{ asset('bundles/resorcore/css/home.css') }}">
-        {% stylesheets
-            '@ResorCoreBundle/Resources/public/js/vendor/datetimepicker/jquery.datetimepicker.css'
-        %}
+    {% stylesheets
+        '@ResorCoreBundle/Resources/public/js/vendor/datetimepicker/jquery.datetimepicker.css'
+        '@ResorCoreBundle/Resources/public/css/general.css'
+        '@ResorCoreBundle/Resources/public/css/home.css'
+    %}
         <link rel="stylesheet" type="text/css" href="{{ asset_url }}">
     {% endstylesheets %}
     <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
