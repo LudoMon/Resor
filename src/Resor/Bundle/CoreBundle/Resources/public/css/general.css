@@ -35,10 +35,14 @@ h1, h2, h3, h4, h5, h6 {
 
 .action-btn:hover {
     background: rgba(231, 107, 94, 0.81);
+    color: #ffffff;
+    text-decoration: none;
 }
 
 .action-btn:active {
     border-width: 3px 1px 1px 1px;
+    color: #ffffff;
+    text-decoration: none;
 }
 
 .top-bar {
