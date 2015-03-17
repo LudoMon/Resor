@@ -31,12 +31,17 @@ h1, h2, h3, h4, h5, h6 {
     cursor: pointer;
     border-radius: 3px;
     text-decoration: none;
+    margin: 3px;
 }
 
 .action-btn:hover {
     background: rgba(231, 107, 94, 0.81);
     color: #ffffff;
     text-decoration: none;
+}
+
+.container {
+    margin-top: 50px;
 }
 
 .action-btn:active {
@@ -55,11 +60,18 @@ h1, h2, h3, h4, h5, h6 {
     z-index: 100;
     background: rgba(237, 239, 237, 0.7);
     display: table;
-    line-height: 47px;
     padding: 0 10%;
 }
 
-.top-bar > * {
+.top-bar > h3 {
     display: table-cell;
     vertical-align: middle;
+    line-height: 47px;
+}
+
+.resor-title {
+    font-family: Lato;
+    font-weight: bold;
+    display: table-cell;
+    color: rgba(231, 76, 60, 0.81);
 }

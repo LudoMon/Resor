@@ -24,13 +24,6 @@ ul {
     padding: 0;
 }
 
-.resor-title {
-    font-family: Lato;
-    font-weight: bold;
-    display: table-cell;
-    color: rgba(231, 76, 60, 0.81);
-}
-
 .map-wrapper {
     height: 270px;
     overflow: hidden;
