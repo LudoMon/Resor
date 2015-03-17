@@ -45,6 +45,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .hero-unit-content {
+    padding-bottom: 140px;
     background: rgba(0,0,0,0.6);
     height: 100%;
     z-index: 101;
@@ -55,7 +56,6 @@ h1, h2, h3, h4, h5, h6 {
     overflow: hidden;
     width: 60%;
     margin: 25px auto;
-    margin-bottom: 140px;
 }
 
 .search-bar input {
