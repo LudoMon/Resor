@@ -2,15 +2,12 @@
 
 {% block title %}Campings{% endblock %}
 
+{% block topBarContent %}
+    <a class="action-btn pull-right" href="{{ path('fos_user_security_logout') }}">Se déconnecter</a>
+    <a class="action-btn pull-right" href="{{ path('home') }}">Accueil</a>
+{% endblock %}
+
 {% block body %}
-    <div class="hero-unit">
-        <div class="hero-unit-content">
-            <div class="top-actions text-right">
-                <a class="action-btn" href="{{ path('home') }}">Accueil</a>
-                <a class="action-btn" href="{{ path('fos_user_security_logout') }}">Se déconnecter</a>
-            </div>
-        </div>
-    </div>
     <div class="container">
         <div class="page-header">
             <h1>Liste des campings partenaires</h1>
