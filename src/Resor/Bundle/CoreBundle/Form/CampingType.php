@@ -30,7 +30,11 @@ class CampingType extends AbstractType {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder->add('name', 'text')
-            ->add('url', 'text');
+            ->add('url', 'text')
+            ->add('owner',new UserType());
+            /*->add('owner', 'entity', array(
+                'class' => 'ResorCoreBundle:User',
+                'property' => 'firstName'));*/
     }
 
     public function setDefaultOptions(
