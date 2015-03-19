@@ -11,10 +11,25 @@
         <link href='http://fonts.googleapis.com/css?family=Lato:300,400,700|Merriweather:400,700' rel='stylesheet' type='text/css'>
     </head>
     <body>
+        {% block topBar %}
         <div class="top-bar">
             <h3 class="resor-title">Resor</h3>
-            {% block topBarContent %}{% endblock %}
+            <div class="top-bar-content pull-right">
+                <a class="action-btn" href="{{ path('home') }}">Accueil</a>
+                {% if is_granted('ROLE_ADMIN') %}
+                    <a class="action-btn" href="{{ path('campings_list') }}">Gérer les campings</a>
+                {% endif %}
+                {% if is_granted('IS_AUTHENTICATED_REMEMBERED') == false %}
+                    <a class="action-btn" href="{{ path('fos_user_security_login') }}">Se connecter</a>
+                    <a class="action-btn" href="{{ path('fos_user_registration_register') }}">Créer un compte</a>
+                {% else %}
+                    <a class="action-btn" href="{{ path('fos_user_profile_show') }}">Mon compte</a>
+                    <a class="action-btn" href="{{ path('fos_user_security_logout') }}">Se déconnecter</a>
+                {% endif %}
+                {% block topBarContent %}{% endblock %}
+            </div>
         </div>
+        {% endblock topBar %}
         {% block body %}{% endblock %}
         {% block javascripts %}
             {% javascripts

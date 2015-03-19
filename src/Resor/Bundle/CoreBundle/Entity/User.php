@@ -23,21 +23,21 @@ class User extends BaseUser
     /**
     +     * @var string
     +     *
-    +     * @ORM\Column(type="string", length=50)
+    +     * @ORM\Column(type="string", length=50, nullable=true)
     +     */
     protected $firstName;
 
     /**
      * @var string
      *
-     * @ORM\Column(type="string", length=50)
+     * @ORM\Column(type="string", length=50, nullable=true)
      */
     protected $lastName;
 
     public function __construct()
     {
         parent::__construct();
-        // your own logic
+        $this->roles[] = 'ROLE_USER';
     }
 
     /**
