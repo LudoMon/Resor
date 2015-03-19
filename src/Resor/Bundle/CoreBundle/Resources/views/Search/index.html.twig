@@ -2,6 +2,8 @@
 
 {% block title %}Resor{% endblock %}
 
+{% block topBarContent %}{% endblock %}
+
 {% block stylesheets %}
     {% stylesheets
         '@ResorCoreBundle/Resources/public/js/vendor/datetimepicker/jquery.datetimepicker.css'
@@ -33,6 +35,7 @@
         {% endif %}
         {% if is_granted('IS_AUTHENTICATED_REMEMBERED') == false %}
             <a class="action-btn" href="{{ path('fos_user_security_login') }}">Se connecter</a>
+            <a class="action-btn" href="{{ path('fos_user_registration_register') }}">Créer un compte</a>
         {% else %}
             <a class="action-btn" href="{{ path('fos_user_security_logout') }}">Se déconnecter</a>
         {% endif %}
