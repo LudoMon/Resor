@@ -37,6 +37,7 @@
             <a class="action-btn" href="{{ path('fos_user_security_login') }}">Se connecter</a>
             <a class="action-btn" href="{{ path('fos_user_registration_register') }}">Créer un compte</a>
         {% else %}
+            <a class="action-btn" href="{{ path('fos_user_profile_show') }}">Mon compte</a>
             <a class="action-btn" href="{{ path('fos_user_security_logout') }}">Se déconnecter</a>
         {% endif %}
     </div>
