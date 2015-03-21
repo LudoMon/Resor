@@ -31,6 +31,8 @@
     "angular-datepicker": "~1.0.3",
     "ngAutocomplete": "https://github.com/himmelarthur/ngAutocomplete.git#master",
     "pikaday": "~1.2.0",
-    "pikaday-angular": "~1.0.2"
+    "pikaday-angular": "~1.0.2",
+    "backbone": "~1.1.2",
+    "marionette": "~2.4.1"
   }
 }
