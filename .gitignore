@@ -14,3 +14,4 @@ web/css
 web/js
 /.idea
 /nbproject/private/
+node_modules/

@@ -1,0 +1,31 @@
+{
+  "name": "Resor",
+  "version": "1.0.0",
+  "description": "Resor : plateforme de réservation de voyages ========================",
+  "main": "Gruntfile.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/LudoZeGeek/Resor"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/LudoZeGeek/Resor/issues"
+  },
+  "homepage": "https://github.com/LudoZeGeek/Resor",
+  "devDependencies": {
+    "browserify": "^9.0.3",
+    "grunt-browserify": "^3.5.0",
+    "jade": "^1.9.2",
+    "jadeify": "^4.1.0",
+    "marionette": "0.0.0"
+  },
+  "dependencies": {
+    "backbone": "^1.1.2",
+    "backbone.marionette": "^2.4.1",
+    "jquery": "^2.1.3"
+  }
+}

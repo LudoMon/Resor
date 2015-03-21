@@ -36,6 +36,22 @@ class SearchController extends Controller
     }
 
     /**
+     * @Route("/results2", name="results")
+     * @Template()
+     */
+    public function results2Action(Request $request)
+    {
+        $place = $request->query->get('place');
+        $lat = $request->query->get('lat');
+        $lng = $request->query->get('lng');
+        return array(
+            "place" => $place,
+            "lat" => $lat,
+            "lng" => $lng
+        );
+    }
+
+    /**
      * @Route("/api/results", name="resultsApi")
      * @Template()
      */
