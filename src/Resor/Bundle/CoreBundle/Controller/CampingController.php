@@ -42,6 +42,7 @@ class CampingController extends Controller
                 $em = $this->get('doctrine.orm.entity_manager');
                 $em->persist($camping);
                 $em->flush();
+                return $this->redirect($this->generateUrl('home'));
             }
         }
 
