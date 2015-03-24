@@ -29,5 +29,5 @@ ul.filters
     .secondary-filters
         each on, feature in secondaryFilters
             li
-                p=feature
-                input.js-feature-filter(type="checkbox", checked=on, data-feature=feature)
+                span.feature-name=feature
+                input.feature-checkbox.js-feature-filter(type="checkbox", checked=on, data-feature=feature)

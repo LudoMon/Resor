@@ -10,7 +10,7 @@ module.exports = function (grunt) {
                 transform: ['jadeify']
             },
             results: {
-                src: [ 'src/Resor/Bundle/CoreBundle/Resources/public/js/app/result2.js' ],
+                src: [ 'src/Resor/Bundle/CoreBundle/Resources/public/js/app/result.js' ],
                 dest: 'src/Resor/Bundle/CoreBundle/Resources/public/js/results.js'
             }
         },
