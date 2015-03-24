@@ -32,7 +32,6 @@ class CampingController extends Controller
     public function addCampingAction(Request $request)
     {
 
-        $isValid = "NaN";
         $camping = new Camping();
         $form = $this->createForm('camping', $camping);
 
@@ -50,7 +49,6 @@ class CampingController extends Controller
         }
 
         return [
-            'isValid' => $isValid,
             'form' => $form->createView()
         ];
         
