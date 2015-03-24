@@ -78,4 +78,20 @@ h1, h2, h3, h4, h5, h6 {
     font-weight: bold;
     display: table-cell;
     color: rgba(231, 76, 60, 0.81);
+    text-decoration: none;
+}
+
+.top-bar-link {
+    text-decoration: none;
+    line-height: 25px;
+    color: #555;
+    font-family: "Lato";
+    font-weight: bold;
+    font-size: 14px;
+    padding-left: 10px;
+}
+
+.home-top-link {
+    color: white;
+    font-weight: normal;
 }

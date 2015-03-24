@@ -31,15 +31,19 @@
 <div class="hero-unit">
     <div class="top-actions">
         {% if is_granted('ROLE_ADMIN') %}
-            <a class="action-btn" href="{{ path('campings_list') }}">Gérer les campings</a>
+            <a class="top-bar-link home-top-link" href="{{ path('campings_list') }}">Gérer les campings</a>
         {% endif %}
         {% if is_granted('IS_AUTHENTICATED_REMEMBERED') == false %}
-            <a class="action-btn" href="{{ path('camping_add') }}">Inscrire un camping</a>
-            <a class="action-btn" href="{{ path('fos_user_security_login') }}">Se connecter</a>
-            <a class="action-btn" href="{{ path('fos_user_registration_register') }}">Créer un compte</a>
+            <a class="top-bar-link home-top-link" href="{{ path('camping_add') }}">Inscrire un camping</a>
+            <a class="top-bar-link home-top-link" href="{{ path('fos_user_registration_register') }}">Créer un compte</a>
+            <a class="top-bar-link home-top-link" href="{{ path('fos_user_security_login') }}">
+                <strong>
+                    Se connecter
+                </strong>
+            </a>
         {% else %}
-            <a class="action-btn" href="{{ path('fos_user_profile_show') }}">Mon compte</a>
-            <a class="action-btn" href="{{ path('fos_user_security_logout') }}">Se déconnecter</a>
+            <a class="top-bar-link home-top-link" href="{{ path('fos_user_profile_show') }}">Mon compte</a>
+            <a class="top-bar-link home-top-link" href="{{ path('fos_user_security_logout') }}">Se déconnecter</a>
         {% endif %}
     </div>
     <div class="hero-unit-bg-wrapper"></div>
