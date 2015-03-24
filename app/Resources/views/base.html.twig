@@ -24,9 +24,13 @@
                     <a class="action-btn" href="{{ path('fos_user_registration_register') }}">Créer un compte</a>
                 {% else %}
                     <a class="action-btn" href="{{ path('fos_user_profile_show') }}">Mon compte</a>
+                    {% if is_granted('ROLE_CAMPING') %}
+                        <a class="action-btn" href="{{ path('camping_edit') }}">Mon camping</a>
+                    {% else %}
+                        <a class="action-btn" href="{{ path('camping_add') }}">Inscrire un camping</a>
+                    {% endif %}
                     <a class="action-btn" href="{{ path('fos_user_security_logout') }}">Se déconnecter</a>
                 {% endif %}
-                {% block topBarContent %}{% endblock %}
             </div>
         </div>
         {% endblock topBar %}
