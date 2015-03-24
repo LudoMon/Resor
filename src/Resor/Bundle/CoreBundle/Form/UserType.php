@@ -8,7 +8,6 @@ namespace Resor\Bundle\CoreBundle\Form;
  */
 
 
-use Resor\Bundle\CoreBundle\Form\UserType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
@@ -22,11 +21,8 @@ public function getName()
     
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('firstName', 'text')
-            ->add('lastName', 'text');
-            //->add('userName','text')
-            //->add('email','text')
-            //->add('password','plainPassword');
+        $builder->add('firstName', 'text', ['label' => 'Prénom :'])
+            ->add('lastName', 'text', ['label' => 'Nom :']);
     }
     
     public function getParent() {

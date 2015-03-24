@@ -2,10 +2,13 @@
 
     $(function () {
         var placeInput = $('.js-place-input'),
+            latInput = $('.js-lat-input'),
+            lngInput = $('.js-lng-input'),
             fromInput = $('.js-from-input'),
             toInput = $('.js-to-input'),
             inputs = [placeInput, fromInput, toInput],
             submitButton = $('.js-submit'),
+            form = $('.js-form'),
             datetimepickerOptions = {
                 lang: 'fr',
                 timepicker: false,
@@ -23,7 +26,9 @@
             return invalidInput;
         }
 
-        placeInput.geocomplete();
+        placeInput.geocomplete({
+            details: '.search-place'
+        });
 
         submitButton.on('click', function (evt) {
             var invalidInput;
@@ -34,6 +39,13 @@
                 invalidInput.focus();
                 return false;
             }
+            var place = placeInput.val();
+            var lat = latInput.val();
+            var lng = lngInput.val();
+            var from = fromInput.val();
+            var to = toInput.val();
+            var url = "/results#/?place=" + place + "&lat=" + lat + "&lng=" + lng + "&from=" + from + "&to=" + to;
+            location.href = url;
             return true;
         })
 

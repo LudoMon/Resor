@@ -1,0 +1,258 @@
+*, *:before, *:after {
+    box-sizing: border-box;
+}
+
+html, body {
+    margin: 0;
+    padding: 0;
+    background: #EDEFED;
+}
+
+p {
+    font-family: 'Merriweather', 'Times New Roman', serif;
+    margin: 0;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    margin: 0;
+    font-family: 'Lato', 'Helvetica', sans-serif;
+}
+
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+.map-wrapper {
+    height: 270px;
+    overflow: hidden;
+    width: 80%;
+    border-bottom: 1px #aaa solid;
+    margin: 50px auto 0 auto;
+    position: relative;
+}
+
+.map-wrapper img {
+    margin-top: -460px;
+}
+
+.map {
+    max-width: 100%;
+}
+
+.content {
+    margin: 0 auto;
+    position: relative;
+}
+
+.results-body {
+    width: 80%;
+    margin-left: 10%;
+    display: inline-block;
+}
+
+.result {
+    color: #333;
+    font-weight: lighter;
+    border-top: 1px #ddd solid;
+    display: table;
+    padding: 20px 0;
+}
+
+.result > * {
+    display: table-cell;
+    vertical-align: top;
+}
+
+.result:first-child {
+    margin-top: 0;
+}
+
+.result-photo-wrapper {
+    width: 20%;
+}
+
+.result-photo-wrapper img {
+    max-width: 100%;
+}
+
+.result-infos {
+    padding: 0 0 0 30px;
+    width: 58%;
+}
+
+.result-title {
+    margin-bottom: 10px;
+    font-size: 1.9em;
+}
+
+.result-description {
+    font-size: 1.0em;
+    line-height: 1.3em;
+    text-indent: 2em;
+    color: #555;
+    font-family: "Lato", "Helvetica", Arial, sans-serif;
+}
+
+.result-submit {
+    text-align: center;
+    position: relative;
+}
+
+.result-daily-price {
+    font-family: "Lato", "Helvetica", Arial, sans-serif;
+}
+
+.result-price {
+    text-align: right;
+    font-size: 0.6em;
+    position: relative;
+}
+
+.result-amount {
+    font-weight: bold;
+    font-size: 5em;
+    vertical-align: middle;
+}
+
+.result-submit-button {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    outline: none;
+    background: rgba(231, 76, 60, 0.81);
+    color: white;
+    border-radius: 2px;
+    padding: 10px 20px;
+    font-size: 14px;
+    font-weight: bold;
+    font-family: "Lato";
+    border: rgba(119, 46, 39, 0.5) solid;
+    border-width: 1px 1px 3px 1px;
+    cursor: pointer;
+    border-radius: 3px;
+}
+
+.result-submit-button:hover {
+    background: rgba(231, 107, 94, 0.81);
+}
+
+.result-submit-button:active {
+    border-width: 3px 1px 1px 1px;
+}
+
+.result-number {
+    text-align: center;
+    font-weight: lighter;
+    font-size: 1.4em;
+    margin-bottom: 10px;
+    padding-top: 20px;
+}
+
+.map-position {
+    position: absolute;
+    left: 25px;
+    font-family: Lato;
+    color: white;
+    background: rgba(0, 0, 0, 0.52);
+    bottom: 0px;
+    padding: 5px 10px;
+    border-radius: 5px 5px 0 0;
+    font-weight: lighter;
+    cursor: pointer;
+    margin-bottom: -30px;
+    min-width: 170px;
+    text-align: center;
+    transition: 0.2s linear;
+}
+
+.map-position:hover {
+    background: rgba(0, 0, 0, 0.7);
+    margin-bottom: 0;
+}
+
+.map-position-place {
+    margin-left: 5px;
+}
+
+.change-position {
+    width: 70%;
+    margin: auto;
+    text-align: center;
+    font-size: 0.7em;
+    padding: 10px 0 5px 0;
+    font-weight: normal;
+}
+
+.map-container {
+    height: 330px;
+}
+
+.filters {
+    width: 80%;
+    margin: auto;
+    padding: 20px 0;
+    color: #888;
+    display: table;
+    font-family: 'Lato', 'Helvetica', sans-serif;
+}
+
+.primary-filters {
+    display: table-cell;
+}
+
+.filters-expand {
+    display: table-cell !important;
+    text-align: right;
+}
+
+.filters-to-expand {
+    display: table-row;
+    position: relative;
+}
+
+.secondary-filters {
+    padding-top: 20px;
+}
+
+.secondary-filter {
+    display: inline-table;
+    margin-right: 10px;
+    color: #333;
+    font-weight: bold;
+    border-right: 1px #ddd solid;
+    padding-right: 10px;
+}
+
+.filter {
+    display: inline-block;
+    font-family: Lato;
+}
+
+.filter strong {
+    color: #333;
+    cursor: pointer;
+}
+
+.filter strong:hover {
+    text-decoration: underline;
+}
+
+.filter i {
+    padding-left: 3px;
+    padding-right: 5px;
+    color: #555;
+}
+
+.angular-google-map-container { height: 270px; }
+
+.primary-input {
+    padding: 8px 10px;
+    border-radius: 3px;
+    border: none;
+    margin-right: 5px;
+    font-family: Lato;
+    font-weight: bold;
+    font-size: 0.8em;
+}

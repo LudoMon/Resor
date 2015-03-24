@@ -29,17 +29,5 @@ $(function() {
                 $other.removeClass('disabled');
             }
         });
-    }).on('click', '.btn-test', function () {
-        var $btn = $(this)
-            .removeClass('btn-success')
-            .addClass('btn-default')
-            .button('loading');
-
-        // TODO test url
-        setTimeout(function () {
-            $btn.button('reset')
-                .removeClass('btn-default')
-                .addClass('btn-success');
-        }, 2000);
     });
 });

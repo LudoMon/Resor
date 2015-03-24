@@ -29,13 +29,6 @@ class Camping
     private $name;
 
     /**
-     * @var string
-     *
-     * @ORM\Column(name="url", type="string", length=255)
-     */
-    private $url;
-
-    /**
      * @var boolean
      *
      * @ORM\Column(type="boolean")
@@ -83,29 +76,6 @@ class Camping
     public function getName()
     {
         return $this->name;
-    }
-
-    /**
-     * Set url
-     *
-     * @param string $url
-     * @return Camping
-     */
-    public function setUrl($url)
-    {
-        $this->url = $url;
-
-        return $this;
-    }
-
-    /**
-     * Get url
-     *
-     * @return string
-     */
-    public function getUrl()
-    {
-        return $this->url;
     }
 
     /**

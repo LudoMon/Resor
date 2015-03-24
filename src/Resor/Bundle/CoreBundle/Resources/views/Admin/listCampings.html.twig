@@ -3,14 +3,6 @@
 {% block title %}Campings{% endblock %}
 
 {% block body %}
-    <div class="hero-unit">
-        <div class="hero-unit-content">
-            <div class="top-actions text-right">
-                <a class="action-btn" href="{{ path('home') }}">Accueil</a>
-                <a class="action-btn" href="{{ path('fos_user_security_logout') }}">Se déconnecter</a>
-            </div>
-        </div>
-    </div>
     <div class="container">
         <div class="page-header">
             <h1>Liste des campings partenaires</h1>
@@ -40,7 +32,6 @@
                 <tr>
                     <th>Camping</th>
                     <th>Propriétaire</th>
-                    <th>Url de récupération</th>
                     <th>Activation</th>
                 </tr>
             </thead>
@@ -54,7 +45,6 @@
                 <tr>
                     <td>{{ camping.name }}</td>
                     <td>{{ camping.owner.lastName|upper }} {{ camping.owner.firstName }}</td>
-                    <td><button type="button" class="btn btn-default btn-test" data-loading-text="Test...">Tester l'url</button> {{ camping.url }}</td>
                     <td>
                         <div class="btn-group" data-camping-id="{{ camping.id }}">
                             <button type="button" class="btn btn-default btn-enable {{ camping.isActive ? 'active' }}">Activé</button>
@@ -72,7 +62,7 @@
     <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css" rel="stylesheet">
     <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
     {% stylesheets
-        '@ResorCoreBundle/Resources/public/css/home.css'
+        '@ResorCoreBundle/Resources/public/css/general.css'
         '@ResorCoreBundle/Resources/public/css/campings.list.css'
     %}
     <link rel="stylesheet" href="{{ asset_url }}" />
