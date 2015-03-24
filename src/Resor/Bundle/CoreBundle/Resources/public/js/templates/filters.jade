@@ -4,24 +4,27 @@ ul.filters
             li.filter-place.filter
                 .place-input
                     strong= place
-                        //- i.fa.fa-pencil
-                    input.primary-input.js-place-input(type="text")
+                    .filter-input-wrapper
+                        i.fa.fa-map-marker
+                        input.primary-input.js-place-input(type="text")
             li.filter-from.filter
                 .editable-datepicker
                     span
                         = timeFromWording
                         strong
                             = from
-                            //- i.fa.fa-pencil
-                    input.primary-input.js-from-input
+                    .filter-input-wrapper
+                        i.fa.fa-calendar
+                        input.primary-input.js-from-input
             li.filter-to.filter
                 .editable-datepicker
                     span
                         = timeToWording
                         strong
                             = to
-                            //- i.fa.fa-pencil
-                    input.primary-input.js-to-input
+                    .filter-input-wrapper
+                        i.fa.fa-calendar
+                        input.primary-input.js-to-input
         .filter.filters-expand
             strong.js-filters-expand
                 | Filtres

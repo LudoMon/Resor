@@ -123,12 +123,11 @@ ul {
     outline: none;
     background: rgba(231, 76, 60, 0.81);
     color: white;
-    border-radius: 2px;
     padding: 10px 20px;
     font-size: 14px;
     font-weight: bold;
     font-family: "Lato";
-    border: rgba(119, 46, 39, 0.5) solid;
+    border: rgba(205, 91, 79, 1) solid;
     border-width: 1px 1px 3px 1px;
     cursor: pointer;
     border-radius: 3px;
@@ -229,6 +228,17 @@ ul {
 .filter {
     display: inline-block;
     font-family: Lato;
+    margin-right: 10px;
+    border-right: 1px #d7d7d7 solid;
+    padding-right: 10px;
+}
+
+.filter:last-child {
+    border-right: none;
+}
+
+.filter input {
+    margin-left: 5px;
 }
 
 .filter strong {
@@ -265,15 +275,21 @@ li.feature {
     border-radius: 3px;
     background: #e5e5e5;
     margin: 0 5px;
+    width: 60px;
 }
 
 li.feature:first-child {
     margin-left: 0;
 }
 
+.feature label {
+    color: #555;
+}
+
 .feature-checkbox {
     display: block;
     margin: auto;
+    margin-bottom: 3px;
 }
 
 .filters-top {
