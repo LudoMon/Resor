@@ -31,26 +31,22 @@ class CampingController extends Controller
      */
     public function addCampingAction(Request $request)
     {
-
         $camping = new Camping();
         $form = $this->createForm('camping', $camping);
 
         if ('POST' == $request->getMethod()) {
-            
             $form->handleRequest($request);
             $isValid = $form->isValid() ;
-            if( $isValid){
-                 
+
+            if ($isValid){
                 $em = $this->get('doctrine.orm.entity_manager');
                 $em->persist($camping);
                 $em->flush();
-                
             }
         }
 
         return [
             'form' => $form->createView()
         ];
-        
     }
 }
