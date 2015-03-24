@@ -44,7 +44,7 @@
             var lng = lngInput.val();
             var from = fromInput.val();
             var to = toInput.val();
-            var url = "/results#/?place=" + place + "&lat=" + lat + "&lng=" + lng + "&from=" + from + "&to=" + to;
+            var url = "/results?place=" + place + "&lat=" + lat + "&lng=" + lng + "&from=" + from + "&to=" + to;
             location.href = url;
             return true;
         })
