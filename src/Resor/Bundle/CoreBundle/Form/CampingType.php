@@ -29,8 +29,8 @@ class CampingType extends AbstractType {
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('name', 'text')
-            ->add('owner',new UserType());
+        $builder->add('name', 'text', ['label' => 'Nom du camping :'])
+            ->add('owner',new UserType(), ['label' => 'Propriétaire :']);
             
     }
 

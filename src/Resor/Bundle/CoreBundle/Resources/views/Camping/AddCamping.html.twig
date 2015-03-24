@@ -3,24 +3,14 @@
 {% block title %}Ajouter un Camping{% endblock %}
 
 {% block body %}
-    <div class="hero-unit">
-        <div class="hero-unit-content">
-            <div class="top-actions text-right">
-                <a class="action-btn" href="{{ path('home') }}">Accueil</a>
-                <a class="action-btn" href="{{ path('fos_user_security_logout') }}">Se déconnecter</a>
-            </div>
-        </div>
-    </div>
     <div class="container">
         <div class="page-header">
             <h1>Ajouter un Camping</h1>
         </div>
     
-    
-    
     <form action="{{ path('camping_add') }}" method="POST" {{ form_enctype(form) }}  novalidate="novalidate">
         {{ form_widget(form) }}
-        <input type="submit" value="Save" class="btn btn-primary"/>
+        <input type="submit" value="Enregistrer" class="btn btn-primary pull-right"/>
     </form>
     </div>
 {% endblock %}
@@ -28,4 +18,9 @@
 {% block stylesheets %}
 <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css" rel="stylesheet">
 <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+    {% stylesheets
+    '@ResorCoreBundle/Resources/public/css/general.css'
+    %}
+    <link rel="stylesheet" href="{{ asset_url }}" />
+    {% endstylesheets %}
 {% endblock %}
