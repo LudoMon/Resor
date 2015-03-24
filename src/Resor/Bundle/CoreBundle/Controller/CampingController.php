@@ -55,20 +55,4 @@ class CampingController extends Controller
         ];
         
     }
-    
-    /**
-     * 
-     * @return array
-     *
-     * @Route("/camping/all", name="camping_all")
-     * @Template()
-     */
-    public function listCampingAction(){
-        $repo=$this->getDoctrine()->getRepository('ResorCoreBundle:Camping');
-        $camping=$repo->findAll();
-        
-        return ['camping'=> $camping];
-    }
-    
-
 }
