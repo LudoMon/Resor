@@ -9,6 +9,7 @@
         </div>
     
     <form action="{{ path('camping_add') }}" method="POST" {{ form_enctype(form) }}  novalidate="novalidate">
+        {{ form_errors(form) }}
         {{ form_widget(form) }}
         <input type="submit" value="Enregistrer" class="btn btn-primary pull-right"/>
     </form>
