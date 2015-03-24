@@ -36,9 +36,11 @@ class CampingController extends Controller
 
         if ('POST' == $request->getMethod()) {
             $form->handleRequest($request);
-            $isValid = $form->isValid() ;
+            $isValid = $form->isValid();
 
             if ($isValid){
+                $camping->getOwner()->addRole('ROLE_CAMPING');
+
                 $em = $this->get('doctrine.orm.entity_manager');
                 $em->persist($camping);
                 $em->flush();
