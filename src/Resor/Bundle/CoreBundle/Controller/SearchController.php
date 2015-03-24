@@ -28,22 +28,6 @@ class SearchController extends Controller
         $place = $request->query->get('place');
         $lat = $request->query->get('lat');
         $lng = $request->query->get('lng');
-        return array(
-            "place" => $place,
-            "lat" => $lat,
-            "lng" => $lng
-        );
-    }
-
-    /**
-     * @Route("/results2", name="results2")
-     * @Template()
-     */
-    public function results2Action(Request $request)
-    {
-        $place = $request->query->get('place');
-        $lat = $request->query->get('lat');
-        $lng = $request->query->get('lng');
         $from = $request->query->get('from');
         $to = $request->query->get('to');
         return array(
