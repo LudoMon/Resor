@@ -24,11 +24,6 @@ public function getName()
         $builder->add('firstName', 'text', ['label' => 'Prénom :'])
             ->add('lastName', 'text', ['label' => 'Nom :']);
     }
-    
-    public function getParent() {
-        return 'fos_user_registration';
-    }
-
 
     public function setDefaultOptions(
         OptionsResolverInterface $resolver
