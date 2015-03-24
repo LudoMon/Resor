@@ -8,18 +8,20 @@ module.exports = Marionette.ItemView.extend({
         placeInput: '.js-place-input',
         fromInput: '.js-from-input',
         toInput: '.js-to-input',
-        featureFilter: '.js-feature-filter'
+        featureFilter: '.js-feature-filter',
+        filtersExpand: '.js-filters-expand',
+        secondaryFilters: '.js-secondary-filters'
     },
 
     events: {
-        'change @ui.featureFilter': 'onFeatureFilterChange'
+        'change @ui.featureFilter': 'onFeatureFilterChange',
+        'click @ui.filtersExpand': 'toggleFeatures'
     },
 
     initialize: function (options) {
         this.vent = options.vent;
         this.collection = options.collection;
         this.listenTo(this.collection, 'sync', this.updateFeatureFilters);
-        this.listenTo(this.model, 'change', this.render);
     },
 
     onRender: function () {
@@ -50,6 +52,10 @@ module.exports = Marionette.ItemView.extend({
         this.vent.trigger('filters:features');
     },
 
+    toggleFeatures: function () {
+        this.ui.secondaryFilters.slideToggle(400);
+    },
+
     updateFeatureFilters: function () {
         var secondaryFilters = this.collection.models.reduce(function (memo, result) {
             _.each(result.get('features'), function (feature) {
@@ -60,6 +66,7 @@ module.exports = Marionette.ItemView.extend({
             return memo;
         }, {});
         this.model.set('secondaryFilters', secondaryFilters);
+        this.render();
     }
 
 });
