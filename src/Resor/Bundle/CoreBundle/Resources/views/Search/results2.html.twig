@@ -24,45 +24,35 @@
 {% block javascripts %}
     {% javascripts
         '@ResorCoreBundle/Resources/public/js/vendor/jquery/dist/jquery.js'
+        '@ResorCoreBundle/Resources/public/js/vendor/underscore/underscore.js'
+        '@ResorCoreBundle/Resources/public/js/vendor/geocomplete/jquery.geocomplete.js'
+        '@ResorCoreBundle/Resources/public/js/vendor/moment/moment.js'
+        '@ResorCoreBundle/Resources/public/js/vendor/pikaday/pikaday.js'
+        '@ResorCoreBundle/Resources/public/js/vendor/gmaps/gmaps.js'
         '@ResorCoreBundle/Resources/public/js/results.js'
     %}
     <script src="{{ asset_url }}"></script>
+    <script type="text/javascript">
+        window.exposed = {
+            lat: {{ lat }},
+            lng: {{ lng }},
+            place: '{{ place }}',
+            from: '{{ from }}',
+            to: '{{ to }}'
+        };
+    </script>
     {% endjavascripts %}
 {% endblock %}
 
 {% block body %}
     <div id="main" ng-app="resultsApp">
         <div class="result-page">
-            <div class="map-wrapper" ng-controller="MapCtrl">
-                <ui-gmap-google-map center='map.center' zoom='map.zoom'>
-                    <ui-gmap-markers models="markers.data" coords="'self'" events="markerEvents">
-                    </ui-gmap-markers>
-                </ui-gmap-google-map>
-            </div>
+            <div id="map"></div>
             <div class="content" >
-                <div class="filters-bar">
-                    <ul class="filters">
-                        <div class="primary-filters">
-                            <li class="filter-place filter">
-                                <placeinput place="searchParams.place"></placeinput>
-                            </li>
-                            <li class="filter-from filter">
-                                <editabledatepicker date="searchParams.from" time="start"></editabledatepicker>
-                            </li>
-                            <li class="filter-to filter">
-                                <editabledatepicker date="searchParams.to" time="end"></editabledatepicker>
-                            </li>
-                        </div>
-                        <div class="filter filters-expand">
-                            <strong ng-click="displayFilters = !displayFilters">
-                                Filtres  <i class="fa fa-caret-down"></i>
-                            </strong>
-                        </div>
-                    </ul>
+                <div class="filters-bar" id="filters">
                 </div>
                 <div class="results-body">
                     <ul class="results" id="results">
-
                     </ul>
                 </div>
             </div>

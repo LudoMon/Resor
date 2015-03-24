@@ -245,7 +245,7 @@ ul {
     color: #555;
 }
 
-.angular-google-map-container { height: 270px; }
+#top-map { height: 270px !important; }
 
 .primary-input {
     padding: 8px 10px;

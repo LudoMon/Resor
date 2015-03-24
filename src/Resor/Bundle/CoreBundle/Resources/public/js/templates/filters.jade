@@ -1,0 +1,33 @@
+ul.filters
+    div
+        .primary-filters
+            li.filter-place.filter
+                .place-input
+                    strong= place
+                        //- i.fa.fa-pencil
+                    input.primary-input.js-place-input(type="text")
+            li.filter-from.filter
+                .editable-datepicker
+                    span
+                        = timeFromWording
+                        strong
+                            = from
+                            //- i.fa.fa-pencil
+                    input.primary-input.js-from-input
+            li.filter-to.filter
+                .editable-datepicker
+                    span
+                        = timeToWording
+                        strong
+                            = to
+                            //- i.fa.fa-pencil
+                    input.primary-input.js-to-input
+        .filter.filters-expand
+            strong
+                | Filtres
+                i.fa.fa-caret-down
+    .secondary-filters
+        each on, feature in secondaryFilters
+            li
+                p=feature
+                input.js-feature-filter(type="checkbox", checked=on, data-feature=feature)
