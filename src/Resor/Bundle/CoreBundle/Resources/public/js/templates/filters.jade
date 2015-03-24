@@ -1,5 +1,5 @@
 ul.filters
-    div
+    .filters-top
         .primary-filters
             li.filter-place.filter
                 .place-input
@@ -28,6 +28,6 @@ ul.filters
                 i.fa.fa-caret-down
     .secondary-filters
         each on, feature in secondaryFilters
-            li
-                span.feature-name=feature
-                input.feature-checkbox.js-feature-filter(type="checkbox", checked=on, data-feature=feature)
+            li.feature
+                input.feature-checkbox.js-feature-filter(type="checkbox", checked=on, data-feature=feature, id="feature-" + feature)
+                label(for="feature-" + feature).feature-name=feature

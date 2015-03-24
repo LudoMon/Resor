@@ -83,6 +83,7 @@ ul {
 }
 
 .result-title {
+    font-family: "Lato", "Helvetica", Arial, sans-serif;
     margin-bottom: 10px;
     font-size: 1.9em;
 }
@@ -255,4 +256,27 @@ ul {
     font-family: Lato;
     font-weight: bold;
     font-size: 0.8em;
+}
+
+li.feature {
+    display: inline-block;
+    padding: 5px;
+    border: 1px #e0e0e0 solid;
+    border-radius: 3px;
+    background: #e5e5e5;
+    margin: 0 5px;
+}
+
+li.feature:first-child {
+    margin-left: 0;
+}
+
+.feature-checkbox {
+    display: block;
+    margin: auto;
+}
+
+.filters-top {
+    display: table;
+    width: 100%;
 }
