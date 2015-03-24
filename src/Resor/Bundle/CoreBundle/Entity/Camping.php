@@ -39,8 +39,9 @@ class Camping
      * @var boolean
      *
      * @ORM\Column(type="boolean")
+     * 
      */
-    private $isActive;
+    private $isActive = 0;
 
     /**
      * @var User

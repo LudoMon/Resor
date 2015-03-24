@@ -9,7 +9,7 @@
 namespace Resor\Bundle\CoreBundle\Controller;
 
 /**
- * Description of AddCampingController
+ * Description of CampingController
  *
  * @author Thibault
  */
@@ -20,7 +20,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Symfony\Component\HttpFoundation\Request;
 
-class AddCampingController extends Controller
+class CampingController extends Controller
 {
     /**
      * @param Request $request
@@ -31,15 +31,17 @@ class AddCampingController extends Controller
      */
     public function addCampingAction(Request $request)
     {
+
         $isValid = "NaN";
         $camping = new Camping();
         $form = $this->createForm('camping', $camping);
 
         if ('POST' == $request->getMethod()) {
+            
             $form->handleRequest($request);
-            var_dump($camping);
             $isValid = $form->isValid() ;
             if( $isValid){
+                 
                 $em = $this->get('doctrine.orm.entity_manager');
                 $em->persist($camping);
                 $em->flush();
@@ -67,4 +69,6 @@ class AddCampingController extends Controller
         
         return ['camping'=> $camping];
     }
+    
+
 }
