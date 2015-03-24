@@ -69,7 +69,13 @@ class CampingController extends Controller
      */
     public function editCampingAction(Request $request)
     {
-        /*$camping = new Camping();
+        $token = $this->get( 'security.context' )->getToken();
+        $currentUser = $token->getUser();
+
+        $camping = $this->getDoctrine()
+            ->getManager()
+            ->getRepository('ResorCoreBundle:Camping')
+            ->findOneBy(['owner' => $currentUser]);
         $form = $this->createForm('camping', $camping);
 
         if ('POST' == $request->getMethod()) {
@@ -77,24 +83,16 @@ class CampingController extends Controller
             $isValid = $form->isValid();
 
             if ($isValid){
-                $token = $this->get( 'security.context' )->getToken();
-                $currentUser = $token->getUser();
-                $currentUser->setFirstName($camping->getOwner()->getFirstName());
-                $currentUser->setLastName($camping->getOwner()->getLastName());
-                $currentUser->addRole('ROLE_CAMPING');
-                $camping->setOwner($currentUser);
-
                 $em = $this->get('doctrine.orm.entity_manager');
                 $em->persist($camping);
                 $em->flush();
 
-                $token->setAuthenticated( false );
                 return $this->redirect($this->generateUrl('home'));
             }
         }
 
         return [
             'form' => $form->createView()
-        ];*/
+        ];
     }
 }

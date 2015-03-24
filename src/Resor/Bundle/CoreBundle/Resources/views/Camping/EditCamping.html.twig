@@ -1,0 +1,27 @@
+{% extends '::base.html.twig' %}
+
+{% block title %}Mon Camping{% endblock %}
+
+{% block body %}
+    <div class="container">
+        <div class="page-header">
+            <h1>Mon camping</h1>
+        </div>
+    
+    <form action="{{ path('camping_edit') }}" method="POST" {{ form_enctype(form) }}  novalidate="novalidate">
+        {{ form_errors(form) }}
+        {{ form_widget(form) }}
+        <input type="submit" value="Mettre à jour" class="btn btn-primary pull-right"/>
+    </form>
+    </div>
+{% endblock %}
+
+{% block stylesheets %}
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css" rel="stylesheet">
+<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+    {% stylesheets
+    '@ResorCoreBundle/Resources/public/css/general.css'
+    %}
+    <link rel="stylesheet" href="{{ asset_url }}" />
+    {% endstylesheets %}
+{% endblock %}
