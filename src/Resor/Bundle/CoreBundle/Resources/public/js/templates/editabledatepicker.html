@@ -1,6 +1,0 @@
-<div class="editable-datepicker">
-    <span ng-show="!displayInput">
-        {{ timeWording }} <strong ng-click="toggleInput()"> {{ date }} <i class="fa fa-pencil"></i></strong>
-    </span>
-    <input class="primary-input" pikaday="fromDate" format="DD/MM/YYYY" ng-show="displayInput" set-default-date="true" ng-model="date" max-date="date.to" ng-blur="toggleInput()" validate-to-date>
-</div>

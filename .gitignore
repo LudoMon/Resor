@@ -14,3 +14,5 @@ web/css
 web/js
 /.idea
 /nbproject/private/
+node_modules/
+src/Resor/Bundle/CoreBundle/Resources/public/js/results.js

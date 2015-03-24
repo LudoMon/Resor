@@ -16,14 +16,6 @@
 {% block headjs %}
     <script type="text/javascript" src="//maps.google.com/maps/api/js?libraries=places&sensor=true"></script>
     {% javascripts
-        '@ResorCoreBundle/Resources/public/js/vendor/lodash/dist/lodash.js'
-        '@ResorCoreBundle/Resources/public/js/vendor/angular/angular.js'
-        '@ResorCoreBundle/Resources/public/js/vendor/angular-route/angular-route.js'
-        '@ResorCoreBundle/Resources/public/js/vendor/angular-resource/angular-resource.js'
-        '@ResorCoreBundle/Resources/public/js/vendor/angular-google-maps/dist/angular-google-maps.js'
-        '@ResorCoreBundle/Resources/public/js/vendor/ngAutocomplete/src/ngAutocomplete.js'
-        '@ResorCoreBundle/Resources/public/js/vendor/pikaday/pikaday.js'
-        '@ResorCoreBundle/Resources/public/js/vendor/pikaday-angular/pikaday-angular.js'
     %}
     <script src="{{ asset_url }}"></script>
     {% endjavascripts %}
@@ -31,15 +23,39 @@
 
 {% block javascripts %}
     {% javascripts
-        '@ResorCoreBundle/Resources/public/js/app/results.js'
+        '@ResorCoreBundle/Resources/public/js/vendor/jquery/dist/jquery.js'
+        '@ResorCoreBundle/Resources/public/js/vendor/underscore/underscore.js'
+        '@ResorCoreBundle/Resources/public/js/vendor/geocomplete/jquery.geocomplete.js'
+        '@ResorCoreBundle/Resources/public/js/vendor/moment/moment.js'
+        '@ResorCoreBundle/Resources/public/js/vendor/pikaday/pikaday.js'
+        '@ResorCoreBundle/Resources/public/js/vendor/gmaps/gmaps.js'
+        '@ResorCoreBundle/Resources/public/js/results.js'
     %}
     <script src="{{ asset_url }}"></script>
+    <script type="text/javascript">
+        window.exposed = {
+            lat: {{ lat }},
+            lng: {{ lng }},
+            place: '{{ place }}',
+            from: '{{ from }}',
+            to: '{{ to }}'
+        };
+    </script>
     {% endjavascripts %}
 {% endblock %}
 
 {% block body %}
-    <div id="main" ng-app="resultsApp">
-        <div ng-view>
+    <div id="main">
+        <div class="result-page">
+            <div id="map"></div>
+            <div class="content" >
+                <div class="filters-bar" id="filters">
+                </div>
+                <div class="results-body">
+                    <ul class="results" id="results">
+                    </ul>
+                </div>
+            </div>
         </div>
     </div>
 {% endblock %}
