@@ -21,8 +21,12 @@
                     <a class="top-bar-link" href="{{ path('campings_list') }}">Gérer les campings</a>
                 {% endif %}
                 {% if is_granted('IS_AUTHENTICATED_REMEMBERED') == false %}
+                    <a class="top-bar-link" href="{{ path('fos_user_registration_register') }}">
+                        <strong>
+                            Créer un compte
+                        </strong>
+                    </a>
                     <a class="top-bar-link" href="{{ path('fos_user_security_login') }}">Se connecter</a>
-                    <a class="top-bar-link" href="{{ path('fos_user_registration_register') }}">Créer un compte</a>
                 {% else %}
                     <a class="top-bar-link" href="{{ path('fos_user_profile_show') }}">Mon compte</a>
                     {% if is_granted('ROLE_CAMPING') %}
