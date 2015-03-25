@@ -1,0 +1,50 @@
+{% extends '::base.html.twig' %}
+
+{% block title %}Resor | Réservation{% endblock %}
+
+{% block stylesheets %}
+    {% stylesheets
+        '@ResorCoreBundle/Resources/public/css/general.css'
+        '@ResorCoreBundle/Resources/public/css/booking.css'
+    %}
+        <link rel="stylesheet" href="{{ asset_url }}"/>
+    {% endstylesheets %}
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+{% endblock %}
+
+{% block javascripts %}
+    {% javascripts
+        '@ResorCoreBundle/Resources/public/js/vendor/jquery/dist/jquery.js'
+    %}
+    <script src="{{ asset_url }}"></script>
+    <script type="text/javascript">
+    $(function () {
+        $.get('https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=-33.8670522,151.1957362&radius=500&types=food&name=cruise&key=AIzaSyDjyln8YQMI5UejnP_8TbLnhqfPk-q49u0', function () {
+            console.log(arguments);
+        });
+    })
+    </script>
+    {% endjavascripts %}
+{% endblock %}
+
+{% block body %}
+    <div id="main">
+        <div class="booking-page">
+            <div class="booking-top-bar">Réservation du {{ camping.title }}</div>
+            <div class="booking-content">
+                <h1>{{ camping.title }}</h1>
+                <ul class="camping-features">
+                    {% for feature in camping.features %}
+                        <li class="camping-feature">
+                            <i class="fa fa-check"></i>
+                            <span>{{ feature | capitalize }}</span>
+                            {% if not loop.last %}
+                                <span class="camping-feature-separator"> | </span>
+                            {% endif %}
+                        </li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+    </div>
+{% endblock %}
