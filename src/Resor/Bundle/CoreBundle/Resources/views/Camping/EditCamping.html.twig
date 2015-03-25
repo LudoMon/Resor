@@ -1,17 +1,17 @@
 {% extends '::base.html.twig' %}
 
-{% block title %}Ajouter un Camping{% endblock %}
+{% block title %}Mon Camping{% endblock %}
 
 {% block body %}
     <div class="container">
         <div class="page-header">
-            <h1>Ajouter un Camping</h1>
+            <h1>Mon camping</h1>
         </div>
     
-    <form action="{{ path('camping_add') }}" method="POST" {{ form_enctype(form) }}  novalidate="novalidate">
+    <form action="{{ path('camping_edit') }}" method="POST" {{ form_enctype(form) }}  novalidate="novalidate">
         {{ form_errors(form) }}
         {{ form_widget(form) }}
-        <input type="submit" value="Enregistrer" class="btn btn-primary pull-right"/>
+        <input type="submit" value="Mettre à jour" class="btn btn-primary pull-right"/>
     </form>
     </div>
 {% endblock %}
