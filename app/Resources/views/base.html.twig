@@ -29,10 +29,12 @@
                     <a class="top-bar-link" href="{{ path('fos_user_security_login') }}">Se connecter</a>
                 {% else %}
                     <a class="top-bar-link" href="{{ path('fos_user_profile_show') }}">Mon compte</a>
-                    {% if is_granted('ROLE_CAMPING') %}
-                        <a class="top-bar-link" href="{{ path('camping_edit') }}">Mon camping</a>
-                    {% else %}
-                        <a class="top-bar-link" href="{{ path('camping_add') }}">Inscrire un camping</a>
+                    {% if is_granted('ROLE_ADMIN') == false %}
+                        {% if is_granted('ROLE_CAMPING') %}
+                            <a class="top-bar-link" href="{{ path('camping_edit') }}">Mon camping</a>
+                        {% else %}
+                            <a class="top-bar-link" href="{{ path('camping_add') }}">Inscrire un camping</a>
+                        {% endif %}
                     {% endif %}
                     <a class="top-bar-link" href="{{ path('fos_user_security_logout') }}">Se déconnecter</a>
                 {% endif %}
