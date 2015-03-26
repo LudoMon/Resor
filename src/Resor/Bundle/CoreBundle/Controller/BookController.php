@@ -63,7 +63,8 @@ class BookController extends Controller
         return array(
             "camping" => $camping,
             "from" => $from,
-            "to" => $to
+            "to" => $to,
+            "bookingId" => $id
         );
     }
 }

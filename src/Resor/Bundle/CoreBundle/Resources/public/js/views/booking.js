@@ -7,6 +7,8 @@ module.exports = Marionette.ItemView.extend({
     ui: {
         fromInput: '.js-from-input',
         toInput: '.js-to-input',
+        fromForm: '.js-form-from',
+        toForm: '.js-form-to',
         mapPlaceholder: '.js-map',
         price: '.js-price'
     },
@@ -23,6 +25,11 @@ module.exports = Marionette.ItemView.extend({
 
         var view = this;
 
+        function updateDateFormInputs() {
+            view.ui.fromForm.attr('value', moment(view.model.get('from')).format());
+            view.ui.toForm.attr('value', moment(view.model.get('to')).format());
+        }
+
         function updateDates () {
             var toDate = view.toPicker.getDate();
             var fromDate = view.fromPicker.getDate();
@@ -32,6 +39,7 @@ module.exports = Marionette.ItemView.extend({
             view.model.set('days', daysDifference);
             view.fromPicker.setMaxDate(toDate);
             view.toPicker.setMinDate(fromDate);
+            updateDateFormInputs();
         }
 
         this.fromPicker = new Pikaday({
@@ -47,9 +55,10 @@ module.exports = Marionette.ItemView.extend({
             minDate: this.model.get('to'),
             onSelect: updateDates
         });
-
         this.fromPicker.setMoment(moment(window.exposed.from, 'DD/MM/YYYY'));
         this.toPicker.setMoment(moment(window.exposed.to, 'DD/MM/YYYY'));
+
+        updateDateFormInputs();
     },
 
     updatePrice: function () {

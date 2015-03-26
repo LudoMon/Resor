@@ -12,7 +12,8 @@ var BookingApplication = window.BookingApplication = Marionette.Application.exte
         this.models = {
             booking: new Backbone.Model({
                 from: window.exposed.from,
-                to: window.exposed.to
+                to: window.exposed.to,
+                bookingId: window.exposed.bookingId
             })
         };
         this.views = {

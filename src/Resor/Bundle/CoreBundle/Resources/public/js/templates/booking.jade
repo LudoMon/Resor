@@ -8,6 +8,7 @@
         | -- €
     span.booking-daily
         = "(soit " + dailyPrice + " €/jour)"
-.booking-submit
-    button.submit-button(type="submit")
-        | Réserver
+form.booking-submit(action="/book/" + bookingId + "/finalize", method="POST")
+    input.js-form-from(type="hidden", value=toSerialized, name="to")
+    input.js-form-to(type="hidden", value=fromSerialized, name="from")
+    input.submit-button(type="submit", value="Réserver")
