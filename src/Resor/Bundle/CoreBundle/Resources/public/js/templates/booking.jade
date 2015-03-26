@@ -6,5 +6,7 @@
 .booking-price-insert
     strong.booking-price.js-price
         | -- €
+    span.booking-daily
+        = "(soit " + dailyPrice + " €/jour)"
 .booking-submit
     input.submit-button(type="submit")
