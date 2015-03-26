@@ -9,9 +9,12 @@ var BookingView = require('../views/booking.js');
 var BookingApplication = Marionette.Application.extend({
 
     initialize: function () {
+        this.models = {
+            booking: new Backbone.Model()
+        };
         this.views = {
             booking: new BookingView({
-                model: new Backbone.Model()
+                model: this.models.booking
             })
         };
         this.addRegions({

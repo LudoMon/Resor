@@ -7,6 +7,16 @@ module.exports = Marionette.ItemView.extend({
     ui: {
         fromInput: '.js-from-input',
         toInput: '.js-to-input',
+        mapPlaceholder: '.js-map',
+        price: '.js-price'
+    },
+
+    initialize: function (options) {
+        this.model.set('dailyPrice', 27);
+    },
+
+    modelEvents: {
+        'change:days': 'updatePrice'
     },
 
     onRender: function () {
@@ -16,24 +26,19 @@ module.exports = Marionette.ItemView.extend({
         function updateDates () {
             var toDate = view.toPicker.getDate();
             var fromDate = view.fromPicker.getDate();
-            var daysDifference = moment(a).diff(moment(b), 'days');
+            var daysDifference = moment(toDate).diff(moment(fromDate), 'days');
             view.model.set('to', toDate);
             view.model.set('from', fromDate);
             view.model.set('days', daysDifference);
             view.fromPicker.setMaxDate(toDate);
             view.toPicker.setMinDate(fromDate);
-            view.updatePrice();
         }
 
         this.fromPicker = new Pikaday({
             field: this.ui.fromInput[0],
             format: 'DD/MM/YYYY',
             maxDate: this.model.get('from'),
-            onSelect: updateDates,
-            disableDayFn: function () {
-                debugger;
-                return true;
-            }
+            onSelect: updateDates
         });
 
         this.toPicker = new Pikaday({
@@ -48,7 +53,11 @@ module.exports = Marionette.ItemView.extend({
     },
 
     updatePrice: function () {
-        this.$('.booking-price').html(this.model.get('days') * 27 + ' €');
+        var price;
+        price = this.model.get('days') * this.model.get('dailyPrice');
+        price = price > 0 ? price : '--';
+        this.model.set('price', price);
+        this.ui.price.html(this.model.get('price') + ' €');
     }
 
 });
