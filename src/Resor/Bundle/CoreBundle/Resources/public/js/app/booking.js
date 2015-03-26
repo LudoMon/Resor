@@ -6,9 +6,9 @@ var Marionette = require('backbone.marionette');
 // Views
 var BookingView = require('../views/booking.js');
 
-var BookingApplication = Marionette.Application.extend({
+var BookingApplication = window.BookingApplication = Marionette.Application.extend({
 
-    initialize: function () {
+    initialize: function (options) {
         this.models = {
             booking: new Backbone.Model({
                 from: window.exposed.from,
@@ -25,13 +25,5 @@ var BookingApplication = Marionette.Application.extend({
         });
         this.booking.show(this.views.booking);
     }
-
-});
-
-$(function () {
-
-    var app = new BookingApplication();
-
-    app.start();
 
 });

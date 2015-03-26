@@ -58,6 +58,6 @@ module.exports = Marionette.ItemView.extend({
         price = price > 0 ? price : '--';
         this.model.set('price', price);
         this.ui.price.html(this.model.get('price') + ' €');
-    }
+    },
 
 });

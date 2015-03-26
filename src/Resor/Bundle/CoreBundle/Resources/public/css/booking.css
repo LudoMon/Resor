@@ -93,3 +93,11 @@
     color: #555;
     font-weight: lighter;
 }
+
+.submit-button:hover {
+    background: rgba(231, 107, 94, 0.81);
+}
+
+.submit-button:active {
+    border-width: 3px 1px 1px 1px;
+}
