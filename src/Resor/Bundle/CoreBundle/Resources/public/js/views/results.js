@@ -4,6 +4,12 @@ module.exports = Marionette.CollectionView.extend({
 
     childView: require('./result'),
 
+    childViewOptions: function () {
+        return {
+            searchParams: this.searchParams
+        };
+    },
+
     filter: function (child, index, collection) {
         return child.isActive(this.searchParams.getActiveFeatures());
     },

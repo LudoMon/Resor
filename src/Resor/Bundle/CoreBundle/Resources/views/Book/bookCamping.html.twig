@@ -22,6 +22,12 @@
         '@ResorCoreBundle/Resources/public/js/booking.js'
     %}
     <script src="{{ asset_url }}"></script>
+    <script type="text/javascript">
+        window.exposed = {
+            from: '{{ from }}',
+            to: '{{ to }}'
+        };
+    </script>
     {% endjavascripts %}
 {% endblock %}
 

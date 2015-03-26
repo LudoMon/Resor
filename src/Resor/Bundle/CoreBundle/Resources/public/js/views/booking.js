@@ -48,8 +48,8 @@ module.exports = Marionette.ItemView.extend({
             onSelect: updateDates
         });
 
-        // this.fromPicker.setMoment(moment(window.exposed.from, 'DD/MM/YYYY'));
-        // this.toPicker.setMoment(moment(window.exposed.to, 'DD/MM/YYYY'));
+        this.fromPicker.setMoment(moment(window.exposed.from, 'DD/MM/YYYY'));
+        this.toPicker.setMoment(moment(window.exposed.to, 'DD/MM/YYYY'));
     },
 
     updatePrice: function () {
