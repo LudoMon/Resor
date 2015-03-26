@@ -6,6 +6,7 @@
     {% stylesheets
         '@ResorCoreBundle/Resources/public/css/general.css'
         '@ResorCoreBundle/Resources/public/css/booking.css'
+        '@ResorCoreBundle/Resources/public/js/vendor/pikaday/css/pikaday.css'
     %}
         <link rel="stylesheet" href="{{ asset_url }}"/>
     {% endstylesheets %}
@@ -15,15 +16,12 @@
 {% block javascripts %}
     {% javascripts
         '@ResorCoreBundle/Resources/public/js/vendor/jquery/dist/jquery.js'
+        '@ResorCoreBundle/Resources/public/js/vendor/underscore/underscore.js'
+        '@ResorCoreBundle/Resources/public/js/vendor/moment/moment.js'
+        '@ResorCoreBundle/Resources/public/js/vendor/pikaday/pikaday.js'
+        '@ResorCoreBundle/Resources/public/js/booking.js'
     %}
     <script src="{{ asset_url }}"></script>
-    <script type="text/javascript">
-    $(function () {
-        $.get('https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=-33.8670522,151.1957362&radius=500&types=food&name=cruise&key=AIzaSyDjyln8YQMI5UejnP_8TbLnhqfPk-q49u0', function () {
-            console.log(arguments);
-        });
-    })
-    </script>
     {% endjavascripts %}
 {% endblock %}
 
@@ -44,6 +42,8 @@
                         </li>
                     {% endfor %}
                 </ul>
+                <div id="booking">
+                </div>
             </div>
         </div>
     </div>

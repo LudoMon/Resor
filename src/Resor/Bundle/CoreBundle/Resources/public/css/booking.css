@@ -17,6 +17,7 @@
 .booking-content {
     padding: 15px;
     color: #555;
+    position: relative;
 }
 
 .camping-features {
@@ -36,4 +37,51 @@
 .camping-feature-separator {
   padding-right: 5px;
   padding-left: 5px;
+}
+
+.booking-dates {
+    display: inline-block;
+    margin: 15px 0;
+}
+
+.primary-input {
+    padding: 8px 10px;
+    border-radius: 3px;
+    margin-right: 5px;
+    font-family: Lato;
+    font-weight: bold;
+    font-size: 0.8em;
+    margin-left: 5px;
+    outline: none;
+    border: 1px #ddd solid;
+    background: #fafafa;
+}
+
+.booking-price-insert {
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding: 20px;
+    font-size: 3em;
+    margin: 15px;
+    background: #f5f5f5;
+}
+
+.submit-button {
+    outline: none;
+    background: rgba(231, 76, 60, 0.81);
+    color: white;
+    padding: 10px 20px;
+    font-size: 14px;
+    font-weight: bold;
+    font-family: "Lato";
+    border: rgba(205, 91, 79, 1) solid;
+    border-width: 1px 1px 3px 1px;
+    cursor: pointer;
+    border-radius: 3px;
+}
+
+.booking-submit {
+    text-align: right;
+    margin-top: 30px;
 }
