@@ -5,3 +5,8 @@ resor_core:
 
 fos_user:
     resource: "@FOSUserBundle/Resources/config/routing/all.xml"
+
+resor_api:
+    type: rest
+    resource: Resor\Bundle\CoreBundle\Controller\ApiController
+    prefix: /api/
