@@ -5,12 +5,12 @@ namespace Resor\Bundle\CoreBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * Booking
+ * Availability
  *
  * @ORM\Table()
- * @ORM\Entity(repositoryClass="Resor\Bundle\CoreBundle\Entity\BookingRepository")
+ * @ORM\Entity(repositoryClass="Resor\Bundle\CoreBundle\Entity\AvailabilityRepository")
  */
-class Booking
+class Availability
 {
     /**
      * @var integer
@@ -36,20 +36,33 @@ class Booking
     private $endDate;
 
     /**
-     * @var User
+     * @var integer
      *
-     * @ORM\ManyToOne(targetEntity="Resor\Bundle\CoreBundle\Entity\User")
-     * @ORM\JoinColumn(nullable=false)
+     * @ORM\Column(name="PlacesNumber", type="integer")
      */
-    private $user;
+    private $placesNumber;
 
     /**
-     * @var Availability
+     * @var integer
      *
-     * @ORM\ManyToOne(targetEntity="Resor\Bundle\CoreBundle\Entity\Availability")
+     * @ORM\Column(name="price", type="integer")
+     */
+    private $price;
+
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(name="isOpen", type="boolean")
+     */
+    private $isOpen;
+
+    /**
+     * @var Offer
+     *
+     * @ORM\ManyToOne(targetEntity="Resor\Bundle\CoreBundle\Entity\Offer")
      * @ORM\JoinColumn(nullable=false)
      */
-    private $availability;
+    private $offer;
 
 
     /**
@@ -66,7 +79,7 @@ class Booking
      * Set startDate
      *
      * @param \DateTime $startDate
-     * @return Booking
+     * @return Availability
      */
     public function setStartDate($startDate)
     {
@@ -89,7 +102,7 @@ class Booking
      * Set endDate
      *
      * @param \DateTime $endDate
-     * @return Booking
+     * @return Availability
      */
     public function setEndDate($endDate)
     {
@@ -109,48 +122,71 @@ class Booking
     }
 
     /**
-     * Set user
+     * Set placesNumber
      *
-     * @param \Resor\Bundle\CoreBundle\Entity\User $user
-     * @return Booking
+     * @param integer $placesNumber
+     * @return Availability
      */
-    public function setUser(\Resor\Bundle\CoreBundle\Entity\User $user = null)
+    public function setPlacesNumber($placesNumber)
     {
-        $this->user = $user;
+        $this->placesNumber = $placesNumber;
 
         return $this;
     }
 
     /**
-     * Get user
+     * Get placesNumber
      *
-     * @return \Resor\Bundle\CoreBundle\Entity\User 
+     * @return integer 
      */
-    public function getUser()
+    public function getPlacesNumber()
     {
-        return $this->user;
+        return $this->placesNumber;
     }
 
     /**
-     * Set availability
+     * Set price
      *
-     * @param \Resor\Bundle\CoreBundle\Entity\Availability $availability
-     * @return Booking
+     * @param integer $price
+     * @return Availability
      */
-    public function setAvailability(\Resor\Bundle\CoreBundle\Entity\Availability $availability)
+    public function setPrice($price)
     {
-        $this->availability = $availability;
+        $this->price = $price;
 
         return $this;
     }
 
     /**
-     * Get availability
+     * Get price
      *
-     * @return \Resor\Bundle\CoreBundle\Entity\Availability 
+     * @return integer 
      */
-    public function getAvailability()
+    public function getPrice()
     {
-        return $this->availability;
+        return $this->price;
+    }
+
+    /**
+     * Set isOpen
+     *
+     * @param boolean $isOpen
+     * @return Availability
+     */
+    public function setIsOpen($isOpen)
+    {
+        $this->isOpen = $isOpen;
+
+        return $this;
+    }
+
+    /**
+     * Get isOpen
+     *
+     * @return boolean 
+     */
+    public function getIsOpen()
+    {
+        return $this->isOpen;
     }
 }

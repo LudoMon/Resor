@@ -39,17 +39,17 @@ class Booking
      * @var User
      *
      * @ORM\ManyToOne(targetEntity="Resor\Bundle\CoreBundle\Entity\User")
-     * @ORM\JoinColumn
+     * @ORM\JoinColumn(nullable=false)
      */
     private $user;
 
     /**
-     * @var Place
+     * @var Availability
      *
-     * @ORM\ManyToOne(targetEntity="Resor\Bundle\CoreBundle\Entity\Place")
-     * @ORM\JoinColumn
+     * @ORM\ManyToOne(targetEntity="Resor\Bundle\CoreBundle\Entity\Availability")
+     * @ORM\JoinColumn(nullable=false)
      */
-    private $place;
+    private $availability;
 
 
     /**
@@ -106,5 +106,28 @@ class Booking
     public function getEndDate()
     {
         return $this->endDate;
+    }
+
+    /**
+     * Set user
+     *
+     * @param \Resor\Bundle\CoreBundle\Entity\User $user
+     * @return Booking
+     */
+    public function setUser(\Resor\Bundle\CoreBundle\Entity\User $user = null)
+    {
+        $this->user = $user;
+
+        return $this;
+    }
+
+    /**
+     * Get user
+     *
+     * @return \Resor\Bundle\CoreBundle\Entity\User 
+     */
+    public function getUser()
+    {
+        return $this->user;
     }
 }
