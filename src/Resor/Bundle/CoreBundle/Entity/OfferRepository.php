@@ -12,4 +12,9 @@ use Doctrine\ORM\EntityRepository;
  */
 class OfferRepository extends EntityRepository
 {
+    public function canBook ($offer, $wantedBook)
+    {
+        // TODO IMPLEMENT METHOD
+        return true;
+    }
 }

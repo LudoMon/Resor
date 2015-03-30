@@ -34,6 +34,46 @@ class ApiController extends Controller {
         return ['bookings' => $bookings];
     }
 
+    public function postBookingAction($campingId, Request $request)
+    {
+        /*
+         * Wanted booking : offerId, startDate, endDate
+         */
+        $wantedBooking = $request->get('booking');
+
+        $em = $this->getDoctrine()->getManager();
+        $camping = $em->getRepository('ResorCoreBundle:Camping')
+            ->find($campingId);
+        $offer = $em->getRepository('ResorCoreBundle:Offer')
+            ->findOneBy([
+                'campingId' => $wantedBooking['offerId'],
+                'camping' => $camping
+        ]);
+        $canBook = $em->getRepository('ResorCoreBundle:Booking')
+            ->canBook($offer, $wantedBooking);
+
+        if ($canBook) {
+            $booking = new Booking();
+            $booking->setStartDate($wantedBooking['startDate'])
+                ->setEndDate($wantedBooking['endDate'])
+                ->setOffer($offer)
+                ->setUser($camping->getOwner());
+            $em->persist($booking);
+            $em->flush();
+            $response = [
+                'message' => 'Booking added',
+                'id' => $booking->getId()
+            ];
+        } else {
+            $response = [
+                'message' => 'Booking not available',
+                'id' => 0
+            ];
+        }
+
+        return ['response' => $response];
+    }
+
     public function postOffersAction($campingId, Request $request)
     {
         $em = $this->getDoctrine()->getManager();
