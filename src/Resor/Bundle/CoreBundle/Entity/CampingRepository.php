@@ -20,4 +20,22 @@ class CampingRepository extends EntityRepository
             ->getQuery()
             ->getResult();
     }
+
+    public function findAround($lat, $lng)
+    {
+        $parameters = array(
+            'latMin' => floor($lat),
+            'latMax' => ceil($lat),
+            'lngMin' => floor($lng),
+            'lngMax' => ceil($lng)
+        );
+        return $this->createQueryBuilder('c')
+            ->where('c.lat > :latMin')
+            ->andWhere('c.lat < :latMax')
+            ->andWhere('c.lng > :lngMin')
+            ->andWhere('c.lng < :lngMax')
+            ->setParameters($parameters)
+            ->getQuery()
+            ->getResult();
+    }
 }

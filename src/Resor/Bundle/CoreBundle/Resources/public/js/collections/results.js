@@ -7,7 +7,7 @@ module.exports = Backbone.Collection.extend({
     url: '/api/results',
 
     parse: function (response) {
-        return response.results;
+        return JSON.parse(response.results);
     }
 
 });
