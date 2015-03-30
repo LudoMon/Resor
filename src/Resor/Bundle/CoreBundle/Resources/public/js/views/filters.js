@@ -21,7 +21,7 @@ module.exports = Marionette.ItemView.extend({
     initialize: function (options) {
         this.vent = options.vent;
         this.collection = options.collection;
-        this.listenTo(this.collection, 'sync', this.updateFeatureFilters);
+        this.listenTo(this.collection, 'change', this.updateFeatureFilters);
     },
 
     onRender: function () {

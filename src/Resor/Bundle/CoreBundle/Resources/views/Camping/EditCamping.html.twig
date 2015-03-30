@@ -5,22 +5,51 @@
 {% block body %}
     <div class="container">
         <div class="page-header">
-            <h1>Mon camping</h1>
+            <h1 class="container-header">Mon camping</h1>
         </div>
-    
-    <form action="{{ path('camping_edit') }}" method="POST" {{ form_enctype(form) }}  novalidate="novalidate">
-        {{ form_errors(form) }}
-        {{ form_widget(form) }}
-        <input type="submit" value="Mettre à jour" class="btn btn-primary pull-right"/>
-    </form>
+    <div class="content">
+        <form action="{{ path('camping_edit') }}" method="POST" {{ form_enctype(form) }}  novalidate="novalidate" class="js-form edit-form">
+            <div id="form-map" style="height: 200px; width: 390px; float: right;"></div>
+            {{ form_start(form) }}
+                {{ form_errors(form) }}
+                <h3>Informations sur le camping</h3>
+                {{ form_row(form.name) }}
+                {{ form_row(form.description) }}
+                {{ form_row(form.location) }}
+                {{ form_row(form.picture) }}
+                {{ form_widget(form.lat, {'attr' : {'data-geo': 'lat'}})}}
+                {{ form_widget(form.lng, {'attr' : {'data-geo': 'lng'}})}}
+                <h3>Informations sur le propriétaire</h3>
+                {{ form_widget(form.owner, {'attr': {'class': 'owner'}})}}
+                <div class="form-submit">
+                    <input type="submit" value="Mettre à jour" class="submit-button"/>
+                </div>
+            {{ form_end(form) }}
+        </form>
+    </div>
     </div>
 {% endblock %}
 
+{% block javascripts %}
+    {{parent()}}
+    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?libraries=places"></script>
+    <script type="text/javascript">
+        $(function () {
+            $('#camping_location').geocomplete({
+                map: '#form-map',
+                details: '.js-form',
+                detailsAttribute: 'data-geo',
+                location: $('#camping_location').val()
+            });
+        });
+    </script>
+{% endblock %}
+
 {% block stylesheets %}
-<link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css" rel="stylesheet">
-<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
     {% stylesheets
     '@ResorCoreBundle/Resources/public/css/general.css'
+    '@ResorCoreBundle/Resources/public/css/edit-camping.css'
     %}
     <link rel="stylesheet" href="{{ asset_url }}" />
     {% endstylesheets %}

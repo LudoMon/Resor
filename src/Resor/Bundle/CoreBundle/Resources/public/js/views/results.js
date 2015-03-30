@@ -10,6 +10,8 @@ module.exports = Marionette.CollectionView.extend({
         };
     },
 
+    emptyView: require('./noResults'),
+
     filter: function (child, index, collection) {
         return child.isActive(this.searchParams.getActiveFeatures());
     },

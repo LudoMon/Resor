@@ -63,7 +63,7 @@ var ResultsApplication = Marionette.Application.extend({
         });
         this.filters.show(this.views.filtersView);
         this.map.show(this.views.mapView);
-        this.collections.resultsCollection.fetch().done(function () {
+        this.collections.resultsCollection.fetch({data: this.models.searchParams.toJSON()}).done(function () {
             app.results.show(app.views.resultsView);
         });
     }

@@ -16,3 +16,4 @@ web/js
 /nbproject/private/
 node_modules/
 src/Resor/Bundle/CoreBundle/Resources/public/js/results.js
+web/uploads

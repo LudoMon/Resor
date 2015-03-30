@@ -11,7 +11,8 @@ module.exports = Marionette.ItemView.extend({
 
     serializeData: function () {
         return _.extend(this.model.toJSON(), {
-            link: '/book/' + this.model.get('id') + '?from=' + this.searchParams.get('from') + '&to=' + this.searchParams.get('to')
+            link: '/book/' + this.model.get('id') + '?from=' + this.searchParams.get('from') + '&to=' + this.searchParams.get('to'),
+            pictureUrl: '/uploads/pictures/' + this.model.get('picture_path')
         });
     }
 
