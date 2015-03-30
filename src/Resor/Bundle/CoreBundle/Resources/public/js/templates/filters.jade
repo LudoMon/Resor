@@ -25,12 +25,12 @@ ul.filters
                     .filter-input-wrapper
                         i.fa.fa-calendar
                         input.primary-input.js-to-input
-        .filter.filters-expand
-            strong.js-filters-expand
-                | Filtres
-                i.fa.fa-caret-down
-    .secondary-filters.js-secondary-filters
-        each on, feature in secondaryFilters
-            li.feature
-                input.feature-checkbox.js-feature-filter(type="checkbox", checked=on, data-feature=feature, id="feature-" + feature)
-                label(for="feature-" + feature).feature-name=feature
+    //-     .filter.filters-expand
+    //-         strong.js-filters-expand
+    //-             | Filtres
+    //-             i.fa.fa-caret-down
+    //- .secondary-filters.js-secondary-filters
+    //-     each on, feature in secondaryFilters
+    //-         li.feature
+    //-             input.feature-checkbox.js-feature-filter(type="checkbox", checked=on, data-feature=feature, id="feature-" + feature)
+    //-             label(for="feature-" + feature).feature-name=feature
