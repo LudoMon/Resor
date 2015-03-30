@@ -28,4 +28,14 @@ class BookController extends Controller
             "bookingId" => $id
         );
     }
+
+    /**
+     * @Route("/book/{id}/finalize", name="finalize")
+     * @Template()
+     */
+    public function finalizeAction()
+    {
+        return array();
+    }
+
 }
