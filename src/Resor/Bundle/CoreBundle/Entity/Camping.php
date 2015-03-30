@@ -44,6 +44,20 @@ class Camping
      */
     private $owner;
 
+    /**
+     * @ORM\Column(name="lat", type="decimal", scale=6)
+     */
+    private $lat;
+
+    /**
+     * @ORM\Column(name="lng", type="decimal", scale=6)
+     */
+    private $lng;
+
+    /**
+     * @ORM\Column(name="location", type="string", length=255)
+     */
+    private $location;
 
     /**
      * Get id
@@ -122,5 +136,38 @@ class Camping
     public function getOwner()
     {
         return $this->owner;
+    }
+
+    public function getLat()
+    {
+        return $this->lat;
+    }
+
+    public function setLat($lat)
+    {
+        $this->lat = $lat;
+        return $this;
+    }
+
+    public function getLng()
+    {
+        return $this->lng;
+    }
+
+    public function setLng($lng)
+    {
+        $this->lng = $lng;
+        return $this;
+    }
+
+    public function getLocation()
+    {
+        return $this->location;
+    }
+
+    public function setLocation($location)
+    {
+        $this->location = $location;
+        return $this;
     }
 }
