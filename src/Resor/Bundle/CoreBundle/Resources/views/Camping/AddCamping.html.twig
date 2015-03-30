@@ -14,7 +14,7 @@
                     {{ form_errors(form) }}
                 {{ form_row(form.name) }}
                 {{ form_row(form.description) }}
-                {{ form_row(form.owner) }}
+                {{ form_widget(form.owner, {'attr': {'class': 'owner'}})}}
                 {{ form_row(form.location) }}
                 {{ form_row(form.picture) }}
                 {{ form_widget(form.lat, {'attr' : {'data-geo': 'lat'}})}}

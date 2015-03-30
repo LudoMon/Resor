@@ -12,13 +12,15 @@
             <div id="form-map" style="height: 200px; width: 390px; float: right;"></div>
             {{ form_start(form) }}
                 {{ form_errors(form) }}
+                <h3>Informations sur le camping</h3>
                 {{ form_row(form.name) }}
                 {{ form_row(form.description) }}
-                {{ form_row(form.owner) }}
                 {{ form_row(form.location) }}
                 {{ form_row(form.picture) }}
                 {{ form_widget(form.lat, {'attr' : {'data-geo': 'lat'}})}}
                 {{ form_widget(form.lng, {'attr' : {'data-geo': 'lng'}})}}
+                <h3>Informations sur le propriétaire</h3>
+                {{ form_widget(form.owner, {'attr': {'class': 'owner'}})}}
                 <div class="form-submit">
                     <input type="submit" value="Mettre à jour" class="submit-button"/>
                 </div>

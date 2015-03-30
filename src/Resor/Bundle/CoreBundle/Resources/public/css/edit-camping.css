@@ -21,7 +21,17 @@
     position: relative;
 }
 
-.edit-form input.form-control {
+.form-group {
+    display: table;
+}
+
+.control-label {
+    display: table-cell;
+    vertical-align: middle;
+    width: 130px;
+}
+
+.edit-form .form-control {
     padding: 8px 10px;
     border-radius: 3px;
     margin-right: 5px;
@@ -33,6 +43,8 @@
     border: 1px #ddd solid;
     background: #fafafa;
     width: 250px;
+    vertical-align: middle;
+    display: table-cell;
 }
 
 label {
