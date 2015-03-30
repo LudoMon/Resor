@@ -30,7 +30,8 @@ class CampingRepository extends EntityRepository
             'lngMax' => ceil($lng)
         );
         return $this->createQueryBuilder('c')
-            ->where('c.lat > :latMin')
+            ->where('c.isActive = 1')
+            ->andWhere('c.lat > :latMin')
             ->andWhere('c.lat < :latMax')
             ->andWhere('c.lng > :lngMin')
             ->andWhere('c.lng < :lngMax')
