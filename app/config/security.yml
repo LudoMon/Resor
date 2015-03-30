@@ -32,3 +32,4 @@ security:
         - { path: ^/camping/add, role: ROLE_USER}
         - { path: ^/camping/edit, role: ROLE_CAMPING}
         - { path: ^/admin/, role: ROLE_ADMIN }
+        - { path: ^/book/\d+, role: ROLE_USER }
