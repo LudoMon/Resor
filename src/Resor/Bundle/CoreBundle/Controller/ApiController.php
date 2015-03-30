@@ -23,11 +23,8 @@ class ApiController extends Controller {
         $offers = $em->getRepository('ResorCoreBundle:Offer')
             ->findByCamping($camping);
 
-        $availabilites = $em->getRepository('ResorCoreBundle:Availability')
-            ->findByOffer($offers);
-
         $bookings = $em->getRepository('ResorCoreBundle:Booking')
-            ->findByAvailability($availabilites);
+            ->findByOffer($offers);
 
         return ['bookings' => $bookings];
     }
