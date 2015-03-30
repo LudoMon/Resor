@@ -34,6 +34,19 @@ class ApiController extends Controller {
         return ['bookings' => $bookings];
     }
 
+    public function deleteBookingAction($bookingId)
+    {
+        $em = $this->getDoctrine()->getManager();
+
+        $booking = $em->getRepository('ResorCoreBundle:Booking')
+            ->find($bookingId);
+        $em->remove($booking);
+        $em->flush();
+        return [
+            'message' => 'Booking deleted'
+        ];
+    }
+
     public function postBookingAction($campingId, Request $request)
     {
         /*
