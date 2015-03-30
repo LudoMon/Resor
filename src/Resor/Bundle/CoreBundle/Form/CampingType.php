@@ -33,7 +33,8 @@ class CampingType extends AbstractType {
             ->add('location', 'text', ['label' => 'Adresse: '])
             ->add('lat', 'hidden')
             ->add('lng', 'hidden')
-            ->add('owner',new UserType(), ['label' => 'Informations sur le propriétaire']);
+            ->add('owner',new UserType(), ['label' => 'Informations sur le propriétaire'])
+            ->add('picture');
     }
 
     public function setDefaultOptions(

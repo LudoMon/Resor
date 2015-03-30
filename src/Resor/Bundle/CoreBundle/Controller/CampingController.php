@@ -46,6 +46,8 @@ class CampingController extends Controller
                 $currentUser->addRole('ROLE_CAMPING');
                 $camping->setOwner($currentUser);
 
+                $camping->uploadPicture();
+
                 $em = $this->get('doctrine.orm.entity_manager');
                 $em->persist($camping);
                 $em->flush();
@@ -83,6 +85,7 @@ class CampingController extends Controller
             $isValid = $form->isValid();
 
             if ($isValid){
+                $camping->uploadPicture();
                 $em = $this->get('doctrine.orm.entity_manager');
                 $em->persist($camping);
                 $em->flush();

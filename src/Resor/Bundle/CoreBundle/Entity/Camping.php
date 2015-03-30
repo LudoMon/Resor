@@ -3,6 +3,8 @@
 namespace Resor\Bundle\CoreBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
+
 
 /**
  * Camping
@@ -58,6 +60,16 @@ class Camping
      * @ORM\Column(name="location", type="string", length=255)
      */
     private $location;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    public $picturePath;
+
+    /**
+     * @Assert\File(maxSize="6000000")
+     */
+    public $picture;
 
     /**
      * Get id
@@ -170,4 +182,38 @@ class Camping
         $this->location = $location;
         return $this;
     }
+
+    public function getAbsolutePath()
+    {
+        return null === $this->picturePath ? null : $this->getUploadRootDir().'/'.$this->picturePath;
+    }
+
+    public function getWebPath()
+    {
+        return null === $this->picturePath ? null : $this->getUploadDir().'/'.$this->picturePath;
+    }
+
+    protected function getUploadRootDir()
+    {
+        // le chemin absolu du répertoire où les documents uploadés doivent être sauvegardés
+        return __DIR__.'/../../../../../web/'.$this->getUploadDir();
+    }
+
+    protected function getUploadDir()
+    {
+        // on se débarrasse de « __DIR__ » afin de ne pas avoir de problème lorsqu'on affiche
+        // le document/image dans la vue.
+        return 'uploads/pictures';
+    }
+
+    public function uploadPicture()
+    {
+        if (null === $this->picture) {
+            return;
+        }
+        $this->picture->move($this->getUploadRootDir(), $this->picture->getClientOriginalName());
+        $this->picturePath = $this->picture->getClientOriginalName();
+        $this->picture = null;
+    }
+
 }
