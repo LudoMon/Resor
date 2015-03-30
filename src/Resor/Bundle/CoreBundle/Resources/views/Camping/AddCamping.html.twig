@@ -12,11 +12,13 @@
             <div id="form-map" style="height: 200px; width: 390px; float: right;"></div>
                 {{ form_start(form) }}
                     {{ form_errors(form) }}
-                    {{ form_row(form.name) }}
-                    {{ form_row(form.location) }}
-                    {{ form_widget(form.lat, {'attr' : {'data-geo': 'lat'}})}}
-                    {{ form_widget(form.lng, {'attr' : {'data-geo': 'lng'}})}}
-                    {{ form_row(form.owner) }}
+                {{ form_row(form.name) }}
+                {{ form_row(form.description) }}
+                {{ form_row(form.owner) }}
+                {{ form_row(form.location) }}
+                {{ form_row(form.picture) }}
+                {{ form_widget(form.lat, {'attr' : {'data-geo': 'lat'}})}}
+                {{ form_widget(form.lng, {'attr' : {'data-geo': 'lng'}})}}
                     <div class="form-submit">
                         <input type="submit" value="Enregistrer" class="submit-button"/>
                     </div>

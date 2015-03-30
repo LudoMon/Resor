@@ -47,6 +47,11 @@ class Camping
     private $owner;
 
     /**
+     * @ORM\Column(name="description", type="string", length=2000)
+     */
+     private $description;
+
+    /**
      * @ORM\Column(name="lat", type="decimal", scale=6)
      */
     private $lat;
@@ -148,6 +153,16 @@ class Camping
     public function getOwner()
     {
         return $this->owner;
+    }
+
+    public function getDescription()
+    {
+        return $this->description;
+    }
+
+    public function setDescription($description)
+    {
+        $this->description = $description;
     }
 
     public function getLat()

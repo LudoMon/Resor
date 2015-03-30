@@ -31,6 +31,7 @@ class CampingType extends AbstractType {
     {
         $builder->add('name', 'text', ['label' => 'Nom du camping :'])
             ->add('location', 'text', ['label' => 'Adresse: '])
+            ->add('description', 'text', ['label' => 'Description: '])
             ->add('lat', 'hidden')
             ->add('lng', 'hidden')
             ->add('owner',new UserType(), ['label' => 'Informations sur le propriétaire'])
