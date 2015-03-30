@@ -42,20 +42,9 @@
 {% block body %}
     <div id="main">
         <div class="booking-page">
-            <div class="booking-top-bar">Réservation du {{ camping.title }}</div>
+            <div class="booking-top-bar">Réservation du {{ camping.name }}</div>
             <div class="booking-content">
-                <h1>{{ camping.title }}</h1>
-                <ul class="camping-features">
-                    {% for feature in camping.features %}
-                        <li class="camping-feature">
-                            <i class="fa fa-check"></i>
-                            <span>{{ feature | capitalize }}</span>
-                            {% if not loop.last %}
-                                <span class="camping-feature-separator"> | </span>
-                            {% endif %}
-                        </li>
-                    {% endfor %}
-                </ul>
+                <h1>{{ camping.name }}</h1>
                 <div id="booking">
                 </div>
             </div>
