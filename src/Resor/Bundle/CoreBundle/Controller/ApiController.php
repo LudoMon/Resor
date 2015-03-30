@@ -8,7 +8,6 @@ use Resor\Bundle\CoreBundle\Entity\Booking;
 use Resor\Bundle\CoreBundle\Entity\Camping;
 use Resor\Bundle\CoreBundle\Entity\Offer;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-use FOS\RestBundle\Controller\Annotations\View;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Validator\Constraints\DateTime;
 
@@ -16,12 +15,14 @@ class ApiController extends Controller {
     /**
      * @param int $campingId
      * @return array
-     * @View()
      */
     public function getBookingsAction($campingId)
     {
         $em = $this->getDoctrine()->getManager();
 
+        /**
+         * @var Camping
+         */
         $camping = $em->getRepository('ResorCoreBundle:Camping')
             ->find($campingId);
 
