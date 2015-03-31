@@ -15,7 +15,9 @@ module.exports = Marionette.ItemView.extend({
 
     events: {
         'change @ui.featureFilter': 'onFeatureFilterChange',
-        'click @ui.filtersExpand': 'toggleFeatures'
+        'click @ui.filtersExpand': 'toggleFeatures',
+        'change @ui.fromInput': 'onDateFilterChange',
+        'change @ui.toInput': 'onDateFilterChange'
     },
 
     initialize: function (options) {
@@ -41,7 +43,9 @@ module.exports = Marionette.ItemView.extend({
         });
 
         this.fromPicker.setMoment(moment(window.exposed.from, 'DD/MM/YYYY'));
+        this.fromPicker.setMaxDate(moment(window.exposed.to, 'DD/MM/YYYY').subtract(1, 'days'));
         this.toPicker.setMoment(moment(window.exposed.to, 'DD/MM/YYYY'));
+        this.toPicker.setMinDate(moment(window.exposed.from, 'DD/MM/YYYY').add(1, 'days'));
     },
 
     onFeatureFilterChange: function (event) {
@@ -67,6 +71,18 @@ module.exports = Marionette.ItemView.extend({
         }, {});
         this.model.set('secondaryFilters', secondaryFilters);
         this.render();
+    },
+
+    onDateFilterChange: function (event) {
+        var from = this.ui.fromInput.val(),
+            to = this.ui.toInput.val()
+        this.model.set({
+            from: from,
+            to: to
+        });
+        this.fromPicker.setMaxDate(moment(to, 'DD/MM/YYYY').subtract(1, 'days'));
+        this.toPicker.setMinDate(moment(from, 'DD/MM/YYYY').add(1, 'days'));
+        this.vent.trigger('filters:dates');
     }
 
 });

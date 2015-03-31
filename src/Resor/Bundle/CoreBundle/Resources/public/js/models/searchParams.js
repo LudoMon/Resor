@@ -19,6 +19,17 @@ module.exports = Backbone.Model.extend({
         return url + '?place=' + this.get('place') + '&lat=' + this.get('lat')
             + '&lng=' + this.get('lng') + '&from=' + this.get('from')
             + '&to=' + this.get('to');
+    },
+
+    getDateLimits: function () {
+        return {
+            from: moment(this.get('from'), 'DD/MM/YYYY'),
+            to: moment(this.get('to'), 'DD/MM/YYYY')
+        };
+    },
+
+    getDuration: function () {
+        return this.getDateLimits().to.diff(this.getDateLimits().from, 'days') + 1;
     }
 
 });
