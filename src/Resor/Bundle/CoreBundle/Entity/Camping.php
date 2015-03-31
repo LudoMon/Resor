@@ -77,6 +77,11 @@ class Camping
     public $picture;
 
     /**
+     * @ORM\Column(type="integer")
+     */
+    private $alfredId;
+
+    /**
      * Get id
      *
      * @return integer
@@ -231,4 +236,50 @@ class Camping
         $this->picture = null;
     }
 
+
+    /**
+     * Set picturePath
+     *
+     * @param string $picturePath
+     * @return Camping
+     */
+    public function setPicturePath($picturePath)
+    {
+        $this->picturePath = $picturePath;
+
+        return $this;
+    }
+
+    /**
+     * Get picturePath
+     *
+     * @return string 
+     */
+    public function getPicturePath()
+    {
+        return $this->picturePath;
+    }
+
+    /**
+     * Set alfredId
+     *
+     * @param integer $alfredId
+     * @return Camping
+     */
+    public function setAlfredId($alfredId)
+    {
+        $this->alfredId = $alfredId;
+
+        return $this;
+    }
+
+    /**
+     * Get alfredId
+     *
+     * @return integer 
+     */
+    public function getAlfredId()
+    {
+        return $this->alfredId;
+    }
 }

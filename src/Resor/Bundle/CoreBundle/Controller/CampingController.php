@@ -48,6 +48,16 @@ class CampingController extends Controller
 
                 $camping->uploadPicture();
 
+                // Get alfred id
+                $data = ['nomDiscussion' => str_replace(' ', '_', $camping->getName())];
+                $response = $this->get('api.call')->post('http://naqotepu.com/api/v1/discussion/new', $data);
+                if ('200' == $response->status) {
+                    $camping->setAlfredId($response->discussion->identifiant);
+                } else {
+                    $camping->setAlfredId(0);
+                }
+
+
                 $em = $this->get('doctrine.orm.entity_manager');
                 $em->persist($camping);
                 $em->flush();
