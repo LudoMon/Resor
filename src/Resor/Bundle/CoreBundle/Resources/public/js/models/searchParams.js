@@ -13,6 +13,12 @@ module.exports = Backbone.Model.extend({
             }
             return memo;
         }, []);
+    },
+
+    buildUrl: function (url) {
+        return url + '?place=' + this.get('place') + '&lat=' + this.get('lat')
+            + '&lng=' + this.get('lng') + '&from=' + this.get('from')
+            + '&to=' + this.get('to');
     }
 
 });

@@ -26,6 +26,7 @@ var ResultsApplication = Marionette.Application.extend({
         };
         this.models = {
             searchParams: new SearchParams({
+                place: exposed.place,
                 lat: exposed.lat,
                 lng: exposed.lng,
                 from: exposed.from,

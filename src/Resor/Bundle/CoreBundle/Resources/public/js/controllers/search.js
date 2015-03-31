@@ -8,6 +8,7 @@ module.exports = Marionette.Controller.extend({
     },
 
     onLocationChange: function () {
+        window.history.replaceState({}, '', this.models.searchParams.buildUrl('/results'));
         this.collections.resultsCollection.fetch({data: this.models.searchParams.toJSON()});
     }
 

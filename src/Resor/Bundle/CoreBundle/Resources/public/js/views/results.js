@@ -18,7 +18,6 @@ module.exports = Marionette.CollectionView.extend({
 
     initialize: function (options) {
         this.searchParams = options.searchParams;
-        this.listenTo(this.searchParams, 'change', this.render);
     },
 
 });

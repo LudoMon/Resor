@@ -55,7 +55,8 @@ module.exports = Marionette.ItemView.extend({
         }
         this.model.set({
             lat: newLat,
-            lng: newLng
+            lng: newLng,
+            place: result.formatted_address
         });
     }
 
