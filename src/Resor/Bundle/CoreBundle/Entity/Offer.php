@@ -3,6 +3,7 @@
 namespace Resor\Bundle\CoreBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Doctrine\Common\Collections\ArrayCollection as ArrayCollection;
 
 /**
  * Offer
@@ -20,13 +21,6 @@ class Offer
      * @ORM\GeneratedValue(strategy="AUTO")
      */
     private $id;
-
-    /**
-     * @var integer
-     *
-     * @ORM\Column(name="campingId", type="integer")
-     */
-    private $campingId;
 
     /**
      * @var \DateTime
@@ -52,14 +46,14 @@ class Offer
     /**
      * @var array
      *
-     * @ORM\Column(name="options", type="array")
+     * @ORM\Column(name="options", type="array", nullable=true)
      */
     private $options;
 
     /**
      * @var array
      *
-     * @ORM\Column(name="images", type="array")
+     * @ORM\Column(name="images", type="array", nullable=true)
      */
     private $images;
 
@@ -71,11 +65,21 @@ class Offer
      */
     private $camping;
 
+    /**
+     * @ORM\OneToMany(targetEntity="Resor\Bundle\CoreBundle\Entity\Availability", mappedBy="offer")
+     */
+    private $availabilities;
+
+    function __construct() {
+        $this->availabilities = new ArrayCollection();
+        $this->setCreatedAt(date_create());
+        $this->setUpdatedAt(date_create());
+    }
 
     /**
      * Get id
      *
-     * @return integer 
+     * @return integer
      */
     public function getId()
     {
@@ -98,7 +102,7 @@ class Offer
     /**
      * Get campingId
      *
-     * @return integer 
+     * @return integer
      */
     public function getCampingId()
     {
@@ -121,7 +125,7 @@ class Offer
     /**
      * Get createdAt
      *
-     * @return \DateTime 
+     * @return \DateTime
      */
     public function getCreatedAt()
     {
@@ -144,7 +148,7 @@ class Offer
     /**
      * Get updatedAt
      *
-     * @return \DateTime 
+     * @return \DateTime
      */
     public function getUpdatedAt()
     {
@@ -167,7 +171,7 @@ class Offer
     /**
      * Get name
      *
-     * @return string 
+     * @return string
      */
     public function getName()
     {
@@ -190,7 +194,7 @@ class Offer
     /**
      * Get options
      *
-     * @return array 
+     * @return array
      */
     public function getOptions()
     {
@@ -213,7 +217,7 @@ class Offer
     /**
      * Get images
      *
-     * @return array 
+     * @return array
      */
     public function getImages()
     {
@@ -241,5 +245,16 @@ class Offer
     public function getCamping()
     {
         return $this->camping;
+    }
+
+    public function getAvailabilities()
+    {
+        return $this->availabilities;
+    }
+
+    public function addAvailability(Availability $availability)
+    {
+        array_push($this->availabilities, $availability);
+        return $this;
     }
 }

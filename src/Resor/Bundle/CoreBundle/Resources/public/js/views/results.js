@@ -13,7 +13,9 @@ module.exports = Marionette.CollectionView.extend({
     emptyView: require('./noResults'),
 
     filter: function (child, index, collection) {
-        return child.isActive(this.searchParams.getActiveFeatures());
+        var dateLimits = this.searchParams.getDateLimits();
+        var offers = child.getActiveOffers(dateLimits.from, dateLimits.to);
+        return offers.length > 0;
     },
 
     initialize: function (options) {

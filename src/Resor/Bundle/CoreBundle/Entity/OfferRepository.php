@@ -12,4 +12,23 @@ use Doctrine\ORM\EntityRepository;
  */
 class OfferRepository extends EntityRepository
 {
+    public function findAround($lat, $lng)
+    {
+        $parameters = array(
+            'latMin' => floor($lat),
+            'latMax' => ceil($lat),
+            'lngMin' => floor($lng),
+            'lngMax' => ceil($lng)
+        );
+        return $this->createQueryBuilder('o')
+            ->join('o.camping', 'c')
+            ->where('c.isActive = 1')
+            ->andWhere('c.lat > :latMin')
+            ->andWhere('c.lat < :latMax')
+            ->andWhere('c.lng > :lngMin')
+            ->andWhere('c.lng < :lngMax')
+            ->setParameters($parameters)
+            ->getQuery()
+            ->getResult();
+    }
 }

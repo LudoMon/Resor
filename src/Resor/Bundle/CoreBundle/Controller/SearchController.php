@@ -2,6 +2,8 @@
 
 namespace Resor\Bundle\CoreBundle\Controller;
 
+use Resor\Bundle\CoreBundle\Entity\Offer;
+
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
@@ -49,17 +51,20 @@ class SearchController extends Controller
 
         $lat = $request->query->get('lat');
         $lng = $request->query->get('lng');
+        $from = $request->query->get('from');
+        $to = $request->query->get('to');
 
-        $repository = $this->getDoctrine()
+
+        $repo = $this->getDoctrine()
             ->getManager()
-            ->getRepository('ResorCoreBundle:Camping');
-        $campings = $repository->findAround($lat, $lng);
+            ->getRepository('ResorCoreBundle:Offer');
+        $offers = $repo->findAround($lat, $lng);
 
         $serializer = $this->container->get('serializer');
-        $sCampings = $serializer->serialize($campings, 'json');
+        $sOffers = $serializer->serialize($offers, 'json');
 
         $response->setData([
-            'results' => $sCampings
+            'results' => $sOffers
         ]);
 
         return $response;

@@ -59,7 +59,7 @@ class Availability
     /**
      * @var Offer
      *
-     * @ORM\ManyToOne(targetEntity="Resor\Bundle\CoreBundle\Entity\Offer")
+     * @ORM\ManyToOne(targetEntity="Resor\Bundle\CoreBundle\Entity\Offer", inversedBy="availabilities")
      * @ORM\JoinColumn(nullable=false)
      */
     private $offer;
