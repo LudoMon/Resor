@@ -1,0 +1,13 @@
+h4 Liste des hébergements disponibles:
+
+if offers.length === 0
+    p Aucun hébergement n'est disponible pour la période demandée.
+else
+    ul.offers
+    each offer in offers
+        li.offer.js-offer(data-id=offer.get('id'))
+            strong.offer-name= offer.get('name')
+            = ' – '
+            span.offer-places= '(' + offer.get('places') + ' places)'
+            i.fa.fa-check.offer-check
+            span.offer-price= offer.get('price') + '€/jour'

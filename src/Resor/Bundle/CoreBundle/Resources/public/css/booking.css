@@ -84,6 +84,9 @@
 .booking-submit {
     text-align: right;
     margin-top: 30px;
+    position: absolute;
+    bottom: 15px;
+    right: 15px;
 }
 
 .booking-daily {
@@ -100,4 +103,63 @@
 
 .submit-button:active {
     border-width: 3px 1px 1px 1px;
+}
+
+.offer {
+    display: block;
+    width: 70%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border-radius: 3px;
+    background: #f4f4f4;
+    cursor: pointer;
+}
+
+.offer:hover, .offer.selected {
+    background: #e2e2e2;
+}
+
+.offer:active {
+    box-shadow: inset 0px 0px 30px -10px #aaa;
+    background: #ddd;
+}
+
+.offer-check {
+    float: right;
+    line-height: 21px !important;
+    color: rgb(48, 176, 48);
+    display: none !important;
+}
+
+.offer.selected .offer-check {
+    display: inline !important;
+}
+
+.offer-price {
+    float: right;
+    top: 0;
+    right: 0;
+    font-size: 12px;
+    line-height: 21px;
+    font-weight: bold;
+    padding-right: 10px;
+    color: #333;
+}
+
+.finalize-title {
+    text-align: center;
+}
+
+.finalize-title i {
+    color: rgb(88, 195, 88);
+    padding-right: 15px;
+}
+
+.finalize-subtitle {
+    text-align: center;
+}
+
+.finalize-link {
+    color: #333;
+    text-decoration: none;
 }

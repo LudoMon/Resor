@@ -1,0 +1,38 @@
+{% extends '::base.html.twig' %}
+
+{% block title %}Resor{% endblock %}
+
+{% block stylesheets %}
+    {% stylesheets
+        '@ResorCoreBundle/Resources/public/css/general.css'
+        '@ResorCoreBundle/Resources/public/css/booking.css'
+    %}
+        <link rel="stylesheet" href="{{ asset_url }}"/>
+    {% endstylesheets %}
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+{% endblock %}
+
+{% block javascripts %}
+    {% javascripts
+        '@ResorCoreBundle/Resources/public/js/vendor/jquery/dist/jquery.js'
+        '@ResorCoreBundle/Resources/public/js/vendor/underscore/underscore.js'
+    %}
+    <script src="{{ asset_url }}"></script>
+    {% endjavascripts %}
+{% endblock %}
+
+{% block scripts %}
+{% endblock %}
+
+{% block body %}
+    <div id="main">
+        <div class="booking-page">
+            <div class="booking-top-bar">Réservation de {{ booking.availability.offer.camping.name }}</div>
+            <div class="booking-content">
+                <h1 class="finalize-title"><i class="fa fa-check ok-icon"></i>Félicitations !</h1>
+                <h3 class="finalize-subtitle">Vous venez de réserver {{ booking.availability.offer.camping.name }}.</h3>
+                <a class="finalize-link" href="/profile#reservations">Voir vos réservations</a>
+            </div>
+        </div>
+    </div>
+{% endblock %}
