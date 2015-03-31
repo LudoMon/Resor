@@ -14,6 +14,7 @@ module.exports = Marionette.Controller.extend({
     },
 
     onDatesChange: function () {
+        window.history.replaceState({}, '', this.models.searchParams.buildUrl('/results'));
         this.collections.resultsCollection.trigger('reset');
     }
 

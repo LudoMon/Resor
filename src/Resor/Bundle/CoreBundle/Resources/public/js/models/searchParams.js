@@ -29,7 +29,7 @@ module.exports = Backbone.Model.extend({
     },
 
     getDuration: function () {
-        return this.getDateLimits().to.diff(this.getDateLimits().from, 'days') + 1;
+        return this.getDateLimits().to.diff(this.getDateLimits().from, 'days');
     }
 
 });
