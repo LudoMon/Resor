@@ -44,12 +44,12 @@ class Booking
     private $user;
 
     /**
-     * @var Availability
+     * @var Offer
      *
-     * @ORM\ManyToOne(targetEntity="Resor\Bundle\CoreBundle\Entity\Availability")
+     * @ORM\ManyToOne(targetEntity="Resor\Bundle\CoreBundle\Entity\Offer")
      * @ORM\JoinColumn(nullable=false)
      */
-    private $availability;
+    private $offer;
 
 
     /**
@@ -132,25 +132,25 @@ class Booking
     }
 
     /**
-     * Set availability
+     * Set offer
      *
-     * @param \Resor\Bundle\CoreBundle\Entity\Availability $availability
-     * @return Booking
+     * @param \Resor\Bundle\CoreBundle\Entity\Offer $offer
+     * @return Offer
      */
-    public function setAvailability(\Resor\Bundle\CoreBundle\Entity\Availability $availability)
+    public function setOffer(\Resor\Bundle\CoreBundle\Entity\Offer $offer)
     {
-        $this->availability = $availability;
+        $this->offer = $offer;
 
         return $this;
     }
 
     /**
-     * Get availability
+     * Get offer
      *
-     * @return \Resor\Bundle\CoreBundle\Entity\Availability 
+     * @return \Resor\Bundle\CoreBundle\Entity\Offer
      */
-    public function getAvailability()
+    public function getOffer()
     {
-        return $this->availability;
+        return $this->offer;
     }
 }
