@@ -13,6 +13,19 @@
     <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
 {% endblock %}
 
+{% block headjs %}
+    <script type="text/javascript">
+        var offers = '{{ offers | serialize }}';
+        offers = offers.replace(/&quot;/g, '"');
+        window.exposed = {
+            from: '{{ from }}',
+            to: '{{ to }}',
+            bookingId: '{{ bookingId }}',
+            offers: JSON.parse(offers)
+        };
+    </script>
+{% endblock %}
+
 {% block javascripts %}
     {% javascripts
         '@ResorCoreBundle/Resources/public/js/vendor/jquery/dist/jquery.js'
@@ -27,14 +40,7 @@
 
 {% block scripts %}
     <script type="text/javascript">
-        var offers = '{{ offers | serialize }}';
-        offers = offers.replace(/&quot;/g, '"');
-        window.exposed = {
-            from: '{{ from }}',
-            to: '{{ to }}',
-            bookingId: '{{ bookingId }}',
-            offers: JSON.parse(offers)
-        };
+
         $(function () {
             var app = new BookingApplication();
             app.start();

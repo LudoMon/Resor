@@ -19,6 +19,15 @@
     %}
     <script src="{{ asset_url }}"></script>
     {% endjavascripts %}
+    <script type="text/javascript">
+        window.exposed = {
+            lat: {{ lat }},
+            lng: {{ lng }},
+            place: '{{ place }}',
+            from: '{{ from }}',
+            to: '{{ to }}'
+        };
+    </script>
 {% endblock %}
 
 {% block javascripts %}
@@ -32,15 +41,6 @@
         '@ResorCoreBundle/Resources/public/js/results.js'
     %}
     <script src="{{ asset_url }}"></script>
-    <script type="text/javascript">
-        window.exposed = {
-            lat: {{ lat }},
-            lng: {{ lng }},
-            place: '{{ place }}',
-            from: '{{ from }}',
-            to: '{{ to }}'
-        };
-    </script>
     {% endjavascripts %}
 {% endblock %}
 
