@@ -18,11 +18,15 @@ class BookController extends Controller
         $camping = $this->getDoctrine()
             ->getRepository('ResorCoreBundle:Camping')
             ->find($id);
+        $offers = $this->getDoctrine()
+            ->getRepository('ResorCoreBundle:Offer')
+            ->findForCampingId($id);
 
         $from = $request->query->get('from');
         $to = $request->query->get('to');
         return array(
             "camping" => $camping,
+            "offers" => $offers,
             "from" => $from,
             "to" => $to,
             "bookingId" => $id

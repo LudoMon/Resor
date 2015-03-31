@@ -31,4 +31,14 @@ class OfferRepository extends EntityRepository
             ->getQuery()
             ->getResult();
     }
+
+    public function findForCampingId($camping_id)
+    {
+        return $this->createQueryBuilder('o')
+            ->join('o.camping', 'c')
+            ->where('c.id = :id')
+            ->setParameter('id', $camping_id)
+            ->getQuery()
+            ->getResult();
+    }
 }
