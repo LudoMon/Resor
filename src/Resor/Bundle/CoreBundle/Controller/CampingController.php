@@ -60,6 +60,7 @@ class CampingController extends Controller
 
                 $em = $this->get('doctrine.orm.entity_manager');
                 $em->persist($camping);
+                $em->persist($currentUser);
                 $em->flush();
 
                 $token->setAuthenticated( false );
