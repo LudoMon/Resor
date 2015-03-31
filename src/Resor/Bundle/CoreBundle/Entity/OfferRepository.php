@@ -41,4 +41,10 @@ class OfferRepository extends EntityRepository
             ->getQuery()
             ->getResult();
     }
+
+    public function canBook ($offer, $wantedBook)
+    {
+        // TODO IMPLEMENT METHOD
+        return true;
+    }
 }
