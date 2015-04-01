@@ -39,12 +39,10 @@ class Camping
     private $isActive = 0;
 
     /**
-     * @var User
-     *
-     * @ORM\OneToOne(targetEntity="Resor\Bundle\CoreBundle\Entity\User", cascade={"persist"})
+     * @ORM\ManyToOne(targetEntity="Resor\Bundle\CoreBundle\Entity\User")
      * @ORM\JoinColumn(nullable=false)
      */
-    private $owner;
+     private $owner;
 
     /**
      * @ORM\Column(name="description", type="string", length=2000)
