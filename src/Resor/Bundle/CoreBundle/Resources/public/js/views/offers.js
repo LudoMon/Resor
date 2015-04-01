@@ -37,11 +37,11 @@ module.exports = Marionette.ItemView.extend({
     },
 
     onOfferClick: function (event) {
-        var offerId = $(event.target).data('id'),
+        var offerId = $(event.currentTarget).data('id'),
             selectedOffer = this.collection.get(offerId),
             dateLimits = this.searchParams.getDateLimits();
         this.ui.offer.removeClass('selected');
-        $(event.target).toggleClass('selected');
+        $(event.currentTarget).toggleClass('selected');
         this.booking.set('dailyPrice', selectedOffer.get('price'));
         this.booking.set('availabilityId', _.first(selectedOffer.getAvailabilities(dateLimits.from, dateLimits.to)).id);
     }
