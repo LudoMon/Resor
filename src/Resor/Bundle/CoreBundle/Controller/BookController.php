@@ -3,6 +3,7 @@
 namespace Resor\Bundle\CoreBundle\Controller;
 
 use Resor\Bundle\CoreBundle\Entity\Booking;
+use Resor\Bundle\CoreBundle\Entity\Availability;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
@@ -62,7 +63,26 @@ class BookController extends Controller
 
         $em->persist($booking);
 
-        $availability->setIsOpen(false);
+        $availability->setPlacesNumber($availability->getPlacesNumber() - 1);
+
+        $availabilityB = new Availability();
+        $availabilityB->setStartDate($availability->getStartDate());
+        $availabilityB->setEndDate($booking->getStartDate());
+        $availabilityB->setPlacesNumber(1);
+        $availabilityB->setIsOpen(true);
+        $availabilityB->setOffer($availability->getOffer());
+        $availabilityB->setPrice($availability->getPrice());
+
+        $availabilityA = new Availability();
+        $availabilityA->setStartDate($booking->getEndDate());
+        $availabilityA->setEndDate($availability->getEndDate());
+        $availabilityA->setPlacesNumber(1);
+        $availabilityA->setIsOpen(true);
+        $availabilityA->setOffer($availability->getOffer());
+        $availabilityA->setPrice($availability->getPrice());
+
+        $em->persist($availabilityB);
+        $em->persist($availabilityA);
 
         $em->flush();
 
