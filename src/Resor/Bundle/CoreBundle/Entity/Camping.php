@@ -45,7 +45,7 @@ class Camping
      private $owner;
 
     /**
-     * @ORM\Column(name="description", type="string", length=2000)
+     * @ORM\Column(name="description", type="string", length=2000, nullable=true)
      */
      private $description;
 
