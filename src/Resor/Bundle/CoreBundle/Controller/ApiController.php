@@ -11,10 +11,13 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Validator\Constraints\DateTime;
 
+use FOS\RestBundle\Controller\Annotations\View;
+
 class ApiController extends Controller {
     /**
      * @param int $campingId
      * @return array
+     * @View()
      */
     public function getBookingsAction($campingId)
     {
@@ -35,6 +38,11 @@ class ApiController extends Controller {
         return ['bookings' => $bookings];
     }
 
+    /**
+     * @param $bookingId
+     * @return array
+     * @View()
+     */
     public function deleteBookingAction($bookingId)
     {
         $em = $this->getDoctrine()->getManager();
@@ -48,6 +56,12 @@ class ApiController extends Controller {
         ];
     }
 
+    /**
+     * @param $campingId
+     * @param Request $request
+     * @return array
+     * @View()
+     */
     public function postBookingAction($campingId, Request $request)
     {
         /*
@@ -88,6 +102,12 @@ class ApiController extends Controller {
         return ['response' => $response];
     }
 
+    /**
+     * @param $campingId
+     * @param Request $request
+     * @return array
+     * @View()
+     */
     public function postOffersAction($campingId, Request $request)
     {
         $em = $this->getDoctrine()->getManager();
