@@ -7,7 +7,7 @@
     strong.booking-price.js-price
         | -- €
 form.booking-submit.js-form(action="/book/" + bookingId + "/finalize/", method="POST")
-    input.js-form-from(type="hidden", value=toSerialized, name="to")
-    input.js-form-to(type="hidden", value=fromSerialized, name="from")
+    input.js-form-from(type="hidden", value=toSerialized, name="from")
+    input.js-form-to(type="hidden", value=fromSerialized, name="to")
     input.submit-button(type="submit", value="Réserver")
 #offers

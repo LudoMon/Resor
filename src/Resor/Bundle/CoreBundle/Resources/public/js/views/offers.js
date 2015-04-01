@@ -22,7 +22,6 @@ module.exports = Marionette.ItemView.extend({
         var dateLimits = this.searchParams.getDateLimits();
         this.collection.each(function (offer) {
             offer.set('price', offer.getMinPrice(dateLimits.from, dateLimits.to));
-            offer.set('places', _.result(_.first(offer.get('availabilities')), 'places_number'));
         });
         var offers = this.collection.filter(function (offer) {
             return offer.getAvailabilities(dateLimits.from, dateLimits.to).length > 0;

@@ -10,7 +10,8 @@ module.exports = Backbone.Model.extend({
             var endDate = moment(availability.end_date);
             return (moment(startDate).isBefore(from) || moment(startDate).isSame(from))
                 && (moment(endDate).isAfter(to) || moment(endDate).isSame(to))
-                && availability.is_open;
+                && availability.is_open
+                && availability.places_number > 0;
         });
     },
 
