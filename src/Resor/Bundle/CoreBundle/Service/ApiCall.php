@@ -1,10 +1,4 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: LudoZeGeek
- * Date: 31/03/2015
- * Time: 21:38
- */
 
 namespace Resor\Bundle\CoreBundle\Service;
 

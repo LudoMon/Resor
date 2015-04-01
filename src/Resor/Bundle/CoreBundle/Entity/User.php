@@ -22,10 +22,9 @@ class User extends BaseUser
     protected $id;
 
     /**
-    +     * @var string
-    +     *
-    +     * @ORM\Column(type="string", length=50, nullable=true)
-    +     */
+     * @var string
+     * @ORM\Column(type="string", length=50, nullable=true)
+     * */
     protected $firstName;
 
     /**
