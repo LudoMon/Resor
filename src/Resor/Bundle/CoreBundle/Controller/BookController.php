@@ -58,7 +58,7 @@ class BookController extends Controller
         $booking->setStartDate(date_create($from));
         $booking->setEndDate(date_create($to));
         $booking->setUser($this->get('security.context')->getToken()->getUser());
-        $booking->setAvailability($availability);
+        $booking->setOffer($availability->getOffer());
 
         $em->persist($booking);
 

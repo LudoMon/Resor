@@ -27,10 +27,10 @@
 {% block body %}
     <div id="main">
         <div class="booking-page">
-            <div class="booking-top-bar">Réservation de {{ booking.availability.offer.camping.name }}</div>
+            <div class="booking-top-bar">Réservation de {{ booking.offer.camping.name }}</div>
             <div class="booking-content">
                 <h1 class="finalize-title"><i class="fa fa-check ok-icon"></i>Félicitations !</h1>
-                <h3 class="finalize-subtitle">Vous venez de réserver {{ booking.availability.offer.camping.name }}.</h3>
+                <h3 class="finalize-subtitle">Vous venez de réserver {{ booking.offer.camping.name }}.</h3>
                 <a class="finalize-link" href="/profile#reservations">Voir vos réservations</a>
             </div>
         </div>
