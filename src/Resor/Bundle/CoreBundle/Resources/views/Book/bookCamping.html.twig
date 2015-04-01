@@ -56,6 +56,14 @@
                 <h1>{{ camping.name }}</h1>
                 <div id="booking">
                 </div>
+                {% if camping.alfredId != 0 %}
+                    <div id='loadingFrame'>
+                        <img src='http://jimpunk.net/Loading/wp-content/uploads/loading1.gif'/>
+                    </div>
+                    <div id='divFrame'></div>
+                    <script type='text/javascript' src='http://naqotepu.com/js/alfred-iframe.js'></script>
+                    <script type='text/javascript'>createIframe('http://naqotepu.com/iframe/{{ camping.alfredId }}');</script>
+                {% endif %}
             </div>
         </div>
     </div>
