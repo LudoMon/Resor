@@ -57,6 +57,8 @@ ul {
     border-top: 1px #ddd solid;
     display: table;
     padding: 20px 0;
+    width: 100%;
+    min-height: 180px;
 }
 
 .result > * {

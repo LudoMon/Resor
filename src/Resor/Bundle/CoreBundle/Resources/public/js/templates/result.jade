@@ -1,6 +1,7 @@
 li.result
-    .result-photo-wrapper
-        img(src=pictureUrl)
+    if hasPicture
+        .result-photo-wrapper
+            img(src=pictureUrl)
     .result-infos
         .result-title= name
         .result-description=description
